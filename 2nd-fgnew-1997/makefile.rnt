@@ -1,0 +1,25 @@
+.SUFFIXES: .exe .lib .a .dll .so .sa .o .obj .c .s .cc .res .rc .def
+RM=del
+CP=copy
+CC=gcc
+FGDEFS=-DRSX
+FGLIBS=-lm -lemx -lbsd 
+LIBDIRS=-L/rsxnt/lib
+SYS_DEFINES=-D__EMX__ 
+CFLAGS= -g -Wall $(FGDEFS) -Zwin32
+OBJ_SUFFIX=o
+EXECUTABLE=fgmain.exe
+EXTRA_OBJS=
+RESOURCE=fgres.res
+LINK.RESOURCE=rsrc.exe -x -t fgres.res fgmain.exe
+
+.rc.res:
+	copy $*.rc $*_c.c
+	$(CC) -E $(SYS_DEFINES) $(FGDEFS) -DRC_INVOKED $*_c.c >$*_c.rc
+	grc.exe -r $*_c.rc
+	copy $*_c.res $*.res
+	$(RM) $*_c.*
+
+
+include makefile.inc
+

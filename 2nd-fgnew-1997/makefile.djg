@@ -1,0 +1,20 @@
+.SUFFIXES: .exe .lib .a .dll .so .sa .o .obj .c .s .cc .res .rc .def
+RM=del
+CP=copy
+CC=gcc
+FGDEFS=
+FGLIBS=-lm -lalleg 
+LIBDIRS=
+SYS_DEFINES=-D__DJGPP__ -D__GNUC__
+CFLAGS= -g -Wall $(FGDEFS) 
+OBJ_SUFFIX=o
+EXECUTABLE=fgmain.exe
+EXTRA_OBJS=dll.o
+RESOURCE=
+LINK.RESOURCE=
+
+dll.o: dll.oo
+	$(CP) dll.oo dll.o
+
+include makefile.inc
+

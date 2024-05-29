@@ -1,0 +1,21 @@
+.SUFFIXES: .exe .lib .a .dll .so .sa .o .obj .c .s .cc .res .rc .def
+RM=del
+CP=copy
+CC=gcc
+FGDEFS=-DOPEN32
+FGLIBS=-lm -lbsd -lpmwinx
+LIBDIRS=-L/toolkit/lib
+SYS_DEFINES=-D__EMX__ -D__GNUC__
+CFLAGS= -g -Wall $(FGDEFS) -Zmt -Zomf
+OBJ_SUFFIX=obj
+EXECUTABLE=fgmain.exe
+EXTRA_OBJS=fltgear.def
+RESOURCE=fgres.res
+LINK.RESOURCE=rc $(RESOURCE) $(EXECUTABLE) 
+ICON=fgos2.ico
+
+$(RESOURCE): fgres.rc $(ICON)
+	rc $(FGDEFS) -DUSE_OS2_RC -r -i \emx\include $*.rc
+
+include makefile.inc
+
