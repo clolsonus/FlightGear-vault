@@ -1,0 +1,11 @@
+CFLAGS= -g -Wall -DWIN32 
+MAINOBJS=fgmain.o fgload.o fgkbd.o fgscreen.o fggrx.o fgslew.o \
+	fgtimer.o fgini.o fggeom.o fgevent.o fgpause.o \
+	fgrand.o fgpalet.o fgbars.o fgclock.o fgfont.o
+
+
+fgmain.exe: $(MAINOBJS) fgres.res
+	gcc $(CFLAGS) -o fgmain.exe $(MAINOBJS) -lwin
+
+fgres.res:  fgres.rc fgres.h
+	rc -DWIN32 -r fgres.rc

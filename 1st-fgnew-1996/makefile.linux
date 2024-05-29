@@ -1,0 +1,11 @@
+CFLAGS= -g -Wall 
+LIBDIRS= -L/usr/X11R6/lib
+
+MAINOBJS=fgmain.o fgload.o fgkbd.o fgscreen.o fggrx.o fgslew.o \
+	fgtimer.o fgini.o fggeom.o fgevent.o fgpause.o \
+	fgrand.o fgpalet.o fgbars.o fgclock.o fgfont.o
+
+
+fgmain: $(MAINOBJS)
+	gcc $(CFLAGS) -o fgmain $(MAINOBJS) $(LIBDIRS) -lm -lX11 -lXext -ldl
+

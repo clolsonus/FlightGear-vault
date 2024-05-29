@@ -1,0 +1,9 @@
+CFLAGS= -g -Wall -DUSE_FB
+MAINOBJS=fgmain.o fgload.o fgkbd.o fgscreen.o fggrx.o fgslew.o \
+	fgtimer.o fgini.o fggeom.o fgevent.o fgpause.o \
+	fgrand.o fgpalet.o fgbars.o fgclock.o fgfont.o
+
+
+fgmain: $(MAINOBJS)
+	gcc $(CFLAGS) -o fgmain $(MAINOBJS) -lm -lcurses -ltermcap
+
