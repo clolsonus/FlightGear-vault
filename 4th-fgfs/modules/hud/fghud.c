@@ -1,0 +1,84 @@
+/* fghud.c -- This is the ACM hud code
+ * draws a hud display
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * $Id: fghud.c,v 2.1 1996/10/31 18:12:04 korpela Exp korpela $ 
+ */
+
+
+#include <stdio.h>
+#include <time.h>
+#include "fgdefs.h"
+#include "fgtypes.h"
+#include "fgdriver.h"
+#include "fgevent.h"
+#include "fgtimer.h"
+#include "fggrx.h"
+#include "fgscreen.h"
+#include "fgvars.h"
+
+#include "modelacm.h"
+#include "fghud.h"
+#include "scale.h"
+#include "viewer.h"
+
+static FG_BITMAP *fghud_bmp;
+static int rtimer_event;
+void *fghud_public;
+
+extern craft *c;
+viewer u;
+
+FG_VOID *fghud_init(FGDRIVER_INIT_CALL *callstruct)
+{
+  static FGDRIVER_INIT_CALL fghud_init_struct=
+                                    {sizeof(FGDRIVER_INIT_CALL),/* version id */
+                                     0};         /* nothing to tell       */ 
+
+  switch (callstruct->msg) {
+    case FG_REINIT:        unhandle_fgtimer_event(0,fghud_event);
+    case FG_INIT:          rtimer_event=handle_fgtimer_event(0,fghud_event);
+                           fghud_public=callstruct->public_vars;
+#define public_vars fghud_public
+    case FG_BITMAP_CHANGE: fghud_bmp=callstruct->bitmap;
+			   u.width = fghud_bmp->w;
+			   u.height = fghud_bmp->h;
+			   u.xCenter = u.width / 2;
+			   u.yCenter = u.height / 2;
+  }
+  return (&fghud_init_struct);
+}
+
+
+FG_VOID *fghud_event(FGEVENT_CALL *event)
+{ 
+  if (fghud_bmp && (fghud_bmp->struct_size == sizeof(FG_BITMAP))) { 
+      doHUD (c, &u);
+  }
+  return (NULL);
+}
+
+void fghud_export()
+{
+}
+
+
+/* $Log: fghud.c,v $
+ */
+
+
+
+

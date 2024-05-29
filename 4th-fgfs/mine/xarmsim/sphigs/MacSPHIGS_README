@@ -1,0 +1,164 @@
+            ******************************************************
+WARNING: SPHIGS relies on floating-point operations, and thus it is horribly
+slow on a Mac that does not have the 881 floating-point chip -- slow enough to
+be considered unusable.  Moreover, SPHIGS is too big to fit into a library file
+when compiled for the SE/Plus.  Thus, this document is written
+assuming you will use a MacII.
+            ******************************************************
+
+This document is arranged in this way:
+
+        1) General information for those who will install and test SPHIGS
+           at their site.
+
+        2) General information for SPHIGS application writers.
+
+All persons would be wise to run the SPHIGS demo application.  If you received
+SPHIGS via floppy, you'll find it in the "DEMO APPLICATIONS" folder.
+Otherwise, you'll need to generate the demo program yourself (its source code
+files all begin with "SPHDEMO"), following the instructions shown in the
+following sections.
+
+==============================================================================
+        
+                  GENERAL INFORMATION ON INSTALLING MacSPHIGS
+
+YOU MUST INSTALL MacSRGP FIRST!!!  Thus, you must read "MacSRGP_README".
+
+Also, installing and using  MacSPHIGS is very similar to installing and using
+MacSRGP.  One more reason to carefully read "MacSRGP_README".
+
+
+IF YOU RECEIVED SPHIGS VIA FLOPPY... Making the libraries is simple: you don't
+have to!  In the "LIBRARIES" folder, you'll find the MAT and SPHIGS libraries.
+
+IF YOU RECEIVED SPHIGS VIA FTP (or want to know how to recompile libraries in
+case you patch/edit the source): You must continue reading this section of
+the document.
+
+
+These instructions are terse, because they assume you have carefully read
+"MacSRGP_README"!!!!
+
+
+Create a new project called "BuildSPHIGSlib.proj" in your SRGP/SPHIGS root folder.
+Also create a new project called "BuildMATlib.proj" there.
+
+Let's talk about the "MAT" project first.  <Add...> all the MAT*.c files in the
+MacSPHIGS folder.  Compile the files -- but first, be sure to turn on code
+generation for the 881/020 chips!  Also, turn off the MacHeaders
+code-generation option.  Create and save the MAT.lib library.
+
+Not let's talk about the "BuildSPHIGSlib" project.  To it,  <Add...>
+all the .c files in the MacSPHIGS folder, except the MAT*.c files.  Turn OFF
+MacHeaders and "Require Prototypes".  Turn ON 881/020 code generation!
+Create and save the SPHIGS.lib library.
+
+Now... test what you've done.  Create a new project called "SPHIGS_appl".
+
+Add the following THINK C libraries:
+        ANSI-881, unix, MacTraps
+
+Add the SRGP and SPHIGS libraries:
+        SRGP.lib (MacII)
+        MAT.lib
+        SPHIGS.lib
+
+Set the following options using the <Options...> dialog:
+        1) <Code Generation><MacHeaders> must be OFF
+        2) <Compiler Flag><Require Prototypes> must be ON
+
+Make a copy of the SPHIGSproject.rsrc file and name it SPHIGS_appl.rsrc.
+
+To generate the SPHIGS tutorial model-viewing demo, <Add...> all the .c files that
+begin with "SPHDEMO_".  Build and run the project.
+
+To generate the SPHIGS robot animation, <Remove> SPHDEMO_main.c and 
+<Add...> the robot_anim.c file.
+
+When you're satisfied that the library works, you may install it, using the
+guidelines presented in the MacSRGP_README file.  The header files that need to
+be made public for the use of application authors are:
+        sphigs.h
+        srgp_sphigs.h
+        elementType.h
+        mat3.h
+The resource file that needs to be made publicly available is:
+        SPHIGSproject.rsrc
+
+
+==============================================================================
+        
+              GENERAL INFORMATION ON WRITING MacSPHIGS APPLICATIONS
+
+NOTE: This information is no substitute for:
+        1) Having a copy of "SPHIGS ANSI-C" documentation
+        2) Being literate in ANSI C
+        3) Having access to Chapters 6 and 7 of the Foley, et.al. textbook
+        4) Having access to the "THINK C User's Manual"
+
+NOTE: You *must* be working on a Mac II.
+
+Section "0" of the "SPHIGS ANSI-C" documentation is very important.  It
+tells you about current shortcomings and omissions in the current version of
+MacSPHIGS, and differences between MacSPHIGS and the spec in the textbook.
+
+Working with THINK C involves working with project files.  Some of you will
+create one project file for each application you are building; others will use
+the same project file for multiple applications, "swapping in/out" source files
+from the project file when switching contexts. 
+
+The name of the project file is important for one reason: If your project is
+named "DOOBY", there must be (in the same folder) a copy of the SPHIGS resource
+file and that copy must be named "DOOBY.rsrc".  The SPHIGS resource file is
+named "SPHIGSproject.rsrc" and your system administrator will be able to tell
+you where it is.  Make a *copy* of it (don't move/rename it!) and rename the
+*copy* whenever you create a new project.
+
+To create an SPHIGS application a project file, you should:
+
+Add the following THINK C libraries:
+        ANSI-881, unix, MacTraps
+
+Add the SRGP and SPHIGS libraries:
+        SRGP.lib (MacII)
+        MAT.lib
+        SPHIGS.lib
+
+Set the following options using the <Options...> dialog:
+        1) <Code Generation><MacHeaders> must be OFF
+        2) <Compiler Flag><Require Prototypes> must be ON
+
+You must turn on code generation flags for the 881 and 020 chips, using the
+<Options...><Code Generation> dialog!!!
+
+Then, you add your own ".c" files.  Any files using SPHIGS calls must begin
+with:
+        #include <sphigs.h>
+
+To take full advantage of the extra error checking an ANSI-C compiler can
+perform, you should turn ON the "Require Prototypes" and "Check Pointer Types"
+option in the <Options...> dialog.
+
+OK... do a <Make...>!!
+
+
+NOTE: SPHIGS does not provide a great deal of debugging aid at this point.
+Most parameters are verified, as in SRGP, but there is no tracing facility.
+
+ONE FINAL NOTE: Please use the SPHIGS reference manual that came in the DOC
+folder, and before you do any programming, read carefully section 0 of that
+manual.
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+Please report any errors, omissions, or misleading information in this
+document or the software to:
+
+        Graphics Textbook Support
+        c/o Dr. van Dam
+        Brown Univ. box 1910
+        Providence, RI  02912

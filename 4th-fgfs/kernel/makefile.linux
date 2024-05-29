@@ -1,0 +1,18 @@
+.SUFFIXES: .exe .lib .a .dll .so .sa .o .obj .c .s .cc .res .rc .def
+RM=/bin/rm
+CP=/bin/cp
+CC=gcc
+FGDEFS=
+FGLIBS=-lm -lX11 -lXext -ldl
+LIBDIRS=-L/usr/X11R6/lib
+SYS_DEFINES=-D__linux__ -D__GNUC__
+CFLAGS= -g -Wall $(FGDEFS) 
+OBJ_SUFFIX=o
+EXECUTABLE=fgmain
+EXTRA_OBJS=
+RESOURCE=
+LINK.RESOURCE=
+ICON=
+
+include makefile.inc
+

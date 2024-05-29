@@ -1,0 +1,99 @@
+# @configure_input@
+
+      srcdir = @srcdir@
+      prefix = @prefix@
+      bindir = $(prefix)/bin
+       VPATH = @srcdir@
+       SHELL = /bin/sh
+          CC = @CC@
+       SLIBS = @LIBS@
+     INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA = @INSTALL_DATA@
+STD_INCLUDES = \
+	-I. -I$(srcdir) \
+	-I$(srcdir)/../V/lib \
+	-I$(srcdir)/../dis
+      TOPDIR = ..
+ CLEAN_THESE = flight-state black_box_input black_box_output bitmap.h TAGS tags
+      manext = 1
+  MAKEDEPEND = makedepend
+
+ACM_OBJECT_LIBRARY = $(prefix)/games/acm/
+   PROGRAMS = acm
+    DEFINES = 
+     CFLAGS = $(DEFINES) @CFLAGS@ @DEFS@ $(STD_INCLUDES)
+    LDFLAGS = @LDFLAGS@
+       SRCS = main.c pm.c gear.c flaps.c drone.c init.c aim9m.c box.c \
+		m61a1.c weapon.c players.c planes.c inventory.c missile.c\
+		chaser.c missilec.c update.c events.c mouse.c \
+		joystick.c damage.c panel.c render.c hud.c \
+		hsi.c navaid.c windows.c \
+		radar.c place.c transpose.c scale.c \
+		interpolate.c resupply.c air.c effects.c \
+		imath.c alarm.c audio.c deadreckon.c dis_if.c
+       OBJS = main.o pm.o gear.o flaps.o drone.o init.o aim9m.o box.o \
+		m61a1.o weapon.o players.o planes.o inventory.o missile.o\
+		chaser.o missilec.o update.o events.o mouse.o \
+		joystick.o damage.o panel.o render.o hud.o \
+		hsi.o navaid.o windows.o \
+		radar.o place.o transpose.o scale.o \
+		interpolate.o resupply.o air.o effects.o \
+		imath.o alarm.o audio.o deadreckon.o dis_if.o
+
+       VLIB = ../V/lib/libV.a
+     DISLIB = ../dis/lib/libdis.a
+BITMAP_FILES = $(srcdir)/eng.xbm $(srcdir)/flaps0.xbm \
+		$(srcdir)/flaps1.xbm $(srcdir)/flaps2.xbm \
+		$(srcdir)/flaps3.xbm $(srcdir)/gearDown.xbm \
+		$(srcdir)/gearTran.xbm $(srcdir)/gearUp.xbm \
+		$(srcdir)/handleDn.xbm $(srcdir)/handleUp.xbm
+
+
+# Programs to make tags files.
+  ETAGS = etags -tw
+  CTAGS = ctags -tw
+tagsrcs = $(SRCS) $(srcdir)/../V/lib/*.c $(srcdir)/../dis/lib/*.c
+
+all:	$(PROGRAMS)
+
+acm:	$(OBJS) $(VLIB) $(DISLIB)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(VLIB) $(DISLIB) $(SLIBS)
+
+../V/lib/libV.a:
+	cd ../V/lib; $(MAKE) -e
+
+mostlyclean clean:
+	rm -f $(PROGRAMS) *.o core *~
+
+distclean: clean
+	rm -f Makefile $(CLEAN_THESE)
+
+realclean: distclean
+	rm -f TAGS tags
+
+install: $(PROGRAMS)
+	$(INSTALL_PROGRAM) acm $(bindir)/acm
+	$(INSTALL_DATA) $(srcdir)/acm.man \
+		$(prefix)/man/man$(manext)/acm.$(manext)
+
+uninstall:
+	rm -f $(bindir)/acm
+
+render.o panel.o: bitmap.h
+
+bitmap.h: $(BITMAP_FILES)
+	grep '^#define' $(BITMAP_FILES) | sed -e 's/^.*://g' > $@
+
+depend: bitmap.h
+	$(MAKEDEPEND) $(DEFINES) @DEFS@ $(STD_INCLUDES) $(SRCS)
+
+check test tar shar:
+
+TAGS:	$(tagsrcs)
+	$(ETAGS) $(tagsrcs)
+
+tags:	$(tagsrcs)
+	$(CTAGS) $(tagsrcs)
+
+# DO NOT DELETE THIS LINE -- make depend depends on it.

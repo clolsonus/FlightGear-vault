@@ -1,0 +1,9 @@
+CFLAGS= -g -Wall 
+MAINOBJS=fgmain.o fgload.o fgkbd.o fgscreen.o fggrx.o fgslew.o \
+	fgtimer.o fgini.o fggeom.o fgevent.o fgpause.o \
+	fgrand.o fgpalet.o fgbars.o fgclock.o fgfont.o
+
+
+fgmain: $(MAINOBJS)
+	gcc $(CFLAGS) -o fgmain $(MAINOBJS) -L/disks/moby/a/gnu/sun3_sunos4.1.1/lib/gcc-lib/sun3/2.6.3 -lm -lX11 -lXext -ldl
+

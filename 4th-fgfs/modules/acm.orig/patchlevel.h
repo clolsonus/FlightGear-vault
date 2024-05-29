@@ -1,0 +1,4 @@
+#define REVISION	4
+#define PATCHLEVEL	8
+
+#define REVISION_STRING "4.8"

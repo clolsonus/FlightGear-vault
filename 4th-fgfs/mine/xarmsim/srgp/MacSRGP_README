@@ -1,0 +1,193 @@
+The first part of this document is for system administrators or anyone who must
+install SRGP in a Macintosh environment.  The latter part of this document for
+any authors of SRGP applications.
+
+If you obtained this software via ftp (instead of floppy), also consult the
+file called "CopyToMac_instructions".
+
+All persons would be wise to run the SRGP demo application.  If you received
+SRGP via floppy, you'll find it in the "DEMO APPLICATIONS" folder.  Otherwise,
+you'll need to generate the demo program yourself (its source code lies in
+MAC_demo_anim.c), following the instructions shown in the following sections.
+
+
+==============================================================================
+	
+	       GENERAL INFORMATION ON BUILDING THE SRGP LIBRARY
+
+MacSRGP is written for the THINK C v4.0 environment, but *unsupported* 
+MPW patches are provided in the file "MPW_patches", and a supported Pascal
+binding is provided.  (Note: the Pascal binding is only on the floppy
+distribution, not on the ftp distribution.)  This README file
+assumes the THINK C environment is being used.  Read the "Pascal version
+info" file for additional information for adding Pascal support to your site.
+
+IF YOU RECEIVED SRGP VIA FLOPPY... Making the libraries is simple: you don't
+have to!  In the "LIBRARIES" folder, you'll find two versions of the SRGP
+library, one for the MacII environment (020/881 chips & Color QuickDraw) and
+one for Macs that do not have the 020/881 chips.  Be aware: the MacII library
+will work just fine on a MacII that does not have a color monitor.
+
+IF YOU RECEIVED SRGP VIA FTP (or want to know how to recompile libraries in
+case you patch/edit the source): You must continue reading this section of
+the document.
+
+Create a new project called "BuildSRGPlib.proj" in your SRGP/SPHIGS root
+folder.  <Add...> all the .c files in the MacSRGP folder (but *not* those in
+the "Applications" child folder).
+
+Set the following options using the <Options...> dialog:
+	1) <Code Generation><MacHeaders> must be OFF (no "X" mark visible)
+	2) <Compiler Flag><Require Prototypes> must be ON
+
+Use the <Options...> dialog and choose the <Code Generation> sub-dialog.
+   If you are on a Mac with a 68020 or 68030, put an "X" in the 68020 box.
+   If you are on a Mac with a 68881/2 match chip, put an "X" in the 68881 box.
+   If you don't know about these chips, ask your local Mac guru!
+   As a general rule, MacII's have both special chips, and Plus/SE's don't.
+
+Choose which QuickDraw you wish to compile for, by editing the file
+"ChooseWhichQuickDraw.h" and following the instructions therein.  If you
+are compiling for a MacII library, use the color ROM.  Making this choice
+obviously is closely related to the choice involved in the <Code Generation>
+options box described in the previous paragraph.
+
+IF YOU RECEIVED SRGP VIA FTP: Precompile the file called "HEADERS!" to create a
+fast-loading header file called "HEADERS.h".  See page 117 of THINK C User's
+Manual for more info.  Keep "HEADERS.h" inside the root folder.
+
+Now <Build Library...> and name the library "SRGP.lib".  If you wish to support
+two different libraries, you may wish to make the library names more
+informative: "SRGP.lib (MacII)" and "SRGP.lib (SE/Plus)" for example.
+
+Later in this document is a section that tells you how to test the library once
+you've created it.
+
+When you are satisfied that the SRGP library is working and ready for
+installation, go ahead and install!  But remember:
+
+If you are installing SRGP on a file server for multiple people to use, be sure
+that the SRGP header files and library file(s) are publicly available
+(read-only) in a folder that is a descendent of the folder that contains "THINK
+C".  The complete list of header files that must be made publicly available is:
+	srgp.h
+	srgppublic.h
+	srgp_sphigs.h
+
+The resource file (SRGPproject.rsrc) must also be made available in the same
+place the header files are.
+
+If application writers will be using independent machines with independent
+copies of THINK C and SRGP, the SRGP header/resource files and library must be
+distributed to all users.  The users must place them in a folder that is either
+a descendent of the "THINK C" folder or a descendent of the folder containing
+the application's project file.
+
+
+==============================================================================
+	
+		  TESTING THE SRGP LIBRARY BEFORE INSTALLING
+
+The test applications that lie in the MacSRGP/Applications folder are an
+excellent way to test a new library for sanity.  Simply follow the instructions
+in the next section...
+
+==============================================================================
+	
+	   GENERAL INFORMATION ON WRITING MacSRGP APPLICATIONS IN C
+
+NOTE: This information is no substitute for:
+	1) Having a copy of "SRGP for THINK C" ref. manual (approx. 13 pages)
+	2) Being literate in ANSI C
+	3) Having access to Chapter 2 of the Foley, et.al. textbook
+	4) Having access to the "THINK C User's Manual"
+
+Section "0" of the "SRGP for THINK C" documentation is very important.  It
+tells you about current shortcomings and omissions in the current version of
+MacSRGP, and differences between MacSRGP and the SRGP spec in the textbook.
+
+Working with THINK C involves working with project files.  Some of you will
+create one project file for each application you are building; others will use
+the same project file for multiple applications, "swapping in/out" source files
+from the project file when switching contexts.
+
+The name of the project file is important for one reason: If your project is
+named "DOOBY", there must be (in the same folder) a copy of the SRGP resource
+file and that copy must be named "DOOBY.rsrc".  The SRGP resource file is named
+"SRGPproject.rsrc" and your system administrator will be able to tell you where
+it is.  Make a *copy* of it (don't move/rename it!) and rename the *copy*
+whenever you create a new project.
+
+In a project file, you must <Add...> these pre-made library files:
+	1) MacTraps
+	2) ANSI       ** more on this later **
+	3) unix
+	4) the SRGP library for your type of Mac
+		  		   
+Then, you add your own ".c" files.  Any files using SRGP calls must begin with:
+	#include <srgp.h>
+
+To take full advantage of the extra error checking an ANSI-C compiler can
+perform, you should turn ON the "Require Prototypes" and "Check Pointer Types"
+option in the <Options...> dialog.
+
+In the <Project><Set Project Type...> dialog, set the MF attrs to 4800.
+Also, take note of the partion size.  You will want to increase this if you
+find that your application runs out of memory even though your machine's
+capacity has not been truly exhausted.
+
+SRGP projects are too big to fit in one 32K segment.  THINK C will tell you
+about this problem when you try to link your source and all the libraries
+together.  Here's how we usually split the files up:
+	MacTraps and unix in one segment,
+	ANSI in a segment by itself,
+	srgp.lib in a segment by itself or along with the application sources
+
+About the use of the ANSI library...  If you are on a MacII, you can use the
+"ANSI-881" library instead.  No matter what machine you are on, you can use
+"ANSI-small" if you wish, but only if your program makes a minimal amount of
+calls to the ANSI functions provided by THINK C.  (You can always *try* to use
+"ANSI-small" and then go back to "ANSI" if you get a lot of link errors.)
+
+
+				DEBUGGING TIPS
+
+All (e.g., 95% of all) parameters sent to SRGP calls are verified; problems are
+considered fatal errors and are reported in English and in complete, coherent
+sentences.  If you are running your project under THINK's debugger when a
+parameter-verification burp occurs, you can ask SRGP to "pretend" to crash so
+you can examine the program's activation stack and determine exactly where you
+went wrong.
+
+Also, when you initialize SRGP, you can request that all your SRGP calls be
+recorded in a log file.  This is the single most powerful debugging aid you
+have.  See the "SRGP for THINK C" reference manual for more information.
+
+Having memory problems, like an inability to allocate enough off-screen
+canvases?  The problem may not be that you're running out of Mac memory, but
+that you haven't assigned a large partition size to the application itself.
+A Mac application is not allowed to access all unused RAM; it can allocate
+only unused RAM within the application's assigned partition.  Every time you
+create a THINK C project, you must manually set the partition size for the
+application: it *does not* default to "the rest of the unused RAM".  The
+default size is paltry: 384K I believe.  Set the size to account for the huge
+amount of RAM you have in your Mac (:-), and you'll have lots of space for
+canvases.  To set the partition type, use the Project menu's item called 
+"Set Project Type..."
+
+ONE FINAL NOTE:  Please use the SRGP reference manual that came in the DOC
+folder, and before you do any programming, read carefully section 0 of that
+manual.
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+Please report any errors, omissions, or misleading information in this
+document or the software to:
+
+	Graphics Textbook Support
+	c/o Dr. van Dam
+	Brown Univ box 1910
+	Providence, RI  02912

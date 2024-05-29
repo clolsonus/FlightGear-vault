@@ -1,0 +1,43 @@
+
+fghud.c,144
+FG_VOID *fghud_init(41,1137
+#define public_vars 50,1634
+FG_VOID *fghud_event(58,1783
+void fghud_export(81,2329
+void fgDrawSegments 88,2410
+
+hud.c,171
+#define FLIGHTDEBUG36,1127
+#define VIEW_WINDOW_HEIGHT	37,1147
+#define VIEW_WINDOW_WIDTH	38,1178
+void doHUD 46,1340
+void	doLadder 123,3135
+double magHeading 321,8052
+
+imath.c,62
+void VMatrixToShortMatrix 21,795
+void ShortTransform 34,999
+
+scale.c,83
+static char *skipBlanks 23,836
+void doScale 30,916
+void doCompassScale 138,3116
+
+fghud.h,0
+
+horizon.h,0
+
+imath.h,152
+typedef short	short_fixed_t;short_fixed_t18,757
+	}	short_point_t;short_point_t22,828
+	}	short_matrix_t;short_matrix_t26,888
+#define UNITY	28,908
+
+scale.h,101
+	}	scaleControl;scaleControl33,1401
+#define orientRight	35,1419
+#define orientHorizontal	36,1442
+
+viewer.h,62
+typedef struct _viewer _viewer8,94
+} viewer;viewer57,2107

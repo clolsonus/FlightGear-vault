@@ -1,0 +1,42 @@
+#include "fgdefs.h"
+#include "fgres.h"
+
+#ifdef USE_OS2_RC
+ICON FG_PROGRAM_ID "fgos2.ico"
+#else
+FG_PROGRAM_ID ICON "fgwin.ico"
+#endif
+
+#ifdef USE_OS2_RC
+MENU FG_PROGRAM_ID
+BEGIN
+  SUBMENU "~File",MID_FILE
+  BEGIN
+    MENUITEM "~Open\tCtrl+O",CMD_FILEOPEN
+    MENUITEM SEPARATOR
+    MENUITEM "E~xit\tCtrl+X",CMD_EXIT
+  END
+END
+#else
+FG_PROGRAM_ID MENU
+BEGIN
+  POPUP "&File"
+  BEGIN
+    MENUITEM "&Open\tCtrl+O",CMD_FILEOPEN
+    MENUITEM SEPARATOR
+    MENUITEM "E&xit\tCtrl+X",CMD_EXIT
+  END
+END
+#endif
+
+#ifdef USE_OS2_RC
+ACCELTABLE FG_PROGRAM_ID
+BEGIN
+  "f", MID_FILE, ALT
+  "f", MID_FILE, CONTROL
+  "o", CMD_FILEOPEN, CONTROL
+  "o", CMD_FILEOPEN, ALT
+  "x", CMD_EXIT, CONTROL
+  "x", CMD_EXIT, ALT
+END
+#endif

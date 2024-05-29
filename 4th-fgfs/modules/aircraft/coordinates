@@ -1,0 +1,16 @@
+
+Q: What is ACM's coordinate system like? What basic units are used? 
+
+It looks like the Right-Hand-Rule is used exclusively, but thumbs-down
+instead of thumbs-up, like so:
+
+      First finger: the positive X-axis is away from you (North) 
+
+      2nd finger: the positive Y-axis is to the right (East) 
+
+      Thumb: the positive Z-axis is down (negative is Up) 
+
+All distances are in feet. Angles are in radians. Velocity is in
+feet-per-second.  Yaw/pitch/roll rates are in radians per
+second. Conversions are made to the usual units when displayed on the
+HUD.

@@ -1,0 +1,3730 @@
+# 1 "fgtmp.c"
+# 1 "fgdefs.h" 1
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 40 "fgdefs.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 66 "fgdefs.h"
+
+
+
+  
+  
+  
+  
+	 
+# 1 "c:\\usr\\include/windows.h" 1
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+typedef int                 BOOL;
+
+
+
+typedef unsigned char       BYTE;
+typedef unsigned short      WORD;
+typedef unsigned long       DWORD;
+
+typedef unsigned int        UINT;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+typedef UINT WPARAM;
+typedef long  LPARAM;
+typedef long  LRESULT;
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+typedef char _near *          PSTR;
+typedef char _near *          NPSTR;
+
+
+typedef char _far *           LPSTR;
+typedef const char _far *     LPCSTR;
+
+typedef BYTE _near *          PBYTE;
+typedef BYTE _far *           LPBYTE;
+
+typedef int _near *           PINT;
+typedef int _far *            LPINT;
+
+typedef WORD _near *          PWORD;
+typedef WORD _far *           LPWORD;
+
+typedef long _near *          PLONG;
+typedef long _far *           LPLONG;
+
+typedef DWORD _near *         PDWORD;
+typedef DWORD _far *          LPDWORD;
+
+typedef void _far *           LPVOID;
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+typedef UINT                    HANDLE;
+
+
+
+
+typedef HANDLE*             PHANDLE;
+typedef HANDLE _near *        SPHANDLE;
+typedef HANDLE _far *         LPHANDLE;
+
+typedef HANDLE              HGLOBAL;
+typedef HANDLE              HLOCAL;
+
+typedef HANDLE              GLOBALHANDLE;
+typedef HANDLE              LOCALHANDLE;
+
+typedef UINT                ATOM;
+
+
+
+
+
+typedef int (_far _pascal *      FARPROC)();
+typedef int (_near  _pascal *   NEARPROC)();
+
+
+typedef UINT  HSTR  ;
+
+ 
+
+typedef UINT  HINSTANCE  ;
+typedef HINSTANCE HMODULE;   
+
+
+
+ 
+
+
+
+
+
+int     _pascal  WinMain(HANDLE, HANDLE, LPSTR, int);
+int _far  _pascal  LibMain(HANDLE, WORD, WORD, LPSTR);
+
+int _far _pascal    WEP(int);
+
+ 
+
+DWORD   _far _pascal  GetVersion(void);
+
+DWORD   _far _pascal  GetFreeSpace(UINT);
+UINT    _far _pascal  GetCurrentPDB(void);
+
+UINT    _far _pascal  GetWindowsDirectory(LPSTR, UINT);
+UINT    _far _pascal  GetSystemDirectory(LPSTR, UINT);
+
+
+UINT    _far _pascal  GetFreeSystemResources(UINT);
+
+
+
+
+
+DWORD   _far _pascal  GetWinFlags(void);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LPSTR   _far _pascal  GetDOSEnvironment(void);
+
+DWORD   _far _pascal  GetCurrentTime(void);
+DWORD   _far _pascal  GetTickCount(void);
+DWORD   _far _pascal  GetTimerResolution(void);
+
+ 
+
+
+
+
+void    _far _pascal  LogError(UINT err, void _far * lpInfo);
+void    _far _pascal  LogParamError(UINT err, FARPROC lpfn, void _far * param);
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+typedef struct tagWINDEBUGINFO
+{
+    UINT    flags;
+    DWORD   dwOptions;
+    DWORD   dwFilter;
+    char    achAllocModule[8];
+    DWORD   dwAllocBreak;
+    DWORD   dwAllocCount;
+} WINDEBUGINFO;
+
+BOOL    _far _pascal  GetWinDebugInfo(WINDEBUGINFO _far * lpwdi, UINT flags);
+BOOL    _far _pascal  SetWinDebugInfo(const WINDEBUGINFO _far * lpwdi);
+
+void    _far  _cdecl DebugOutput(UINT flags, LPCSTR lpsz, ...);
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void    _far _pascal  FatalExit(int);
+void    _far _pascal  FatalAppExit(UINT, LPCSTR);
+
+BOOL    _far _pascal  ExitWindows(DWORD dwReturnCode, UINT wReserved);
+
+
+
+
+
+BOOL    _far _pascal  ExitWindowsExec(LPCSTR, LPCSTR);
+
+
+void    _far _pascal  DebugBreak(void);
+void    _far _pascal  OutputDebugString(LPCSTR);
+
+ 
+
+
+
+
+UINT    _far _pascal  SetErrorMode(UINT);
+
+ 
+
+
+
+BOOL    _far _pascal  IsBadReadPtr(const void _far * lp, UINT cb);
+BOOL    _far _pascal  IsBadWritePtr(void _far * lp, UINT cb);
+BOOL    _far _pascal  IsBadHugeReadPtr(const void _huge* lp, DWORD cb);
+BOOL    _far _pascal  IsBadHugeWritePtr(void _huge* lp, DWORD cb);
+BOOL    _far _pascal  IsBadCodePtr(FARPROC lpfn);
+BOOL    _far _pascal  IsBadStringPtr(const void _far * lpsz, UINT cchMax);
+
+
+ 
+
+
+
+int     _far _pascal  ProfInsChk(void);
+void    _far _pascal  ProfSetup(int,int);
+void    _far _pascal  ProfSampRate(int,int);
+void    _far _pascal  ProfStart(void);
+void    _far _pascal  ProfStop(void);
+void    _far _pascal  ProfClear(void);
+void    _far _pascal  ProfFlush(void);
+void    _far _pascal  ProfFinish(void);
+
+
+ 
+
+typedef int CATCHBUF[9];
+typedef int _far * LPCATCHBUF;
+
+int     _far _pascal  Catch(int _far *);
+void    _far _pascal  Throw(const int _far *, int);
+
+void    _far _pascal  SwitchStackBack(void);
+void    _far _pascal  SwitchStackTo(UINT, UINT, UINT);
+
+ 
+
+
+
+
+HINSTANCE   _far _pascal  LoadModule(LPCSTR, LPVOID);
+BOOL        _far _pascal  FreeModule(HINSTANCE);
+
+HINSTANCE   _far _pascal  LoadLibrary(LPCSTR);
+void        _far _pascal  FreeLibrary(HINSTANCE);
+
+UINT    _far _pascal  WinExec(LPCSTR, UINT);
+
+HMODULE _far _pascal  GetModuleHandle(LPCSTR);
+
+int     _far _pascal  GetModuleUsage(HINSTANCE);
+int     _far _pascal  GetModuleFileName(HINSTANCE, LPSTR, int);
+
+FARPROC _far _pascal  GetProcAddress(HINSTANCE, LPCSTR);
+
+int     _far _pascal  GetInstanceData(HINSTANCE, BYTE*, int);
+
+HGLOBAL _far _pascal  GetCodeHandle(FARPROC);
+
+typedef struct tagSEGINFO
+{
+    UINT offSegment;
+    UINT cbSegment;
+    UINT flags;
+    UINT cbAlloc;
+    HGLOBAL h;
+    UINT alignShift;
+    UINT reserved[2];
+} SEGINFO;
+typedef SEGINFO _far * LPSEGINFO;
+
+void    _far _pascal  GetCodeInfo(FARPROC lpProc, SEGINFO _far * lpSegInfo);
+
+FARPROC _far _pascal  MakeProcInstance(FARPROC, HINSTANCE);
+void    _far _pascal  FreeProcInstance(FARPROC);
+
+
+
+
+
+
+long     _far _pascal  SetSwapAreaSize(UINT);
+void    _far _pascal  SwapRecording(UINT);
+void    _far _pascal  ValidateCodeSegments(void);
+
+ 
+
+
+
+ 
+
+
+
+typedef UINT  HTASK  ;
+
+
+
+UINT    _far _pascal  GetNumTasks(void);
+
+
+BOOL    _far _pascal  IsTask(HTASK);
+
+
+HTASK   _far _pascal  GetCurrentTask(void);
+
+void    _far _pascal  Yield(void);
+void    _far _pascal  DirectedYield(HTASK);
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HGLOBAL _far _pascal  GlobalAlloc(UINT, DWORD);
+HGLOBAL _far _pascal  GlobalReAlloc(HGLOBAL, DWORD, UINT);
+HGLOBAL _far _pascal  GlobalFree(HGLOBAL);
+
+DWORD   _far _pascal  GlobalDosAlloc(DWORD);
+UINT    _far _pascal  GlobalDosFree(UINT);
+
+
+
+
+char _far * _far _pascal  GlobalLock(HGLOBAL);
+
+
+BOOL    _far _pascal  GlobalUnlock(HGLOBAL);
+
+DWORD   _far _pascal  GlobalSize(HGLOBAL);
+DWORD   _far _pascal  GlobalHandle(UINT);
+
+ 
+
+
+UINT    _far _pascal  GlobalFlags(HGLOBAL);
+
+
+
+
+char _far * _far _pascal  GlobalWire(HGLOBAL);
+
+
+BOOL    _far _pascal  GlobalUnWire(HGLOBAL);
+
+UINT    _far _pascal  GlobalPageLock(HGLOBAL);
+UINT    _far _pascal  GlobalPageUnlock(HGLOBAL);
+
+void    _far _pascal  GlobalFix(HGLOBAL);
+void    _far _pascal  GlobalUnfix(HGLOBAL);
+
+HGLOBAL _far _pascal  GlobalLRUNewest(HGLOBAL);
+HGLOBAL _far _pascal  GlobalLRUOldest(HGLOBAL);
+
+DWORD   _far _pascal  GlobalCompact(DWORD);
+
+
+
+
+typedef FARPROC GNOTIFYPROC;
+
+
+void    _far _pascal  GlobalNotify(GNOTIFYPROC);
+
+HGLOBAL _far _pascal  LockSegment(UINT);
+void    _far _pascal  UnlockSegment(UINT);
+
+
+
+
+UINT    _far _pascal  AllocSelector(UINT);
+UINT    _far _pascal  FreeSelector(UINT);
+UINT    _far _pascal  AllocDStoCSAlias(UINT);
+UINT    _far _pascal  PrestoChangoSelector(UINT sourceSel, UINT destSel);
+DWORD   _far _pascal  GetSelectorBase(UINT);
+UINT    _far _pascal  SetSelectorBase(UINT, DWORD);
+DWORD   _far _pascal  GetSelectorLimit(UINT);
+UINT    _far _pascal  SetSelectorLimit(UINT, DWORD);
+
+void    _far _pascal  LimitEmsPages(DWORD);
+
+void    _far _pascal  ValidateFreeSpaces(void);
+
+ 
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HLOCAL  _far _pascal  LocalAlloc(UINT, UINT);
+HLOCAL  _far _pascal  LocalReAlloc(HLOCAL, UINT, UINT);
+HLOCAL  _far _pascal  LocalFree(HLOCAL);
+
+
+
+
+char _near * _far _pascal  LocalLock(HLOCAL);
+
+
+BOOL    _far _pascal  LocalUnlock(HLOCAL);
+
+UINT    _far _pascal  LocalSize(HLOCAL);
+
+
+
+HLOCAL  _far _pascal  LocalHandle(UINT);
+
+
+ 
+
+
+
+UINT    _far _pascal  LocalFlags(HLOCAL);
+
+BOOL    _far _pascal  LocalInit(UINT, UINT, UINT);
+UINT    _far _pascal  LocalCompact(UINT);
+UINT    _far _pascal  LocalShrink(HLOCAL, UINT);
+
+
+
+ 
+
+
+
+typedef int HFILE;       
+
+
+
+# 795 "c:\\usr\\include/windows.h"
+
+
+ 
+
+
+
+
+HFILE   _far _pascal  _lopen(LPCSTR, int);
+HFILE   _far _pascal  _lcreat(LPCSTR, int);
+
+HFILE   _far _pascal  _lclose(HFILE);
+
+long     _far _pascal  _llseek(HFILE, long , int);
+
+ 
+
+
+
+
+UINT    _far _pascal  _lread(HFILE, void _huge*, UINT);
+UINT    _far _pascal  _lwrite(HFILE, const void _huge*, UINT);
+
+
+long    _far _pascal  _hread(HFILE, void _huge*, long);
+long    _far _pascal  _hwrite(HFILE, const void _huge*, long);
+
+
+
+
+
+ 
+
+
+int     _far _pascal  GetTempFileName(BYTE, LPCSTR, UINT, LPSTR);
+BYTE    _far _pascal  GetTempDrive(char);
+
+ 
+
+
+
+UINT    _far _pascal  GetDriveType(int);
+
+UINT    _far _pascal  SetHandleCount(UINT);
+
+ 
+UINT _far _pascal  WNetAddConnection(LPSTR, LPSTR, LPSTR);
+UINT _far _pascal  WNetGetConnection(LPSTR, LPSTR, UINT _far *);
+UINT _far _pascal  WNetCancelConnection(LPSTR, BOOL);
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+typedef UINT  HRSRC  ;
+
+HRSRC   _far _pascal  FindResource(HINSTANCE, LPCSTR, LPCSTR);
+HGLOBAL _far _pascal  LoadResource(HINSTANCE, HRSRC);
+BOOL    _far _pascal  FreeResource(HGLOBAL);
+
+
+
+
+char _far * _far _pascal  LockResource(HGLOBAL);
+
+
+
+
+DWORD   _far _pascal  SizeofResource(HINSTANCE, HRSRC);
+
+int     _far _pascal  AccessResource(HINSTANCE, HRSRC);
+
+HGLOBAL _far _pascal  AllocResource(HINSTANCE, HRSRC, DWORD);
+
+
+
+
+typedef FARPROC RSRCHDLRPROC;
+
+
+RSRCHDLRPROC _far _pascal  SetResourceHandler(HINSTANCE, LPCSTR, RSRCHDLRPROC);
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 984 "c:\\usr\\include/windows.h"
+
+
+ 
+
+
+
+
+
+
+
+# 1007 "c:\\usr\\include/windows.h"
+
+
+ 
+
+ 
+UINT    _far _pascal  GetProfileInt(LPCSTR, LPCSTR, int);
+int     _far _pascal  GetProfileString(LPCSTR, LPCSTR, LPCSTR, LPSTR, int);
+BOOL    _far _pascal  WriteProfileString(LPCSTR, LPCSTR, LPCSTR);
+
+UINT    _far _pascal  GetPrivateProfileInt(LPCSTR, LPCSTR, int, LPCSTR);
+int     _far _pascal  GetPrivateProfileString(LPCSTR, LPCSTR, LPCSTR, LPSTR, int, LPCSTR);
+BOOL    _far _pascal  WritePrivateProfileString(LPCSTR, LPCSTR, LPCSTR, LPCSTR);
+
+
+
+ 
+
+void    _far _pascal  AnsiToOem(const char _huge*, char _huge*);
+void    _far _pascal  OemToAnsi(const char _huge*, char _huge*);
+
+void    _far _pascal  AnsiToOemBuff(LPCSTR, LPSTR, UINT);
+void    _far _pascal  OemToAnsiBuff(LPCSTR, LPSTR, UINT);
+
+LPSTR   _far _pascal  AnsiNext(LPCSTR);
+LPSTR   _far _pascal  AnsiPrev(LPCSTR, LPCSTR);
+
+LPSTR   _far _pascal  AnsiUpper(LPSTR);
+LPSTR   _far _pascal  AnsiLower(LPSTR);
+
+UINT    _far _pascal  AnsiUpperBuff(LPSTR, UINT);
+UINT    _far _pascal  AnsiLowerBuff(LPSTR, UINT);
+
+
+
+BOOL    _far _pascal  IsCharAlpha(char);
+BOOL    _far _pascal  IsCharAlphaNumeric(char);
+BOOL    _far _pascal  IsCharUpper(char);
+BOOL    _far _pascal  IsCharLower(char);
+
+
+
+int     _far _pascal  lstrcmp(LPCSTR, LPCSTR);
+int     _far _pascal  lstrcmpi(LPCSTR, LPCSTR);
+LPSTR   _far _pascal  lstrcpy(LPSTR, LPCSTR);
+LPSTR   _far _pascal  lstrcat(LPSTR, LPCSTR);
+int     _far _pascal  lstrlen(LPCSTR);
+
+LPSTR   _far _pascal  lstrcpyn(LPSTR, LPCSTR, int);
+void    _far _pascal  hmemcpy(void _huge*, const void _huge*, long);
+
+
+
+
+
+
+
+
+
+int     _far _pascal  LoadString(HINSTANCE, UINT, LPSTR, int);
+
+ 
+
+
+
+DWORD   _far _pascal  OemKeyScan(UINT);
+UINT    _far _pascal  VkKeyScan(UINT);
+int     _far _pascal  GetKeyboardType(int);
+UINT    _far _pascal  MapVirtualKey(UINT, UINT);
+int     _far _pascal  GetKBCodePage(void);
+int     _far _pascal  GetKeyNameText(long , LPSTR, int);
+int     _far _pascal  ToAscii(UINT wVirtKey, UINT wScanCode, BYTE _far * lpKeyState, DWORD _far * lpChar, UINT wFlags);
+
+
+
+
+
+ 
+
+typedef UINT  HDC  ;
+
+# 1095 "c:\\usr\\include/windows.h"
+
+
+typedef UINT  HBITMAP  ;
+typedef UINT  HPEN  ;
+typedef UINT  HBRUSH  ;
+typedef UINT  HRGN  ;
+typedef UINT  HPALETTE  ;
+typedef UINT  HFONT  ;
+
+typedef struct tagRECT
+{
+    int left;
+    int top;
+    int right;
+    int bottom;
+} RECT;
+typedef RECT*      PRECT;
+typedef RECT _near * NPRECT;
+typedef RECT _far *  LPRECT;
+
+typedef struct tagPOINT
+{
+    int x;
+    int y;
+} POINT;
+typedef POINT*       PPOINT;
+typedef POINT _near * NPPOINT;
+typedef POINT _far *  LPPOINT;
+
+
+typedef struct tagSIZE
+{
+    int cx;
+    int cy;
+} SIZE;
+typedef SIZE*       PSIZE;
+typedef SIZE _near * NPSIZE;
+typedef SIZE _far *  LPSIZE;
+
+
+
+
+# 2568 "c:\\usr\\include/windows.h"
+
+
+ 
+
+
+# 2652 "c:\\usr\\include/windows.h"
+
+
+ 
+
+typedef UINT  HWND  ;
+
+
+
+typedef UINT  HMENU  ;
+
+typedef UINT  HICON  ;
+typedef HICON HCURSOR;       
+
+ 
+
+# 2721 "c:\\usr\\include/windows.h"
+
+
+UINT    _far _pascal  GetDoubleClickTime(void);
+void    _far _pascal  SetDoubleClickTime(UINT);
+
+
+
+
+ 
+
+
+# 2774 "c:\\usr\\include/windows.h"
+
+
+
+ 
+
+void    _far _pascal  SetRect(RECT _far *, int, int, int, int);
+void    _far _pascal  SetRectEmpty(RECT _far *);
+
+void    _far _pascal  CopyRect(RECT _far *, const RECT _far *);
+
+BOOL    _far _pascal  IsRectEmpty(const RECT _far *);
+
+BOOL    _far _pascal  EqualRect(const RECT _far *, const RECT _far *);
+
+BOOL    _far _pascal  IntersectRect(RECT _far *, const RECT _far *, const RECT _far *);
+BOOL    _far _pascal  UnionRect(RECT _far *, const RECT _far *, const RECT _far *);
+BOOL    _far _pascal  SubtractRect(RECT _far *, const RECT _far *, const RECT _far *);
+
+void    _far _pascal  OffsetRect(RECT _far *, int, int);
+void    _far _pascal  InflateRect(RECT _far *, int, int);
+
+BOOL    _far _pascal  PtInRect(const RECT _far *, POINT);
+
+ 
+
+UINT _far _pascal  RegisterWindowMessage(LPCSTR);
+
+
+
+ 
+
+
+# 2861 "c:\\usr\\include/windows.h"
+
+
+BOOL    _far _pascal  PostMessage(HWND, UINT, WPARAM, LPARAM);
+LRESULT _far _pascal  SendMessage(HWND, UINT, WPARAM, LPARAM);
+
+# 2894 "c:\\usr\\include/windows.h"
+
+
+ 
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+void    _far _pascal  PostQuitMessage(int);
+
+
+
+ 
+
+typedef LRESULT (_far _pascal * WNDPROC)(HWND, UINT, WPARAM, LPARAM);
+
+typedef struct tagWNDCLASS
+{
+    UINT        style;
+    WNDPROC     lpfnWndProc;
+    int         cbClsExtra;
+    int         cbWndExtra;
+    HINSTANCE   hInstance;
+    HICON       hIcon;
+    HCURSOR     hCursor;
+    HBRUSH      hbrBackground;
+    LPCSTR      lpszMenuName;
+    LPCSTR      lpszClassName;
+} WNDCLASS;
+typedef WNDCLASS* PWNDCLASS;
+typedef WNDCLASS _near * NPWNDCLASS;
+typedef WNDCLASS _far * LPWNDCLASS;
+
+ATOM    _far _pascal  RegisterClass(const WNDCLASS _far *);
+BOOL    _far _pascal  UnregisterClass(LPCSTR, HINSTANCE);
+
+BOOL    _far _pascal  GetClassInfo(HINSTANCE, LPCSTR, WNDCLASS _far *);
+int     _far _pascal  GetClassName(HWND, LPSTR, int);
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WORD    _far _pascal  GetClassWord(HWND, int);
+WORD    _far _pascal  SetClassWord(HWND, int, WORD);
+long     _far _pascal  GetClassLong(HWND, int);
+long     _far _pascal  SetClassLong(HWND, int, long );
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+BOOL    _far _pascal  IsWindow(HWND);
+
+HWND    _far _pascal  CreateWindowEx(DWORD, LPCSTR, LPCSTR, DWORD, int, int, int, int, HWND, HMENU, HINSTANCE, void _far *);
+HWND    _far _pascal  CreateWindow(LPCSTR, LPCSTR, DWORD, int, int, int, int, HWND, HMENU, HINSTANCE, void _far *);
+
+
+
+
+ 
+typedef struct tagCREATESTRUCT
+{
+    void _far * lpCreateParams;
+    HINSTANCE hInstance;
+    HMENU     hMenu;
+    HWND      hwndParent;
+    int       cy;
+    int       cx;
+    int       y;
+    int       x;
+    long       style;
+    LPCSTR    lpszName;
+    LPCSTR    lpszClass;
+    DWORD     dwExStyle;
+} CREATESTRUCT;
+typedef CREATESTRUCT _far * LPCREATESTRUCT;
+
+BOOL    _far _pascal  DestroyWindow(HWND);
+
+
+
+
+ 
+
+HTASK   _far _pascal  GetWindowTask(HWND);
+
+BOOL    _far _pascal  IsChild(HWND, HWND);
+
+HWND    _far _pascal  GetParent(HWND);
+HWND    _far _pascal  SetParent(HWND, HWND);
+
+BOOL    _far _pascal  IsWindowVisible(HWND);
+
+BOOL    _far _pascal  ShowWindow(HWND, int);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+BOOL    _far _pascal  EnableWindow(HWND,BOOL);
+BOOL    _far _pascal  IsWindowEnabled(HWND);
+
+
+
+ 
+void    _far _pascal  SetWindowText(HWND, LPCSTR);
+int     _far _pascal  GetWindowText(HWND, LPSTR, int);
+int     _far _pascal  GetWindowTextLength(HWND);
+
+
+
+
+
+ 
+WORD    _far _pascal  GetWindowWord(HWND, int);
+WORD    _far _pascal  SetWindowWord(HWND, int, WORD);
+long     _far _pascal  GetWindowLong(HWND, int);
+long     _far _pascal  SetWindowLong(HWND, int, long );
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+void    _far _pascal  GetClientRect(HWND, RECT _far *);
+void    _far _pascal  GetWindowRect(HWND, RECT _far *);
+
+
+
+typedef struct tagWINDOWPLACEMENT
+{
+    UINT  length;
+    UINT  flags;
+    UINT  showCmd;
+    POINT ptMinPosition;
+    POINT ptMaxPosition;
+    RECT  rcNormalPosition;
+} WINDOWPLACEMENT;
+typedef WINDOWPLACEMENT     *PWINDOWPLACEMENT;
+typedef WINDOWPLACEMENT _far * LPWINDOWPLACEMENT;
+
+
+
+
+BOOL    _far _pascal  GetWindowPlacement(HWND, WINDOWPLACEMENT _far *);
+BOOL    _far _pascal  SetWindowPlacement(HWND, const WINDOWPLACEMENT _far *);
+
+
+BOOL    _far _pascal  SetWindowPos(HWND, HWND, int, int, int, int, UINT);
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+typedef UINT  HDWP  ;
+
+HDWP    _far _pascal  BeginDeferWindowPos(int);
+HDWP    _far _pascal  DeferWindowPos(HDWP, HWND, HWND, int, int, int, int, UINT);
+BOOL    _far _pascal  EndDeferWindowPos(HDWP);
+
+
+
+BOOL    _far _pascal  MoveWindow(HWND, int, int, int, int, BOOL);
+BOOL    _far _pascal  BringWindowToTop(HWND);
+
+
+
+
+
+
+ 
+typedef struct tagWINDOWPOS
+{
+    HWND    hwnd;
+    HWND    hwndInsertAfter;
+    int     x;
+    int     y;
+    int     cx;
+    int     cy;
+    UINT    flags;
+} WINDOWPOS;
+typedef WINDOWPOS _far * LPWINDOWPOS;
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+LRESULT _far _pascal  DefWindowProc(HWND, UINT, WPARAM, LPARAM);
+
+
+
+
+LRESULT _far _pascal  CallWindowProc(FARPROC, HWND, UINT, WPARAM, LPARAM);
+
+
+ 
+
+void    _far _pascal  AdjustWindowRect(RECT _far *, DWORD, BOOL);
+void    _far _pascal  AdjustWindowRectEx(RECT _far *, DWORD, BOOL, DWORD);
+
+
+
+
+ 
+typedef struct tagMINMAXINFO
+{
+    POINT ptReserved;
+    POINT ptMaxSize;
+    POINT ptMaxPosition;
+    POINT ptMinTrackSize;
+    POINT ptMaxTrackSize;
+} MINMAXINFO;
+
+
+
+BOOL    _far _pascal  FlashWindow(HWND, BOOL);
+
+void    _far _pascal  ShowOwnedPopups(HWND, BOOL);
+
+ 
+BOOL    _far _pascal  OpenIcon(HWND);
+void    _far _pascal  CloseWindow(HWND);
+BOOL    _far _pascal  AnyPopup(void);
+BOOL    _far _pascal  IsIconic(HWND);
+BOOL    _far _pascal  IsZoomed(HWND);
+
+ 
+
+void    _far _pascal  ClientToScreen(HWND, POINT _far *);
+void    _far _pascal  ScreenToClient(HWND, POINT _far *);
+
+
+void    _far _pascal  MapWindowPoints(HWND hwndFrom, HWND hwndTo, POINT _far * lppt, UINT cpt);
+
+
+HWND    _far _pascal  WindowFromPoint(POINT);
+HWND    _far _pascal  ChildWindowFromPoint(HWND, POINT);
+
+ 
+
+HWND    _far _pascal  GetDesktopWindow(void);
+
+HWND    _far _pascal  FindWindow(LPCSTR, LPCSTR);
+
+
+
+
+typedef FARPROC WNDENUMPROC;
+
+
+BOOL    _far _pascal  EnumWindows(WNDENUMPROC, LPARAM);
+BOOL    _far _pascal  EnumChildWindows(HWND, WNDENUMPROC, LPARAM);
+BOOL    _far _pascal  EnumTaskWindows(HTASK, WNDENUMPROC, LPARAM);
+
+HWND    _far _pascal  GetTopWindow(HWND);
+
+HWND    _far _pascal  GetWindow(HWND, UINT);
+HWND    _far _pascal  GetNextWindow(HWND, UINT);
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+BOOL    _far _pascal  SetProp(HWND, LPCSTR, HANDLE);
+HANDLE  _far _pascal  GetProp(HWND, LPCSTR);
+HANDLE  _far _pascal  RemoveProp(HWND, LPCSTR);
+
+
+
+
+typedef FARPROC PROPENUMPROC;
+
+
+int     _far _pascal  EnumProps(HWND, PROPENUMPROC);
+
+ 
+
+HDC     _far _pascal  GetDC(HWND);
+int     _far _pascal  ReleaseDC(HWND, HDC);
+
+HDC     _far _pascal  GetWindowDC(HWND);
+
+
+HDC     _far _pascal  GetDCEx(register HWND hwnd, HRGN hrgnClip, DWORD flags);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+typedef struct tagPAINTSTRUCT
+{
+    HDC         hdc;
+    BOOL        fErase;
+    RECT        rcPaint;
+    BOOL        fRestore;
+    BOOL        fIncUpdate;
+    BYTE        rgbReserved[16];
+} PAINTSTRUCT;
+typedef PAINTSTRUCT* PPAINTSTRUCT;
+typedef PAINTSTRUCT _near * NPPAINTSTRUCT;
+typedef PAINTSTRUCT _far * LPPAINTSTRUCT;
+
+HDC     _far _pascal  BeginPaint(HWND, PAINTSTRUCT _far *);
+void    _far _pascal  EndPaint(HWND, const PAINTSTRUCT _far *);
+
+void    _far _pascal  UpdateWindow(HWND);
+
+int     _far _pascal  ExcludeUpdateRgn(HDC, HWND);
+
+
+BOOL    _far _pascal  LockWindowUpdate(HWND hwndLock);
+
+
+BOOL    _far _pascal  GetUpdateRect(HWND, RECT _far *, BOOL);
+int     _far _pascal  GetUpdateRgn(HWND, HRGN, BOOL);
+
+void    _far _pascal  InvalidateRect(HWND, const RECT _far *, BOOL);
+void    _far _pascal  ValidateRect(HWND, const RECT _far *);
+
+void    _far _pascal  InvalidateRgn(HWND, HRGN, BOOL);
+void    _far _pascal  ValidateRgn(HWND, HRGN);
+
+
+BOOL    _far _pascal  RedrawWindow(HWND hwnd, const RECT _far * lprcUpdate, HRGN hrgnUpdate, UINT flags);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+void    _far _pascal  ScrollWindow(HWND, int, int, const RECT _far *, const RECT _far *);
+BOOL    _far _pascal  ScrollDC(HDC, int, int, const RECT _far *, const RECT _far *, HRGN, RECT _far *);
+
+
+
+int     _far _pascal  ScrollWindowEx(HWND hwnd, int dx, int dy,
+                const RECT _far * prcScroll, const RECT _far * prcClip,
+                HRGN hrgnUpdate, RECT _far * prcUpdate, UINT flags);
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+typedef struct tagNCCALCSIZE_PARAMS
+{
+    RECT           rgrc[3];
+    WINDOWPOS _far * lppos;
+} NCCALCSIZE_PARAMS;
+
+
+
+
+
+
+typedef NCCALCSIZE_PARAMS _far * LPNCCALCSIZE_PARAMS;
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+HWND    _far _pascal  SetActiveWindow(HWND);
+HWND    _far _pascal  GetActiveWindow(void);
+
+HWND    _far _pascal  GetLastActivePopup(HWND);
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+HWND    _far _pascal  SetFocus(HWND);
+HWND    _far _pascal  GetFocus(void);
+
+int     _far _pascal  GetKeyState(int);
+int     _far _pascal  GetAsyncKeyState(int);
+
+void    _far _pascal  GetKeyboardState(BYTE _far * );
+void    _far _pascal  SetKeyboardState(BYTE _far * );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+ 
+
+
+ 
+
+HWND    _far _pascal  SetCapture(HWND);
+void    _far _pascal  ReleaseCapture(void);
+HWND    _far _pascal  GetCapture(void);
+
+BOOL    _far _pascal  SwapMouseButton(BOOL);
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+ 
+# 3761 "c:\\usr\\include/windows.h"
+
+
+ 
+
+
+
+ 
+
+HWND    _far _pascal  GetSysModalWindow(void);
+HWND    _far _pascal  SetSysModalWindow(HWND);
+
+ 
+
+
+
+
+typedef FARPROC TIMERPROC;
+
+
+UINT    _far _pascal  SetTimer(HWND, UINT, UINT, TIMERPROC);
+
+BOOL    _far _pascal  KillTimer(HWND, UINT);
+
+
+
+ 
+
+typedef UINT  HACCEL  ;
+
+HACCEL  _far _pascal  LoadAccelerators(HINSTANCE, LPCSTR);
+
+
+
+
+
+ 
+
+
+
+ 
+typedef struct
+{
+    UINT    versionNumber;
+    UINT    offset;
+} MENUITEMTEMPLATEHEADER;
+
+ 
+typedef struct
+{
+    UINT    mtOption;
+    UINT    mtID;
+    char    mtString[1];
+} MENUITEMTEMPLATE;
+
+
+BOOL    _far _pascal  IsMenu(HMENU);
+
+
+HMENU   _far _pascal  CreateMenu(void);
+HMENU   _far _pascal  CreatePopupMenu(void);
+HMENU   _far _pascal  LoadMenu(HINSTANCE, LPCSTR);
+HMENU   _far _pascal  LoadMenuIndirect(const void _far *);
+
+BOOL    _far _pascal  DestroyMenu(HMENU);
+
+HMENU   _far _pascal  GetMenu(HWND);
+BOOL    _far _pascal  SetMenu(HWND, HMENU);
+
+HMENU   _far _pascal  GetSystemMenu(HWND, BOOL);
+
+void    _far _pascal  DrawMenuBar(HWND);
+
+BOOL    _far _pascal  HiliteMenuItem(HWND, HMENU, UINT, UINT);
+
+BOOL    _far _pascal  InsertMenu(HMENU, UINT, UINT, UINT, LPCSTR);
+BOOL    _far _pascal  AppendMenu(HMENU, UINT, UINT, LPCSTR);
+BOOL    _far _pascal  ModifyMenu(HMENU, UINT, UINT, UINT, LPCSTR);
+BOOL    _far _pascal  RemoveMenu(HMENU, UINT, UINT);
+BOOL    _far _pascal  DeleteMenu(HMENU, UINT, UINT);
+
+BOOL    _far _pascal  ChangeMenu(HMENU, UINT, LPCSTR, UINT, UINT);
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BOOL    _far _pascal  EnableMenuItem(HMENU, UINT, UINT);
+BOOL    _far _pascal  CheckMenuItem(HMENU, UINT, UINT);
+
+HMENU   _far _pascal  GetSubMenu(HMENU, int);
+
+int     _far _pascal  GetMenuItemCount(HMENU);
+UINT    _far _pascal  GetMenuItemID(HMENU, int);
+
+int     _far _pascal  GetMenuString(HMENU, UINT, LPSTR, int, UINT);
+UINT    _far _pascal  GetMenuState(HMENU, UINT, UINT);
+
+BOOL    _far _pascal  SetMenuItemBitmaps(HMENU, UINT, UINT, HBITMAP, HBITMAP);
+DWORD   _far _pascal  GetMenuCheckMarkDimensions(void);
+
+BOOL    _far _pascal  TrackPopupMenu(HMENU, UINT, int, int, int, HWND, const RECT _far *);
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+# 3972 "c:\\usr\\include/windows.h"
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+BOOL    _far _pascal  OpenClipboard(HWND);
+BOOL    _far _pascal  CloseClipboard(void);
+BOOL    _far _pascal  EmptyClipboard(void);
+
+
+HWND    _far _pascal  GetOpenClipboardWindow(void);
+
+
+HWND    _far _pascal  GetClipboardOwner(void);
+
+HWND    _far _pascal  SetClipboardViewer(HWND);
+HWND    _far _pascal  GetClipboardViewer(void);
+
+HANDLE  _far _pascal  SetClipboardData(UINT, HANDLE);
+HANDLE  _far _pascal  GetClipboardData(UINT);
+
+BOOL    _far _pascal  IsClipboardFormatAvailable(UINT);
+int     _far _pascal  GetPriorityClipboardFormat(UINT _far *, int);
+
+UINT    _far _pascal  RegisterClipboardFormat(LPCSTR);
+int     _far _pascal  CountClipboardFormats(void);
+UINT    _far _pascal  EnumClipboardFormats(UINT);
+int     _far _pascal  GetClipboardFormatName(UINT, LPSTR, int);
+
+BOOL    _far _pascal  ChangeClipboardChain(HWND, HWND);
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+HCURSOR _far _pascal  LoadCursor(HINSTANCE, LPCSTR);
+HCURSOR _far _pascal  CreateCursor(HINSTANCE, int, int, int, int, const void _far *, const void _far *);
+BOOL    _far _pascal  DestroyCursor(HCURSOR);
+
+
+HCURSOR _far _pascal  CopyCursor(HINSTANCE, HCURSOR);
+
+
+int     _far _pascal  ShowCursor(BOOL);
+
+void    _far _pascal  SetCursorPos(int, int);
+void    _far _pascal  GetCursorPos(POINT _far *);
+
+HCURSOR _far _pascal  SetCursor(HCURSOR);
+
+
+HCURSOR _far _pascal  GetCursor(void);
+
+
+void    _far _pascal  ClipCursor(const RECT _far *);
+
+void    _far _pascal  GetClipCursor(RECT _far *);
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+HICON   _far _pascal  LoadIcon(HINSTANCE, LPCSTR);
+HICON   _far _pascal  CreateIcon(HINSTANCE, int, int, BYTE, BYTE, const void _far *, const void _far *);
+BOOL    _far _pascal  DestroyIcon(HICON);
+
+
+HICON   _far _pascal  CopyIcon(HINSTANCE, HICON);
+
+
+BOOL    _far _pascal  DrawIcon(HDC, int, int, HICON);
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+int     _far _pascal  MessageBox(HWND, LPCSTR, LPCSTR, UINT);
+void    _far _pascal  MessageBeep(UINT);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+void    _far _pascal  CreateCaret(HWND, HBITMAP, int, int);
+void    _far _pascal  DestroyCaret(void);
+
+void    _far _pascal  SetCaretPos(int, int);
+void    _far _pascal  GetCaretPos(POINT _far *);
+
+void    _far _pascal  HideCaret(HWND);
+void    _far _pascal  ShowCaret(HWND);
+
+UINT    _far _pascal  GetCaretBlinkTime(void);
+void    _far _pascal  SetCaretBlinkTime(UINT);
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+typedef struct tagCLIENTCREATESTRUCT
+{
+    HMENU  hWindowMenu;
+    UINT   idFirstChild;
+} CLIENTCREATESTRUCT;
+typedef CLIENTCREATESTRUCT _far * LPCLIENTCREATESTRUCT;
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+typedef struct tagMDICREATESTRUCT
+{
+    LPCSTR  szClass;
+    LPCSTR  szTitle;
+    HINSTANCE hOwner;
+    int     x;
+    int     y;
+    int     cx;
+    int     cy;
+    DWORD   style;
+    LPARAM  lParam;
+} MDICREATESTRUCT;
+typedef MDICREATESTRUCT _far *  LPMDICREATESTRUCT;
+
+
+ 
+
+
+
+
+
+
+
+LRESULT _far _pascal  DefFrameProc(HWND, HWND, UINT, WPARAM, LPARAM);
+LRESULT _far _pascal  DefMDIChildProc(HWND, UINT, WPARAM, LPARAM);
+
+
+
+
+
+UINT    _far _pascal  ArrangeIconicWindows(HWND);
+
+
+
+ 
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+typedef FARPROC DLGPROC;
+
+
+ 
+
+
+
+
+
+
+
+
+LRESULT _far _pascal  DefDlgProc(HWND, UINT, WPARAM, LPARAM);
+
+HWND    _far _pascal  CreateDialog(HINSTANCE, LPCSTR, HWND, DLGPROC);
+HWND    _far _pascal  CreateDialogIndirect(HINSTANCE, const void _far *, HWND, DLGPROC);
+HWND    _far _pascal  CreateDialogParam(HINSTANCE, LPCSTR, HWND, DLGPROC, LPARAM);
+HWND    _far _pascal  CreateDialogIndirectParam(HINSTANCE, const void _far *, HWND, DLGPROC, LPARAM);
+
+int     _far _pascal  DialogBox(HINSTANCE, LPCSTR, HWND, DLGPROC);
+int     _far _pascal  DialogBoxIndirect(HINSTANCE, HGLOBAL, HWND, DLGPROC);
+int     _far _pascal  DialogBoxParam(HINSTANCE, LPCSTR, HWND, DLGPROC, LPARAM);
+int     _far _pascal  DialogBoxIndirectParam(HINSTANCE, HGLOBAL, HWND, DLGPROC, LPARAM);
+
+void    _far _pascal  EndDialog(HWND, int);
+
+int     _far _pascal  GetDlgCtrlID(HWND);
+HWND    _far _pascal  GetDlgItem(HWND, int);
+LRESULT _far _pascal  SendDlgItemMessage(HWND, int, UINT, WPARAM, LPARAM);
+
+void    _far _pascal  SetDlgItemInt(HWND, int, UINT, BOOL);
+UINT    _far _pascal  GetDlgItemInt(HWND, int, BOOL _far * , BOOL);
+
+void    _far _pascal  SetDlgItemText(HWND, int, LPCSTR);
+int     _far _pascal  GetDlgItemText(HWND, int, LPSTR, int);
+
+void    _far _pascal  CheckDlgButton(HWND, int, UINT);
+void    _far _pascal  CheckRadioButton(HWND, int, int, int);
+UINT    _far _pascal  IsDlgButtonChecked(HWND, int);
+
+HWND    _far _pascal  GetNextDlgGroupItem(HWND, HWND, BOOL);
+HWND    _far _pascal  GetNextDlgTabItem(HWND, HWND, BOOL);
+
+void    _far _pascal  MapDialogRect(HWND, RECT _far *);
+DWORD   _far _pascal  GetDialogBaseUnits(void);
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+typedef struct tagDRAWITEMSTRUCT
+{
+    UINT        CtlType;
+    UINT        CtlID;
+    UINT        itemID;
+    UINT        itemAction;
+    UINT        itemState;
+    HWND        hwndItem;
+    HDC         hDC;
+    RECT        rcItem;
+    DWORD       itemData;
+} DRAWITEMSTRUCT;
+typedef DRAWITEMSTRUCT _near * PDRAWITEMSTRUCT;
+typedef DRAWITEMSTRUCT _far * LPDRAWITEMSTRUCT;
+
+
+
+typedef struct tagMEASUREITEMSTRUCT
+{
+    UINT        CtlType;
+    UINT        CtlID;
+    UINT        itemID;
+    UINT        itemWidth;
+    UINT        itemHeight;
+    DWORD       itemData;
+} MEASUREITEMSTRUCT;
+typedef MEASUREITEMSTRUCT _near * PMEASUREITEMSTRUCT;
+typedef MEASUREITEMSTRUCT _far * LPMEASUREITEMSTRUCT;
+
+
+
+typedef struct tagDELETEITEMSTRUCT
+{
+    UINT       CtlType;
+    UINT       CtlID;
+    UINT       itemID;
+    HWND       hwndItem;
+    DWORD      itemData;
+} DELETEITEMSTRUCT;
+typedef DELETEITEMSTRUCT _near * PDELETEITEMSTRUCT;
+typedef DELETEITEMSTRUCT _far * LPDELETEITEMSTRUCT;
+
+
+
+typedef struct tagCOMPAREITEMSTRUCT
+{
+    UINT        CtlType;
+    UINT        CtlID;
+    HWND        hwndItem;
+    UINT        itemID1;
+    DWORD       itemData1;
+    UINT        itemID2;
+    DWORD       itemData2;
+} COMPAREITEMSTRUCT;
+typedef COMPAREITEMSTRUCT _near * PCOMPAREITEMSTRUCT;
+typedef COMPAREITEMSTRUCT _far * LPCOMPAREITEMSTRUCT;
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+typedef int   (_far _pascal * EDITWORDBREAKPROC)(LPSTR lpch, int ichCurrent, int cch, int code);
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+int     _far _pascal  DlgDirList(HWND, LPSTR, int, int, UINT);
+BOOL    _far _pascal  DlgDirSelect(HWND, LPSTR, int);
+
+int     _far _pascal  DlgDirListComboBox(HWND, LPSTR, int, int, UINT);
+BOOL    _far _pascal  DlgDirSelectComboBox(HWND, LPSTR, int);
+
+
+BOOL    _far _pascal  DlgDirSelectEx(HWND, LPSTR, int, int);
+BOOL    _far _pascal  DlgDirSelectComboBoxEx(HWND, LPSTR, int, int);
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+# 4863 "c:\\usr\\include/windows.h"
+
+
+ 
+
+
+
+# 4902 "c:\\usr\\include/windows.h"
+
+
+ 
+
+# 4918 "c:\\usr\\include/windows.h"
+
+
+ 
+
+# 4932 "c:\\usr\\include/windows.h"
+
+
+ 
+
+# 4962 "c:\\usr\\include/windows.h"
+
+
+
+ 
+
+
+ 
+
+
+typedef struct tagDEBUGHOOKINFO
+{
+    HMODULE     hModuleHook;
+    LPARAM      reserved;
+    LPARAM      lParam;
+    WPARAM      wParam;
+    int         code;
+} DEBUGHOOKINFO;
+typedef DEBUGHOOKINFO _far * LPDEBUGHOOKINFO;
+
+
+
+
+
+BOOL _far _pascal  LockInput(HANDLE h1, HWND hwndInput, BOOL fLock);
+
+long  _far _pascal  GetSystemDebugState(void);
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+BOOL _far _pascal  WinHelp(HWND hwndMain, LPCSTR lpszHelp, UINT usCommand, DWORD ulData);
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+typedef struct tagMULTIKEYHELP
+{
+    UINT    mkSize;
+    BYTE    mkKeylist;
+    BYTE    szKeyphrase[1];
+} MULTIKEYHELP;
+
+
+typedef struct
+{
+    int  wStructSize;
+    int  x;
+    int  y;
+    int  dx;
+    int  dy;
+    int  wMax;
+    char rgchMember[2];
+} HELPWININFO;
+typedef HELPWININFO _near * PHELPWININFO;
+typedef HELPWININFO _far * LPHELPWININFO;
+
+
+
+ 
+
+# 5107 "c:\\usr\\include/windows.h"
+
+
+ 
+
+# 5311 "c:\\usr\\include/windows.h"
+
+
+ 
+
+int     _far _pascal  wvsprintf(LPSTR lpszOut, LPCSTR lpszFmt, const void _far * lpParams);
+
+
+int     _far  _cdecl  WSPRINTF (LPSTR lpszOut, LPCSTR lpszFmt, ...);
+
+
+ 
+
+
+
+
+
+typedef UINT  HDRVR  ;
+
+typedef LRESULT (_far _pascal * DRIVERPROC)(DWORD, HDRVR, UINT, LPARAM, LPARAM);
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+typedef struct tagDRVCONFIGINFO
+{
+    DWORD   dwDCISize;
+    LPCSTR  lpszDCISectionName;
+    LPCSTR  lpszDCIAliasName;
+} DRVCONFIGINFO;
+typedef DRVCONFIGINFO _near * PDRVCONFIGINFO;
+typedef DRVCONFIGINFO _far * LPDRVCONFIGINFO;
+
+ 
+
+
+
+
+ 
+
+
+
+LRESULT _far _pascal  DefDriverProc(DWORD dwDriverIdentifier, HDRVR driverID, UINT message, LPARAM lParam1, LPARAM lParam2);
+
+HDRVR   _far _pascal  OpenDriver(LPCSTR szDriverName, LPCSTR szSectionName, LPARAM lParam2);
+LRESULT _far _pascal  CloseDriver(HDRVR hDriver, LPARAM lParam1, LPARAM lParam2);
+
+LRESULT _far _pascal  SendDriverMessage(HDRVR hDriver, UINT message, LPARAM lParam1, LPARAM lParam2);
+
+HINSTANCE _far _pascal  GetDriverModuleHandle(HDRVR hDriver);
+
+HDRVR   _far _pascal  GetNextDriver(HDRVR, DWORD);
+
+ 
+
+
+
+
+
+typedef struct tagDRIVERINFOSTRUCT
+{
+    UINT    length;
+    HDRVR   hDriver;
+    HINSTANCE hModule;
+    char    szAliasName[128];
+} DRIVERINFOSTRUCT;
+typedef DRIVERINFOSTRUCT _far * LPDRIVERINFOSTRUCT;
+
+BOOL    _far _pascal  GetDriverInfo(HDRVR, DRIVERINFOSTRUCT _far *);
+
+
+
+
+
+# 5536 "c:\\usr\\include/windows.h"
+
+
+
+
+
+
+
+
+
+
+
+
+# 73 "fgdefs.h" 2
+
+  
+
+
+  
+# 1 "c:\\usr\\include/stdio.h" 1
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+# 1 "c:\\usr\\include/_defs.h" 1
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 76 "c:\\usr\\include/_defs.h"
+
+# 89 "c:\\usr\\include/_defs.h"
+
+# 102 "c:\\usr\\include/_defs.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 158 "c:\\usr\\include/_defs.h"
+
+
+# 174 "c:\\usr\\include/_defs.h"
+
+
+
+# 19 "c:\\usr\\include/stdio.h" 2
+
+
+
+
+# 1 "c:\\usr\\include/_nfile.h" 1
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 23 "c:\\usr\\include/stdio.h" 2
+
+
+
+
+
+
+
+
+# 39 "c:\\usr\\include/stdio.h"
+
+
+
+
+
+typedef unsigned size_t;
+
+
+ 
+
+typedef long    fpos_t;
+
+ 
+
+
+extern int _floatconvert;
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+typedef struct  {
+        int             level;           
+        unsigned        flags;           
+        char            fd;              
+        unsigned char   hold;            
+        int             bsize;           
+        unsigned char     *buffer;    
+        unsigned char     *curp;      
+        unsigned        istemp;          
+        short           token;           
+}       FILE;                            
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+extern  FILE    __cdecl  _streams[];
+extern  unsigned    __cdecl  _nfile;
+
+
+
+
+
+
+
+# 155 "c:\\usr\\include/stdio.h"
+
+
+
+
+
+void    __cdecl           clearerr(FILE   *__stream);
+int     __cdecl    fclose(FILE   *__stream);
+int     __cdecl    fflush(FILE   *__stream);
+int     __cdecl    fgetc(FILE   *__stream);
+int     __cdecl           fgetpos(FILE   *__stream, fpos_t   *__pos);
+char     * __cdecl    fgets(char   *__s, int __n, FILE   *__stream);
+FILE     * __cdecl    fopen(const char   *__path, const char   *__mode);
+int     __cdecl    fprintf(FILE   *__stream, const char   *__format, ...);
+int     __cdecl    fputc(int __c, FILE   *__stream);
+int     __cdecl    fputs(const char   *__s, FILE   *__stream);
+size_t  __cdecl    fread(void   *__ptr, size_t __size, size_t __n,
+                     FILE   *__stream);
+FILE     * __cdecl    freopen(const char   *__path, const char   *__mode,
+                            FILE   *__stream);
+int     __cdecl    fscanf(FILE   *__stream, const char   *__format, ...);
+int     __cdecl    fseek(FILE   *__stream, long __offset, int __whence);
+int     __cdecl           fsetpos(FILE   *__stream, const fpos_t   *__pos);
+long    __cdecl    ftell(FILE   *__stream);
+size_t  __cdecl    fwrite(const void   *__ptr, size_t __size, size_t __n,
+                      FILE   *__stream);
+char     * __cdecl      gets(char   *__s);
+void    __cdecl           perror(const char   *__s);
+int     __cdecl           printf(const char   *__format, ...);
+int     __cdecl           puts(const char   *__s);
+int     __cdecl           remove(const char   *__path);
+int     __cdecl     rename(const char   *__oldname,const char   *__newname);
+void    __cdecl    rewind(FILE   *__stream);
+int     __cdecl           scanf(const char   *__format, ...);
+void    __cdecl           setbuf(FILE   *__stream, char   *__buf);
+int     __cdecl    setvbuf(FILE   *__stream, char   *__buf,
+                                   int __type, size_t __size);
+int     __cdecl    sprintf(char   *__buffer, const char   *__format, ...);
+int     __cdecl    sscanf(const char   *__buffer,
+                                  const char   *__format, ...);
+char     * __cdecl    strerror(int __errnum);
+FILE     * __cdecl    tmpfile(void);
+char     * __cdecl    tmpnam(char   *__s);
+int     __cdecl    ungetc(int __c, FILE   *__stream);
+int     __cdecl    vfprintf(FILE   *__stream, const char   *__format,
+                                    void   *__arglist);
+int     __cdecl    vfscanf(FILE   *__stream, const char   *__format,
+                                   void   *__arglist);
+int     __cdecl           vprintf(const char   *__format, void   *__arglist);
+int     __cdecl           vscanf(const char   *__format, void   *__arglist);
+int     __cdecl    vsprintf(char   *__buffer, const char   *__format,
+                                    void   *__arglist);
+int     __cdecl    vsscanf(const char   *__buffer, const char   *__format,
+                                   void   *__arglist);
+int     __cdecl           unlink(const char   *__path);
+int     __cdecl           getc(FILE   *__fp);
+
+int     __cdecl           getchar(void);
+int     __cdecl           putchar(const int __c);
+
+int     __cdecl           putc(const int __c, FILE   *__fp);
+int     __cdecl           feof(FILE   *__fp);
+int     __cdecl           ferror(FILE   *__fp);
+
+int     __cdecl    fcloseall(void);
+FILE      * __cdecl    fdopen(int __handle, char   *__type);
+int     __cdecl    fgetchar(void);
+int     __cdecl    flushall(void);
+int     __cdecl    fputchar(int __c);
+FILE      * __cdecl    _fsopen (const char   *__path, const char   *__mode,
+                  int __shflag);
+int     __cdecl           getw(FILE   *__stream);
+int     __cdecl           putw(int __w, FILE   *__stream);
+int     __cdecl           rmtmp(void);
+char      * __cdecl    _strerror(const char   *__s);
+char      * __cdecl    tempnam(char   *__dir, char   *__pfx);
+
+
+
+int      __cdecl    _fgetc(FILE   *__stream);            
+int      __cdecl    _fputc(char __c, FILE   *__stream);  
+void     __cdecl  _InitEasyWin(void);   
+
+
+
+
+
+# 368 "c:\\usr\\include/stdio.h"
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 397 "c:\\usr\\include/stdio.h"
+
+
+
+
+# 77 "fgdefs.h" 2
+
+  
+	 
+  
+  
+	 
+  
+  
+  
+  
+
+
+	 
+  
+
+
+# 141 "fgdefs.h"
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 1 "fgtmp.c" 2
+
+# 1 "fgres.h" 1
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 2 "fgtmp.c" 2
+
+
+
+
+
+100  ICON "fgwin.ico"
+
+
+# 20 "fgtmp.c"
+
+100  MENU
+BEGIN
+  POPUP "&File"
+  BEGIN
+    MENUITEM "&Open\tCtrl+O",1001 
+    MENUITEM SEPARATOR
+    MENUITEM "E&xit\tCtrl+X",9999 
+  END
+END
+
+
+# 42 "fgtmp.c"
+

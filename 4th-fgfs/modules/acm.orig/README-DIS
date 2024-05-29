@@ -1,0 +1,132 @@
+DIS
+---
+
+Distributed Interactive Simulation is a protocol for connecting
+simulators of different kinds and make them aware of each other.
+It is used to run exercises where tens and hundreds of flight simulators
+and other vehicle simulators (even dismounted infantry simulators)
+all speak to each other and can "see" each other.
+
+DIS is based on the principle that each entity in the exercise is handled
+by one simulator. That simulator is responsible for broadcasting 
+information on the network about the entity. All simulators that want to
+be able to "see" the entity receive the broadcasted packets.
+
+DIS is built to work on "normal" networks and to handle quite severe delays
+(well, at least up to several tenths of a second).
+
+DIS is an emerging IEEE standard, so these protocols will be important
+to anyone interrested in simulators in the future. Don't be surprised
+if the arcade flight simulators at your local game hall are connected
+with other halls using the DIS protocols in the future! For commercial
+and military flight simulators, this development have already started.
+
+One part of DIS that is important for acm is that DIS have specified
+dead reckoning algorithms to limit the amount of data needed to be
+sent on the network to update the position and orientation of
+an entity. This have the bonus effect that when you fly an acm
+aircraft, your acm server only need to send around 2 to 4 packets
+per second to keep all receiving servers within 3 meters in location
+and within 2 degrees in orientation. If you stop moving your stick,
+the send rate will drop even lower to about one packet every 3 or
+4 seconds.
+
+
+To get _all_ the details about DIS, I recommend the documentation
+available from 
+
+University of Central Florida Center for Continuing Education
+P.O. Box 160950
+Orlando, FL 32816-0950		Attn: TWSTIAC-IST
+
+Phone: (407) 855-0881	Fax: (407) 823-6113
+
+The complete documentation set will cost you around $300 (6 binders).
+
+For more general information, there is a "DIS Vision" document
+that don't have a separate price in the list I have, but it 
+probably is quite cheap. (It is about 50 pages.)
+
+
+This code
+---------
+
+This directory contains code used to build a version of acm using
+the DIS protocols to broadcast information between acms servers
+on a local network.
+This means you can add players to an acm fight without slowing
+down the others. All players will have an acm as fast as if they 
+were alone on one acm server. (This is because they _are_ alone
+on their own acm server.)
+
+If you want to set up an acm fight spanning more than a local network,
+you need software to forward the DIS broadcasts between the networks
+involved. Writing a program to do this probably isn't that hard,
+but I have not done it. Maybe you will?
+
+The npsdis directory contains free code from the Naval Postgraduate
+School implementing the basic send/receive functionality and defining
+all different data types used by the DIS protocols. The code started
+as the "DIS-2.0.tar" distribution from the NPS. The signal handling code
+and some other smaller parts have bugfixes added to make them work.
+
+The dislib directory contains a simple but complete DIS library built
+on top of the NPS library. This is the interface used by the DISified
+acm code.
+
+
+Building it
+-----------
+
+To make a distributed acm, place this directory in the acm-4.7
+directory as "dis" (beside src, V, etc), use the "patches" file
+to patch the source in acm-4.7/src, make in dis/npsdis, make in
+dis/dislib, configure to make the new acm makefile and then finally
+make clean and make in src. If it doesn't work you can undefine "HAVE_DIS"
+in src/manifest.h and it should go back to the old version.
+
+There are a few other defines in src/manifest.h
+you might want to change, like the broadcast device name.
+
+The code have been tested on Suns using SunOS 4.1.3 and SunOS 5.3
+(Solaris 2.3). The makefiles are setup for 4.1.3, you need to change
+a few lines to build on 5.3. If for some reason the test applications
+dislib/npstest and npsdis/client fail to build, you can ignore it as long
+as the libs dislib/libdis_nps.a and npsdis/libdis_client.a and acm
+itself builds ok.
+
+
+Limitations and bugs
+--------------------
+
+There is no conversion from host to network order and vice versa
+when sending / receiving PDU's. In other words, this code "works"
+on big-endian machines, but not on little-endian (unless you only
+play with other little-endians).
+
+Incoming PDU's are timestamped when they are read by the application
+(when dis_receive() is called), not when they arrive. This makes
+remote positions worse than they could be. If absolute time is
+used, this is not a problem (to use absolute time, you need to
+change the call to dis_setTime() in the acm code to dis_setTimeAbsolute(),
+but don't do this unless you really have syncronized clocks).
+
+DIS use a righthanded earth-centered coordinate system. A simulator
+like acm should convert its own coordinates to this coordinate system.
+I have ignored this, and the only conversion is from acm's feet to
+DIS meters. This have the effect of all acm activity going on
+around the center of the earth. If you want to use acm in a
+real DIS exercise, you need to fix this.
+
+Sending and receiving of fire PDU's (packets sent on the network
+in DIS language) is not implemented. This have the effect you
+can not see the missiles or cannon fire from a remote aircraft.
+(Detonation is implemented, so you will be shot down by them.)
+
+Sending and receiving of emission PDU's is not implemented.
+This have the effect you will not see any remote aircraft on
+your radar warning receiver.
+
+      _
+Mats Lofkvist			mal@algonet.se
+CelsiusTech Electronics AB

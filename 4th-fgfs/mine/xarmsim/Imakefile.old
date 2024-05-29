@@ -1,0 +1,32 @@
+#
+# Imakefile for navsim_exec
+#
+#------------------------------------------------------------------------------
+# $Id: Imakefile,v 1.7 1994/03/03 00:12:52 curt Exp $
+# (Log is kept at end of this file)
+
+#define PassCDebugFlags 'CDEBUGFLAGS=$(CDEBUGFLAGS)'
+
+CC =	g++
+RM =	-rm -f
+EXTRA_DEFINES =	-Wall # -g
+EXTRA_INCLUDES = -I/usr/local/X11R5/include -I../srgp -I../sphigs
+
+SRCS =	graph_main.cc trans.cc 
+OBJS =	graph_main.o trans.o 
+
+PROGRAMS =	xarmsim
+
+all::  $(PROGRAMS)
+
+#graph_main.o:	graph_main.cc xarmsim.h bitmaps/icon.bmp
+#trans.o:	trans.cc trans.h
+
+LOCAL_LIBRARIES = $(XLIB)
+SYS_LIBRARIES =	  -lm
+DEPLIBS =         $(DEPXLIB)
+
+NormalProgramTarget(xarmsim,$(OBJS),,$(LOCAL_LIBRARIES),)
+
+# ----------------------------------------------------------------------------
+# $Log: Imakefile,v $
