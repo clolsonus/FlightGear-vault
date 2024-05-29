@@ -1,0 +1,19 @@
+CFLAGS= -g -Wall -Zmt 
+MAINOBJS=fgmain.obj fgload.obj fgkbd.obj fgscreen.obj fggrx.obj fgslew.obj \
+	fgtimer.obj fgini.obj fggeom.obj fgevent.obj dgraph.obj fgpause.obj \
+	fgres.res fgrand.obj fgpalet.obj fgbars.obj fgclock.obj fgfont.obj
+
+
+fgmain.exe: $(MAINOBJS)
+	gcc $(CFLAGS) -Zmt -Zomf -o fgmain.exe fltgear.def $(MAINOBJS) -lm -ldive -lbsd
+
+fgpause.def: fgpause.obj
+	echo LIBRARY FGPAUSE INITINSTANCE >fgpause.def
+	echo EXPORTS >>fgpause.def
+	emxexp fgpause.obj >>fgpause.def
+
+fgpause.dll: fgpause.obj fgpause.def
+	gcc $(CFLAGS) -Zmt -Zdll -Zomf -Zcrtdll fgpause.obj fgpause.def 
+
+fgres.res:  fgres.rc fgres.h
+	rc -r -i \emx\include fgres.rc

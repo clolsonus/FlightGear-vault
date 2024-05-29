@@ -1,0 +1,14 @@
+CFLAGS= -O2 -Wall 
+
+OBJS=	fgevent.o fggeom.o fggrx.o fgini.o fgkbd.o fgload.o fgmain.o fgpause.o\
+	fgscreen.o fgslew.o fgtimer.o
+
+fgmain: $(OBJS)
+	gcc -g -o fgmain $(OBJS) -lX11 -lm
+
+#fgpause.so: fgpause.c 
+#	createdrv.sunos fgpause
+
+fp_test: fp_test.c isqrt.c
+	gcc -m68020 -O2 -Wall -L/disks/moby/a/gnu/sun3_sunos4.1.1/lib/gcc-lib/sun3/2.6.3 -o fp_test fp_test.c -lm
+

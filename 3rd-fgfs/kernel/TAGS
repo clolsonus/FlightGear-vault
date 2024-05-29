@@ -1,0 +1,1006 @@
+
+14x9.c,0
+
+8x8.c,0
+
+byteops.c,174
+inline BYTES4 addBYTES4(23,904
+inline BYTES4 subBYTES4(29,1095
+inline BYTES4 mulfracBYTES4(35,1286
+inline BYTES4 addmaxBYTES4(45,1505
+inline BYTES4 subminBYTES4(56,1996
+
+dgraph.c,105
+#define INCL_GPI1,0
+#define INCL_WIN2,17
+ULONG DestroyDiveBuffer(129,3314
+VOID CyclePalette(323,8842
+
+fgbars.c,89
+FG_VOID *fgbars_init(35,1174
+FG_VOID *fgbars_event(48,1703
+void fgbars_export(59,1919
+
+fgclock.c,121
+FG_VOID *fgclock_init(39,1273
+#define public_vars 48,1774
+FG_VOID *fgclock_event(56,2025
+void fgclock_export(70,2373
+
+fgevent.c,276
+typedef struct _FGEVENT _FGEVENT41,1331
+} FGEVENT;FGEVENT48,1752
+int get_fgevent(65,2152
+int send_fgevent(105,3055
+int handle_fgevent(125,3461
+int unhandle_fgevent(157,4320
+int init_fgevent_table(190,5135
+FG_VOID *null_fgevent(197,5265
+void fgevent_export(201,5330
+
+fgfixed.c,0
+
+fgfont.c,176
+FGFONT_PIXMAP *fg_scale_font(961,52694
+FGFONT_PIXMAP *fg_get_font(986,53450
+FGFONT_PIXMAP *fg_load_font(1014,54084
+void fgfont_init(1046,54938
+void fg_drawtext(1054,55133
+
+fggeom.c,1146
+#define inline29,1056
+inline FG_INT32 isin(66,2204
+inline FG_INT32 iasin(73,2460
+inline FG_INT32 icos(80,2716
+inline FG_INT32 isqrt(87,2972
+inline FG_INT32 iatan2(94,3225
+inline FG_INT32 iangdist(102,3492
+FG_INT32 vangdist(111,3824
+inline FG_INT32 iarcdist(116,3916
+FG_INT32 varcdist(124,4244
+inline FG_INT32 ilindist(129,4346
+FG_INT32 vlindist(144,5061
+inline FG_INT64 i2dot(150,5164
+inline void i2vect_scale(156,5291
+inline FG_INT64 i3dot(163,5486
+inline void i3vect_scale(170,5651
+inline FG_INT64 i4dot(178,5877
+inline void i4vect_scale(186,6078
+inline FG_INT32 i2mag(195,6335
+inline FG_INT32 i3mag(200,6411
+inline FG_INT32 i4mag(205,6487
+inline void i2norm(210,6563
+inline void i3norm(219,6736
+inline void i4norm(229,6946
+inline void i3cross(240,7193
+inline void i2x2copy(255,7563
+inline void i2x2mul(260,7662
+inline void i2x2scale(275,8034
+inline void i3x3copy(286,8300
+inline void i3x3mul(292,8399
+inline void i3x3scale(308,8819
+inline void i4x4copy(319,9085
+inline void i4x4mul(324,9183
+inline void i4x4scale(341,9651
+inline void i2rot(352,9917
+inline void i3rot(368,10276
+void fggeom_export(403,11325
+
+fggrx.c,1109
+FG_BITMAP *fg_create_bitmap(31,1073
+void fg_destroy_bitmap(61,1787
+FG_BITMAP *fg_create_subbitmap(76,2041
+inline void fg_plot(116,3170
+inline FG_INT fg_getpixel(127,3427
+inline void fg_hline(136,3622
+inline void fg_drawHLINE(150,3978
+inline void fg_vline(156,4129
+inline void fg_linex(172,4519
+inline void fg_liney(207,5205
+void fg_line(243,5900
+inline int fg_reject_line(262,6393
+inline int fg_line_in_bmp(269,6622
+void fg_rect(275,6782
+void fg_RECT(284,7046
+void fg_fillrect(292,7363
+void fg_fillRECT(301,7554
+void fg_clearbmp(310,7746
+FG_POLYGON *fg_create_POLY(318,7901
+void fg_destroy_POLY(330,8221
+void fg_RECT_to_POLY(335,8286
+inline void fg_copy_POLY(357,8791
+inline void fg_scale_POLY(374,9243
+void fg_scale_copy_POLY(388,9608
+inline void fg_translate_POLY(395,9803
+void fg_translate_copy_POLY(409,10087
+void fg_rotate_POLY(418,10278
+void fg_rotate_copy_POLY(435,10640
+void fg_draw_POLY(443,10839
+FG_RASTER_SET *fg_create_RASTER(460,11267
+void fg_destroy_RASTER(472,11550
+void fg_display_RASTER(477,11629
+void fg_rasterize_edge(489,11886
+void fggrx_export(637,15629
+
+fgini.c,268
+int read_ini_file(35,1206
+int write_ini_file(73,2446
+FG_INI_ENTRY *find_ini_entry(100,3156
+FG_INI_ENTRY *get_ini_entry(114,3393
+FG_INI_ENTRY *new_ini_entry(123,3532
+FG_VOID *ini_manager_init(135,3755
+FG_VOID *exit_ini_write(143,3992
+void fgini_export(161,4507
+
+fgkbd.c,296
+typedef struct _FGKEY _FGKEY59,1626
+} FGKEY;FGKEY63,1732
+#define nodelay(nodelay73,1874
+FG_VOID *fgkbd_init(80,2061
+FG_VOID *fgkbd_event(119,3139
+FG_VOID *fgkbd_exit(154,4016
+int fg_GetXKey(175,4398
+int fg_GetPMKey(198,4920
+int fg_define_key(242,5986
+int handle_fgkey_event(273,6767
+
+fgload.c,279
+struct _DYN_DRIVER_FILES _DYN_DRIVER_FILES39,1280
+#define RTLD_NOW 47,1421
+struct _DYN_DRIVER_FILES _DYN_DRIVER_FILES56,1556
+struct _DYN_DRIVER_FILES _DYN_DRIVER_FILES68,1798
+FG_DRIVER_FN fg_load_driver(80,2100
+int fg_unload_driver(293,7450
+void fgload_export(326,8349
+
+fgmain.c,261
+int WINAPI WinMain(59,1889
+int main(73,2244
+int fg_main(80,2321
+int create_kernel_events(105,3133
+int export_services(117,3382
+int allocate_public_vars(129,3556
+int load_static_drivers(134,3653
+int load_external_drivers(171,4869
+int main_loop(205,5941
+
+fgpalet.c,156
+void fg_set_startup_palette(76,2531
+int fg_get_color(140,4157
+int fg_free_color(210,6030
+int fg_find_closest_color(219,6178
+int fg_fade_color(235,6642
+
+fgpause.c,92
+FG_VOID *fgpause_init(37,1349
+FG_VOID *fgpause_event(50,1859
+void fgpause_export(66,2136
+
+fgrand.c,118
+FG_VOID *fgrand_init(38,1252
+#define public_vars 47,1754
+FG_VOID *fgrand_event(54,1905
+void fgrand_export(77,2459
+
+fgscreen.c,628
+int allocate_display_bitmaps(119,2568
+void copy_display_bitmap_to_screen(372,10893
+void FG_message_thread(396,11479
+void FG_message_thread(408,11644
+LRESULT CALLBACK WndProc(456,13268
+MRESULT EXPENTRY FG_ClientWndProc(480,13714
+HDIVE StartDive(564,16069
+ULONG EndDive(606,17138
+ULONG DestroyDiveBuffer(618,17373
+VOID SetWindowSize(626,17547
+VOID handle_WM_ACTIVATE(641,18283
+VOID handle_WM_CLOSE(657,18705
+VOID handle_WM_VRNENABLED(664,18880
+VOID handle_WM_PAINT(712,20432
+VOID handle_WM_VRNDISABLED(721,20645
+FG_VOID *fgscreen_init(728,20729
+FG_VOID *fgscreen_event(739,21129
+FG_VOID *fgscreen_exit(745,21233
+
+fgslew.c,90
+FG_VOID *fgslew_init(34,1147
+#define public_vars 44,1580
+FG_VOID *fgslew_event(71,2375
+
+fgtext.c,0
+
+fgtimer.c,267
+struct _FG_TIMER _FG_TIMER32,1125
+FG_VOID *fgtimer_init(45,1453
+#define public_vars 57,2044
+FG_VOID *fgtimer_pause(76,2499
+FG_VOID *fgtimer_unpause(82,2582
+FG_VOID *fgtimer_master(88,2667
+int handle_fgtimer_event(127,3560
+int unhandle_fgtimer_event(156,4505
+
+fgtrig.c,93
+inline FG_INT32 fg_apow(27,1139
+inline FG_INT32 isin(41,1337
+inline FG_INT32 icos(64,1675
+
+fp_test.c,367
+#define CLOCKS_PER_SEC 33,1069
+inline FG_INT32 fp_iovf(36,1109
+inline FG_INT32 fp_add(46,1266
+inline FG_INT32 i_add(51,1357
+inline FG_INT32 fp_sub(56,1424
+inline FG_INT32 i_sub(61,1515
+inline FG_INT64 fp_mul(66,1582
+inline FG_INT64 l_mul(71,1685
+inline FG_INT64 i_mul(76,1779
+inline FG_INT32 fp_div(87,2039
+inline FG_INT32 l_div(92,2148
+int main(101,2366
+
+isqrt.c,99
+inline FG_INT32 fp_isqrt(27,979
+inline FG_INT32 i_isqrt(36,1110
+inline FG_INT32 n_isqrt(53,1395
+
+mmx.c,1660
+typedef union _MMXR _MMXR24,939
+} MMXR;MMXR33,1119
+#define HIGHER 81,3438
+#define LOWER 82,3458
+#define DW0 83,3474
+#define DW1 84,3488
+#define W0 85,3502
+#define W1 86,3515
+#define W2 87,3528
+#define W3 88,3541
+#define LOWER 92,3562
+#define HIGHER 93,3581
+#define DW0 94,3598
+#define DW1 95,3612
+#define W0 96,3626
+#define W1 97,3639
+#define W2 98,3652
+#define W3 99,3665
+inline void packsswb(104,3688
+inline void packuswb(140,4493
+inline void packssdw(172,5218
+inline void packusdw(208,6026
+inline void paddb(240,6755
+inline void paddw(271,7652
+inline void paddd(302,8552
+inline void paddsb(328,9166
+inline void paddsw(364,9980
+inline void paddusb(400,10793
+inline void paddusw(432,11535
+inline void pand(466,12286
+inline void pandn(496,12992
+inline void pcmpeqb(525,13699
+inline void pcmpeqw(555,14467
+inline void pcmpeqd(585,15241
+inline void pcmpgtb(616,16030
+inline void pcmpgtw(645,16773
+inline void pcmpgtd(674,17518
+inline void pmaddwd(704,18306
+inline void pmulhw(735,19113
+inline void pmullw(761,19678
+inline void por(787,20247
+inline void psllw(816,20947
+inline void pslld(853,21785
+inline void psllq(891,22635
+inline void psraw(917,23178
+inline void psrad(949,23920
+inline void psrlw(980,24658
+inline void psrld(1017,25496
+inline void psrlq(1055,26346
+inline void psubb(1082,26890
+inline void psubw(1113,27801
+inline void psubd(1144,28715
+inline void psubsb(1171,29330
+inline void psubsw(1207,30144
+inline void psubusb(1244,30958
+inline void psubusw(1276,31669
+inline void punpckbw(1308,32385
+inline void punpckwd(1364,33749
+inline void punpckdq(1420,35111
+inline void pxor(1477,36549
+
+mmxtest.c,18
+int main(37,1563
+
+allegro.h,3447
+#define ALLEGRO_H25,802
+#define VERSION_STR 32,862
+#define DATE_STR 33,897
+#define TRUE 42,1084
+#define FALSE 43,1108
+#define NULL 47,1153
+#define MIN(MIN51,1207
+#define MAX(MAX52,1254
+#define MID(MID53,1301
+#define ABS(ABS57,1360
+#define SGN(SGN61,1427
+#define END_OF_FUNCTION(END_OF_FUNCTION80,1755
+#define LOCK_VARIABLE(LOCK_VARIABLE82,1802
+#define LOCK_FUNCTION(LOCK_FUNCTION83,1871
+#define TIMERS_PER_SECOND 108,2457
+#define SECS_TO_TIMER(SECS_TO_TIMER109,2496
+#define MSEC_TO_TIMER(MSEC_TO_TIMER110,2556
+#define BPS_TO_TIMER(BPS_TO_TIMER111,2625
+#define BPM_TO_TIMER(BPM_TO_TIMER112,2685
+#define KEY_ESC 138,3223
+#define KEY_1 139,3282
+#define KEY_2 140,3309
+#define KEY_3 141,3336
+#define KEY_4 142,3362
+#define KEY_5 143,3388
+#define KEY_6 144,3414
+#define KEY_7 145,3440
+#define KEY_8 146,3466
+#define KEY_9 147,3492
+#define KEY_0 148,3519
+#define KEY_MINUS 149,3546
+#define KEY_EQUALS 150,3573
+#define KEY_BACKSPACE 151,3600
+#define KEY_TAB 152,3627
+#define KEY_Q 153,3655
+#define KEY_W 154,3682
+#define KEY_E 155,3709
+#define KEY_R 156,3736
+#define KEY_T 157,3763
+#define KEY_Y 158,3790
+#define KEY_U 159,3817
+#define KEY_I 160,3844
+#define KEY_O 161,3871
+#define KEY_P 162,3898
+#define KEY_OPENBRACE 163,3925
+#define KEY_CLOSEBRACE 164,3952
+#define KEY_ENTER 165,3979
+#define KEY_CONTROL 166,4006
+#define KEY_A 167,4033
+#define KEY_S 168,4060
+#define KEY_D 169,4087
+#define KEY_F 170,4114
+#define KEY_G 171,4141
+#define KEY_H 172,4168
+#define KEY_J 173,4195
+#define KEY_K 174,4222
+#define KEY_L 175,4249
+#define KEY_COLON 176,4276
+#define KEY_QUOTE 177,4303
+#define KEY_TILDE 178,4330
+#define KEY_LSHIFT 179,4357
+#define KEY_Z 180,4384
+#define KEY_X 181,4411
+#define KEY_C 182,4438
+#define KEY_V 183,4465
+#define KEY_B 184,4492
+#define KEY_N 185,4519
+#define KEY_M 186,4546
+#define KEY_COMMA 187,4573
+#define KEY_STOP 188,4600
+#define KEY_SLASH 189,4627
+#define KEY_RSHIFT 190,4654
+#define KEY_ASTERISK 191,4681
+#define KEY_ALT 192,4708
+#define KEY_SPACE 193,4735
+#define KEY_CAPSLOCK 194,4762
+#define KEY_F1 195,4789
+#define KEY_F2 196,4816
+#define KEY_F3 197,4843
+#define KEY_F4 198,4870
+#define KEY_F5 199,4897
+#define KEY_F6 200,4924
+#define KEY_F7 201,4951
+#define KEY_F8 202,4978
+#define KEY_F9 203,5005
+#define KEY_F10 204,5032
+#define KEY_NUMLOCK 205,5059
+#define KEY_SCRLOCK 206,5086
+#define KEY_HOME 207,5113
+#define KEY_UP 208,5140
+#define KEY_PGUP 209,5167
+#define KEY_MINUS_PAD 210,5194
+#define KEY_LEFT 211,5221
+#define KEY_5_PAD 212,5248
+#define KEY_RIGHT 213,5275
+#define KEY_PLUS_PAD 214,5302
+#define KEY_END 215,5329
+#define KEY_DOWN 216,5356
+#define KEY_PGDN 217,5383
+#define KEY_INSERT 218,5410
+#define KEY_DEL 219,5437
+#define KEY_F11 220,5464
+#define KEY_F12 221,5491
+typedef struct RGBRGB229,5657
+} RGB;RGB233,5729
+#define PAL_SIZE 235,5737
+typedef RGB PALLETE[PALLETE237,5763
+#define GFX_TEXT 256,6217
+#define GFX_AUTODETECT 257,6250
+#define GFX_VGA 258,6282
+#define GFX_VESA1 259,6314
+#define GFX_VESA2B 260,6346
+#define GFX_VESA2L 261,6378
+#define GFX_CIRRUS64 262,6410
+#define GFX_CIRRUS54 263,6442
+#define GFX_S3 264,6474
+#define GFX_ET3000 265,6506
+#define GFX_ET4000 266,6538
+typedef struct GFX_DRIVER GFX_DRIVER269,6572
+typedef struct BITMAP BITMAP290,7393
+#define SCREEN_W 305,8023
+#define SCREEN_H 306,8077
+#define VIRTUAL_W 308,8132
+#define VIRTUAL_H 309,8178
+
+byteops.h,206
+typedef union _BYTES4 _BYTES420,881
+} BYTES4;BYTES423,945
+#define andBYTES4(andBYTES425,956
+#define orBYTES4(orBYTES426,999
+#define xorBYTES4(xorBYTES427,1041
+#define notBYTES4(notBYTES428,1084
+
+dgraph.h,790
+#define _DGRAPH_H_2,19
+#define DebugBox(DebugBox6,54
+#define DebugBox(DebugBox11,264
+typedef struct _UINT_2D _UINT_2D17,414
+} UINT_2D;UINT_2D20,460
+typedef struct _FLOAT_2D _FLOAT_2D22,472
+} FLOAT_2D;FLOAT_2D25,521
+typedef UINT HDGRAPH;HDGRAPH31,638
+#define GRGB_GRAY 33,661
+#define GRGB_RED 34,702
+#define GRGB_GREEN 35,744
+#define GRGB_BLUE 36,787
+#define GRGB_MAX 37,830
+#define BGCRMYG_BLUE 39,874
+#define BGCRMYG_GREEN 40,915
+#define BGCRMYG_CYAN 41,957
+#define BGCRMYG_RED 42,999
+#define BGCRMYG_MAGENTA 43,1042
+#define BGCRMYG_YELLOW 44,1085
+#define BGCRMYG_GRAY 45,1128
+#define RGBP_BLUE 47,1172
+#define RGBP_GREEN 48,1213
+#define RGBP_RED 49,1255
+#define ROUND(ROUND51,1299
+#define MAX(MAX52,1360
+#define MIN(MIN53,1401
+#define ABS(ABS54,1442
+
+dll.h,346
+#define _dll_h10,304
+typedef void (*VOIDFN)VOIDFN16,360
+typedef struct __dll_structure __dll_structure18,391
+} DLL;DLL29,645
+typedef struct __old_symbol_entry __old_symbol_entry31,653
+} DLL_SYMBOL_ENTRY;DLL_SYMBOL_ENTRY36,780
+typedef struct __dll_address_entry __dll_address_entry38,801
+} OLD_ADDRESS_ENTRY;OLD_ADDRESS_ENTRY42,908
+
+fgbars.h,0
+
+fgclock.h,0
+
+fgdefs.h,1204
+#define _FGDEFS_H23,900
+    #define USE_PM27,983
+    #define INCL_WIN28,1002
+    #define INCL_GPI29,1023
+  #define USE_OS2_DLL31,1053
+  #define INCL_DOS32,1075
+  #define usleep(usleep34,1113
+  #define USE_UNIX_LDSO38,1205
+    #define USE_X1140,1277
+  #define COLOR_INDEX(COLOR_INDEX45,1335
+  #define COLOR_INDEX(COLOR_INDEX47,1384
+#define MAX_CMDLINE_PARAMS 50,1429
+#define MAX_FRAME_RATE 51,1459
+#define NUM_TIMERS 52,1485
+#define MAX_FGEVENT_NAME 53,1507
+#define FGEVENT_TABLE_SIZE 54,1535
+#define NUM_KEY_EVENTS 55,1567
+#define NUM_COLORS 56,1594
+#define NUM_PUBLIC_INTS 58,1618
+#define PUBLIC_VARS_SIZE 59,1649
+#define FG_ONE 62,1714
+#define FG_SQRT_ONE 63,1735
+#define FG_ONE 66,1767
+#define FG_SQRT_ONE 67,1788
+#define MAXDRIVERS 70,1892
+#define MAX_DYN_DRIVERS 71,1915
+#define MAXKEYS 73,2024
+#define FG_MAX(FG_MAX75,2046
+#define FG_MIN(FG_MIN76,2094
+#define FG_ABS(FG_ABS77,2142
+#define memmove(memmove81,2312
+  #define MUL64(MUL6486,2408
+  #define DIV64(DIV6487,2450
+  #define SHL64(SHL6488,2492
+  #define SHR64(SHR6489,2535
+  #define MUL64(MUL6492,2606
+  #define DIV64(DIV6493,2645
+  #define SHL64(SHL6494,2684
+  #define SHR64(SHR6495,2723
+
+fgdriver.h,603
+#define _FGDRIVER_H22,933
+typedef struct _FGDRIVER_INIT_CALL _FGDRIVER_INIT_CALL30,1004
+} FGDRIVER_INIT_CALL;FGDRIVER_INIT_CALL42,1926
+#define FG_INIT 45,2029
+#define FG_REINIT 46,2047
+#define FG_BITMAP_CHANGE 47,2067
+typedef FG_VOID *(*FG_DRIVER_FN)FG_DRIVER_FN49,2095
+typedef struct _FGDRIVER_INIT _FGDRIVER_INIT54,2313
+} FGDRIVER_INIT;FGDRIVER_INIT58,2585
+#define FGDRIVER_MOUSE 62,2763
+#define FGDRIVER_KEY 64,2891
+#define FGDRIVER_ANYKEY 66,3019
+#define FGDRIVER_SCREEN 69,3227
+#define FGDRIVER_FLIGHT 71,3353
+#define FGDRIVER_TIMED 73,3479
+#define FGDRIVER_NEEDSCREEN 75,3605
+
+fgevent.h,213
+#define _FG_EVENT_H28,987
+#define INIT 36,1215
+#define EVENT 37,1230
+typedef struct _FGEVENT_CALL _FGEVENT_CALL39,1247
+} FGEVENT_CALL;FGEVENT_CALL42,1316
+typedef FG_VOID *(*FG_EVENT_FN)FG_EVENT_FN44,1333
+
+fgfixed.h,254
+#define FP_OVF(FP_OVF20,881
+  #define F_ADD(F_ADD27,1160
+  #define F_ADD(F_ADD29,1219
+  #define F_SUB(F_SUB33,1278
+  #define F_SUB(F_SUB35,1338
+  #define F_MUL(F_MUL39,1396
+  #define F_MUL(F_MUL41,1491
+inline static FG_INT64 F_MUL(43,1546
+
+fgfont.h,240
+#define MAX_FONT_WIDTH 22,902
+#define MAX_FONT_HEIGHT 23,928
+typedef struct _FGFONT_BITS _FGFONT_BITS25,956
+} FGFONT_BITS;FGFONT_BITS29,1067
+typedef struct _FGFONT_PIXMAP _FGFONT_PIXMAP31,1083
+} FGFONT_PIXMAP;FGFONT_PIXMAP35,1171
+
+fggeom.h,698
+#define _FGGEOM_H22,912
+#define eq2d(eq2d32,1233
+#define eq3d(eq3d33,1290
+#define eq4d(eq4d34,1367
+#define add2d(add2d37,1486
+#define sub2d(sub2d42,1628
+#define add3d(add3d48,1771
+#define sub3d(sub3d54,1948
+#define add4d(add4d61,2126
+#define sub4d(sub4d68,2338
+#define mulc2d(mulc2d76,2551
+#define mulc2x2(mulc2x281,2693
+#define mulc3d(mulc3d87,2860
+#define mulc3x3(mulc3x393,3037
+#define mulc4d(mulc4d100,3245
+#define mulc4x4(mulc4x4107,3457
+#define add2x2(add2x2115,3706
+#define sub2x2(sub2x2120,3916
+#define add3x3(add3x3126,4127
+#define sub3x3(sub3x3132,4389
+#define add4x4(add4x4139,4652
+#define sub4x4(sub4x4146,4966
+#define det2x2(det2x2154,5281
+
+fggrx.h,24
+#define _FGGRX_H22,906
+
+fgini.h,180
+#define _FGINI_H22,900
+typedef struct _FG_INI_ENTRY _FG_INI_ENTRY29,982
+} FG_INI_ENTRY;FG_INI_ENTRY38,1557
+#define FG_INI_NUMFIELDS 43,1636
+#define FG_WINDOW_MEMORY 45,1665
+
+fgkbd.h,24
+#define _FGKBD_H22,930
+
+fgkeydef.h,87
+#define FG_SHIFT_FLAG 20,882
+#define FG_CTRL_FLAG 21,913
+#define FG_ALT_FLAG 22,944
+
+fgload.h,89
+#define _FGLOAD_H25,965
+#define FG_DRIVER_PATH 29,1050
+#define FG_DRIVER_PATH 31,1127
+
+fgmain.h,0
+
+fgpalet.h,723
+#define PAL_NEAREST 22,903
+#define PAL_REQUIRED 23,925
+#define PALETTE_ENTRY(PALETTE_ENTRY27,970
+typedef struct _FGPAL_ENTRY _FGPAL_ENTRY28,1024
+} FGPAL_ENTRY;FGPAL_ENTRY30,1078
+#define PALETTE_ENTRY(PALETTE_ENTRY37,1178
+typedef struct _FGPAL_ENTRY _FGPAL_ENTRY38,1232
+extern HPALETTE   fg_hpalette;fg_hpalette42,1289
+#define PALETTE_ENTRY(PALETTE_ENTRY47,1405
+typedef struct _FGPAL_ENTRY _FGPAL_ENTRY48,1459
+}  FGPAL_ENTRY;FGPAL_ENTRY50,1513
+#define PALETTE_ENTRY(PALETTE_ENTRY53,1553
+typedef struct _FGPAL_ENTRY _FGPAL_ENTRY54,1607
+} FGPAL_ENTRY;FGPAL_ENTRY56,1662
+#define PALETTE_ENTRY(PALETTE_ENTRY61,1728
+typedef struct _FGPAL_ENTRY _FGPAL_ENTRY62,1782
+} FGPAL_ENTRY;FGPAL_ENTRY64,1836
+
+fgpause.h,27
+#define _FGPAUSE_H24,1065
+
+fgrand.h,0
+
+fgres.h,197
+#define FG_PROGRAM_ID 22,881
+#define USERQUIT 23,907
+#define MID_FILE 24,927
+#define CMD_FILEOPEN 25,949
+#define CMD_VERIFY 26,975
+#define CMD_EXIT 27,999
+#define CMD_PALETTE_CHANGE 28,1021
+
+fgscreen.h,85
+#define _FGSCREEN_H_22,904
+#define SCN_WIDTH 117,2618
+#define SCN_HEIGHT 118,2640
+
+fgslew.h,26
+#define _FG_SLEW_H22,931
+
+fgstatdv.h,27
+#define _FGSTATDV_H22,860
+
+fgtimer.h,27
+#define _FG_TIMER_H22,932
+
+fgtrig.h,93
+inline FG_INT64 fg_apow(24,1016
+inline FG_INT32 isin(38,1210
+inline FG_INT32 icos(61,1565
+
+fgtypes.h,2604
+#define _FGTYPES_H23,907
+#define BIGENDIAN26,974
+typedef unsigned int FG_UINT;FG_UINT29,1000
+typedef void FG_VOID;FG_VOID30,1030
+typedef int FG_INT;FG_INT31,1052
+typedef unsigned char FG_CHAR;FG_CHAR32,1072
+typedef double FG_FLOAT64;FG_FLOAT6436,1150
+typedef float FG_FLOAT32;FG_FLOAT3237,1177
+typedef long long FG_INT64;FG_INT6439,1204
+typedef int FG_INT32;FG_INT3240,1232
+typedef short FG_INT16;FG_INT1641,1254
+typedef char FG_INT8;FG_INT842,1278
+typedef unsigned long long FG_UINT64;FG_UINT6444,1301
+typedef unsigned int FG_UINT32;FG_UINT3245,1339
+typedef unsigned short FG_UINT16;FG_UINT1646,1371
+typedef unsigned char FG_UINT8;FG_UINT847,1405
+#define FG_INT32_MAX 49,1438
+#define FG_INT32_MIN 50,1468
+typedef double FG_FLOAT64;FG_FLOAT6454,1525
+typedef float FG_FLOAT32;FG_FLOAT3255,1552
+typedef long FG_INT32;FG_INT3257,1579
+typedef short FG_INT16;FG_INT1658,1602
+typedef char FG_INT8;FG_INT859,1626
+} FG_INT64;FG_INT6464,1736
+typedef unsigned int FG_UINT32;FG_UINT3266,1749
+typedef unsigned short FG_UINT16;FG_UINT1667,1781
+typedef unsigned char FG_UINT8;FG_UINT868,1815
+} FG_UINT64;FG_UINT6473,1935
+#define FG_INT32_MAX 75,1949
+#define FG_INT32_MIN 76,1979
+typedef int FG_SEM;FG_SEM80,2018
+typedef struct _FG_BITMAP _FG_BITMAP84,2109
+} FG_BITMAP;FG_BITMAP100,3244
+#define FG_NORMALBITMAP 102,3258
+#define FG_SUBBITMAP 103,3284
+typedef struct _FG_HLINE _FG_HLINE105,3308
+} FG_HLINE;FG_HLINE108,3367
+typedef struct _FG_RASTER_SET _FG_RASTER_SET110,3380
+} FG_RASTER_SET;FG_RASTER_SET114,3696
+typedef struct _FG_RECT _FG_RECT116,3714
+} FG_RECT;FG_RECT118,3773
+typedef struct _FG_I2VECT _FG_I2VECT120,3785
+} FG_I2VECT;FG_I2VECT122,3829
+typedef union _FG_I2X2 _FG_I2X2124,3843
+} FG_I2X2;FG_I2X2129,3930
+typedef struct _FG_I3VECT _FG_I3VECT131,3942
+} FG_I3VECT;FG_I3VECT133,3988
+typedef union _FG_I3X3 _FG_I3X3135,4002
+} FG_I3X3;FG_I3X3140,4091
+typedef struct _FG_I4VECT _FG_I4VECT142,4103
+} FG_I4VECT;FG_I4VECT144,4151
+typedef union _FG_I4X4 _FG_I4X4146,4165
+} FG_I4X4;FG_I4X4151,4256
+typedef struct _FG_POLYGON _FG_POLYGON153,4268
+} FG_POLYGON;FG_POLYGON156,4346
+#define FG_LOW32(FG_LOW32161,4386
+#define FG_LOW16(FG_LOW16162,4432
+#define FG_LOW8(FG_LOW8163,4478
+#define FG_HIGH32(FG_HIGH32165,4525
+#define FG_HIGH16(FG_HIGH16166,4565
+#define FG_HIGH8(FG_HIGH8167,4605
+#define FG_HIGH32(FG_HIGH32171,4652
+#define FG_HIGH16(FG_HIGH16172,4699
+#define FG_HIGH8(FG_HIGH8173,4746
+#define FG_LOW32(FG_LOW32175,4794
+#define FG_LOW16(FG_LOW16176,4833
+#define FG_LOW8(FG_LOW8177,4872
+
+fgvars.h,1420
+#define _FGVARS_H22,914
+#define FG_DEGREE 26,1006
+#define FG_ARCMINUTE 27,1033
+#define FG_NMILE 28,1061
+#define FG_ARCSECOND 29,1085
+#define FG_R_EARTH 30,1111
+#define FG_RADIAN 31,1140
+#define FG_METER 32,1168
+#define ACPOS_ELON 36,1207
+#define ACPOS_ELON_MAX 37,1274
+#define ACPOS_ELON_MIN 38,1307
+#define ACPOS_LAT 41,1355
+#define ACPOS_LAT_MAX 42,1422
+#define ACPOS_LAT_MIN 43,1457
+#define ACPOS_ALTMSL 46,1509
+#define ACPOS_ALTMSL_MAX 47,1576
+#define ACPOS_ALTMSL_MIN 48,1609
+#define ACPOS 50,1649
+#define ACPOSVEC 51,1689
+#define ACATT_NLON 56,1917
+#define ACATT_NLAT 57,1985
+#define ACATT_NALT 58,2053
+#define ACATT_NOSE 59,2121
+#define ACATT_NOSEVEC 60,2188
+#define ACATT_VLON 64,2416
+#define ACATT_VLAT 65,2484
+#define ACATT_VALT 66,2552
+#define ACATT_VERT 67,2620
+#define ACATT_VERTVEC 68,2687
+#define ACATT_WLON 72,2915
+#define ACATT_WLAT 73,2983
+#define ACATT_WALT 74,3051
+#define ACATT_WING 75,3119
+#define ACATT_WINGVEC 76,3186
+#define ACATT_PITCH 81,3411
+#define ACATT_BEARING 85,3571
+#define ACATT_ROLL 89,3701
+#define ACVEL_DLON 92,3813
+#define ACVEL_DLAT 93,3882
+#define ACVEL_DALT 94,3951
+#define ACVEL 96,4021
+#define ACVELVEC 97,4082
+#define ACSPEED 99,4150
+#define ACTAS 100,4185
+#define ACCONTROL_THROTTLE 103,4266
+#define ACCONTROL_RUDDER 104,4340
+#define ACCONTROL_ELEVATOR 105,4414
+#define ACCONTROL_AILERON 106,4488
+#define AC_TIME_MS 109,4608
+
+longlong.h,4635
+#define SI_TYPE_SIZE 20,871
+#define __BITS4 23,903
+#define __ll_B 24,938
+#define __ll_lowpart(__ll_lowpart25,980
+#define __ll_highpart(__ll_highpart26,1031
+#define __CLOBBER_CC83,3550
+#define __AND_CLOBBER_CC84,3571
+#define __CLOBBER_CC 86,3622
+#define __AND_CLOBBER_CC 87,3650
+#define add_ssaaaa(add_ssaaaa91,3752
+#define sub_ddmmss(sub_ddmmss100,4055
+#define umul_ppmm(umul_ppmm109,4357
+#define udiv_qrnnd(udiv_qrnnd121,4731
+#define count_leading_zeros(count_leading_zeros128,4972
+#define add_ssaaaa(add_ssaaaa135,5159
+#define sub_ddmmss(sub_ddmmss144,5466
+#define umul_ppmm(umul_ppmm153,5771
+#define UMUL_TIME 173,6322
+#define UDIV_TIME 174,6343
+#define umul_ppmm(umul_ppmm178,6413
+#define smul_ppmm(smul_ppmm187,6722
+#define __umulsidi3(__umulsidi3196,7027
+#define add_ssaaaa(add_ssaaaa206,7280
+#define sub_ddmmss(sub_ddmmss215,7578
+#define umul_ppmm(umul_ppmm224,7874
+#define udiv_qrnnd(udiv_qrnnd230,8080
+#define count_leading_zeros(count_leading_zeros237,8319
+#define add_ssaaaa(add_ssaaaa245,8507
+#define sub_ddmmss(sub_ddmmss254,8813
+#define umul_ppmm(umul_ppmm264,9143
+#define UMUL_TIME 278,9549
+#define UMUL_TIME 280,9575
+#define UDIV_TIME 282,9603
+#define count_leading_zeros(count_leading_zeros283,9624
+#define add_ssaaaa(add_ssaaaa307,10460
+#define sub_ddmmss(sub_ddmmss316,10757
+#define umul_ppmm(umul_ppmm325,11052
+#define udiv_qrnnd(udiv_qrnnd331,11250
+#define count_leading_zeros(count_leading_zeros338,11485
+#define UMUL_TIME 345,11708
+#define UDIV_TIME 346,11729
+#define add_ssaaaa(add_ssaaaa353,11884
+#define sub_ddmmss(sub_ddmmss370,12404
+#define umul_ppmm(umul_ppmm391,12977
+#define __umulsidi3(__umulsidi3400,13288
+#define add_ssaaaa(add_ssaaaa410,13543
+#define sub_ddmmss(sub_ddmmss419,13845
+#define umul_ppmm(umul_ppmm429,14213
+#define UMUL_TIME 435,14420
+#define udiv_qrnnd(udiv_qrnnd436,14441
+#define UDIV_TIME 443,14685
+#define sdiv_qrnnd(sdiv_qrnnd444,14706
+#define count_leading_zeros(count_leading_zeros451,14950
+#define umul_ppmm(umul_ppmm457,15194
+#define UMUL_TIME 489,15852
+#define UDIV_TIME 490,15874
+#define add_ssaaaa(add_ssaaaa495,15968
+#define sub_ddmmss(sub_ddmmss504,16284
+#define count_leading_zeros(count_leading_zeros513,16598
+#define umul_ppmm(umul_ppmm522,16860
+#define udiv_qrnnd(udiv_qrnnd534,17227
+#define UMUL_TIME 545,17602
+#define UDIV_TIME 546,17622
+#define UMUL_TIME 548,17649
+#define UDIV_TIME 549,17670
+#define umul_ppmm(umul_ppmm554,17765
+#define UMUL_TIME 562,17983
+#define UDIV_TIME 563,18004
+#define umul_ppmm(umul_ppmm567,18075
+#define __umulsidi3(__umulsidi3576,18383
+#define udiv_qrnnd(udiv_qrnnd583,18583
+#define add_ssaaaa(add_ssaaaa596,19031
+#define sub_ddmmss(sub_ddmmss621,20052
+#define count_leading_zeros(count_leading_zeros660,21653
+#define umul_ppmm(umul_ppmm665,21823
+#define UMUL_TIME 674,22098
+#define smul_ppmm(smul_ppmm675,22119
+#define SMUL_TIME 684,22391
+#define UDIV_TIME 685,22412
+#define umul_ppmm(umul_ppmm687,22440
+#define UMUL_TIME 698,22817
+#define smul_ppmm(smul_ppmm699,22837
+#define SMUL_TIME 705,23015
+#define sdiv_qrnnd(sdiv_qrnnd706,23035
+#define UDIV_TIME 710,23230
+#define add_ssaaaa(add_ssaaaa715,23325
+#define sub_ddmmss(sub_ddmmss724,23623
+#define umul_ppmm(umul_ppmm734,23970
+#define add_ssaaaa(add_ssaaaa750,24422
+#define sub_ddmmss(sub_ddmmss759,24714
+#define umul_ppmm(umul_ppmm768,25004
+#define UMUL_TIME 800,25592
+#define UDIV_TIME 801,25613
+#define count_leading_zeros(count_leading_zeros802,25635
+#define add_ssaaaa(add_ssaaaa819,26066
+#define sub_ddmmss(sub_ddmmss829,26399
+#define umul_ppmm(umul_ppmm840,26757
+#define udiv_qrnnd(udiv_qrnnd846,26967
+#define umul_ppmm(umul_ppmm857,27417
+#define udiv_qrnnd(udiv_qrnnd863,27627
+#define UDIV_TIME 909,28702
+#define count_leading_zeros(count_leading_zeros910,28723
+#define umul_ppmm(umul_ppmm917,29007
+#define UMUL_TIME 963,30157
+#define udiv_qrnnd(udiv_qrnnd966,30334
+#define UDIV_TIME 996,31164
+#define add_ssaaaa(add_ssaaaa1002,31337
+#define sub_ddmmss(sub_ddmmss1011,31635
+#define umul_ppmm(umul_ppmm1020,31931
+#define sdiv_qrnnd(sdiv_qrnnd1036,32443
+#define add_ssaaaa(add_ssaaaa1053,32900
+#define sub_ddmmss(sub_ddmmss1063,33138
+#define umul_ppmm(umul_ppmm1073,33375
+#define __umulsidi3(__umulsidi31099,34259
+#define __udiv_qrnnd_c(__udiv_qrnnd_c1106,34454
+#define udiv_qrnnd(udiv_qrnnd1146,35720
+#define UDIV_NEEDS_NORMALIZATION 1156,35999
+#define udiv_qrnnd 1157,36034
+#define count_leading_zeros(count_leading_zeros1162,36147
+#define UDIV_NEEDS_NORMALIZATION 1185,36783
+
+math64.h,800
+  #define HIGHER 9,73
+  #define LOWER 10,97
+  #define L0 11,121
+  #define L1 12,145
+  #define S0 13,169
+  #define S1 14,192
+  #define S2 15,215
+  #define S3 16,238
+  #define LOWER 18,267
+  #define HIGHER 19,291
+  #define L0 20,315
+  #define L1 21,339
+  #define S0 22,363
+  #define S1 23,387
+  #define S2 24,411
+  #define S3 25,434
+static inline FG_UINT64 shr64(43,1053
+static inline FG_UINT64 sar64(51,1223
+static inline FG_INT64 shl64(59,1405
+static inline FG_UINT64 add64(67,1573
+static inline FG_UINT64 sub64(77,1804
+static inline FG_UINT64 umul_qqs(87,2033
+static inline FG_INT64 umul_qll(98,2349
+static inline FG_INT32 udiv64by32(105,2523
+static inline FG_INT32 umod64by32(112,2681
+static inline FG_INT32 sdiv64by32(119,2839
+static inline FG_INT32 smod64by32(126,2997
+
+mmx.h,1949
+typedef union _MMXR _MMXR5,62
+} MMXR;MMXR14,242
+#define HIGHER 62,2561
+#define LOWER 63,2581
+#define DW0 64,2597
+#define DW1 65,2611
+#define W0 66,2625
+#define W1 67,2638
+#define W2 68,2651
+#define W3 69,2664
+#define LOWER 73,2685
+#define HIGHER 74,2704
+#define DW0 75,2721
+#define DW1 76,2735
+#define W0 77,2749
+#define W1 78,2762
+#define W2 79,2775
+#define W3 80,2788
+inline static void packsswb(85,2811
+inline static void packuswb(121,3623
+inline static void packssdw(153,4355
+inline static void packusdw(189,5170
+inline static void paddb(221,5906
+inline static void paddw(252,6810
+inline static void paddd(283,7717
+inline static void paddsb(309,8338
+inline static void paddsw(345,9159
+inline static void paddusb(381,9979
+inline static void paddusw(413,10728
+inline static void pand(447,11486
+inline static void pandn(477,12199
+inline static void pcmpeqb(506,12913
+inline static void pcmpeqw(536,13688
+inline static void pcmpeqd(566,14469
+inline static void pcmpgtb(597,15265
+inline static void pcmpgtw(626,16013
+inline static void pcmpgtd(655,16766
+inline static void pmaddwd(685,17559
+inline static void pmulhw(720,18493
+inline static void pmullw(750,19179
+inline static void por(780,19869
+inline static void psllw(809,20576
+inline static void pslld(846,21421
+inline static void psllq(884,22278
+inline static void psraw(910,22828
+inline static void psrad(942,23575
+inline static void psrlw(973,24320
+inline static void psrld(1010,25165
+inline static void psrlq(1048,26022
+inline static void psubb(1075,26573
+inline static void psubw(1106,27491
+inline static void psubd(1137,28412
+inline static void psubsb(1164,29034
+inline static void psubsw(1200,29855
+inline static void psubusb(1237,30676
+inline static void psubusw(1269,31394
+inline static void punpckbw(1301,32117
+inline static void punpckwd(1357,33488
+inline static void punpckdq(1413,34857
+inline static void pxor(1470,36302

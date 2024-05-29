@@ -1,0 +1,109 @@
+Greetings ACM Developers,
+
+I just joined this list, so I'm not sure how things are supposed to
+work around here.  Is it possible for someone like me to contribute
+bug fixes, or new additions and features.  How does this work?  Does
+everything filter through Riley?  What if I wanted to go "hog-wild"
+and add all sorts of new stuff.  Is this possible, or would I be
+better off taking the current source snapshot and heading in my own
+direction, creating a separate program?
+
+At any rate, I would like to submit a "bug" report and a plea for
+assistance.
+
+I have a Debian [Gnu] Linux 1.1 system.  (Which is pretty much the
+latest greatest thing.)  My compiler is gcc-2.7.2.  However, I had
+numerous problems trying to configure and build acm-4.7 and
+acm-4.8beta8 on my system.  A transcript of my efforts with acm-4.8
+follows:
+
+
+$ export x_libraries=/usr/X11R6/lib
+$ export x_includes=/usr/X11R6/include 
+
+$ ./configure
+
+    configure: warning: No ACM-compatible audio library was found -- 
+	ACM will compile anyway
+
+libaudio.a is in /usr/X11R6/lib on my system
+
+    configure: error: Hmm. Your system does not support either 
+	random() or rand().
+
+Actually my system supports both rand() and random(), but the
+configure script doesn't detect this.
+
+I hand-crufted the ./configure script to get past these initial
+problems.  There are probably elegant ways to solve these problems,
+but my first couple of tries to modify ./configure didn't help
+anything, and I wanted to get on to the good stuff ...
+
+$ make
+
+Everything was going good ... until the end of .../V/lib
+
+    gcc   -DSTDC_HEADERS=1 -DHAVE_STDLIB_H=1 -DHAVE_MALLOC_H=1 
+	-DHAVE_UNISTD_H=1 -DSVR4=1 -DRETSIGTYPE=void -DHAVE_DIS=1  
+	-g -O -I/usr/X11R6/include -DNETAUDIO -DHAVE_RAND -I. -I.   
+	-c strdup.c -o strdup.o
+    strdup.c: In function `strdup':
+    strdup.c:6: argument `string' doesn't match prototype
+    Vlib.h:369: prototype declaration
+    make[2]: *** [strdup.o] Error 1
+    make[2]: Leaving directory `/home/curt/src/acm-4.8/V/lib'
+
+My system already defines strdup() so I edited .../V/lib/Makefile and
+removed strdup.o from $LIBOBJS (line 13 of the Makefile.)  The
+configure script should probably check for this when it generates this
+Makefile.
+
+This allowed me to successfully build libV.a
+
+libdis.a built just fine.
+
+Then in .../dis/server:
+
+    make[2]: Entering directory `/home/curt/src/acm-4.8/dis/server'
+    rm -f simxd.c
+    rpcgen -s udp -o simxd.c ../lib/simmgr.x
+    gcc -I.. -I../lib -I.  -g -O  -DSTDC_HEADERS=1 -DHAVE_SYS_TIME_H=1 
+	-DHAVE_STDLIB_H=1 -DHAVE_UNISTD_H=1 -DHAVE_STRING_H=1 
+	-DHAVE_MEMORY_H=1 -DHAVE_FCNTL_H=1 -DTIME_WITH_SYS_TIME=1 
+	-DHAVE_NDBM=1    -c simxd.c -o simxd.o
+    gcc -I.. -I../lib -I.  -g -O  -DSTDC_HEADERS=1 -DHAVE_SYS_TIME_H=1 
+	-DHAVE_STDLIB_H=1 -DHAVE_UNISTD_H=1 -DHAVE_STRING_H=1 
+	-DHAVE_MEMORY_H=1 -DHAVE_FCNTL_H=1 -DTIME_WITH_SYS_TIME=1 
+	-DHAVE_NDBM=1    -c server.c -o server.o
+    server.c:49: conflicting types for `simxlookupentitynamep_1'
+    ../lib/simmgr.h:172: previous declaration of `simxlookupentitynamep_1'
+    server.c:77: conflicting types for `simxlookupentitynamesp_1'
+    ../lib/simmgr.h:181: previous declaration of `simxlookupentitynamesp_1'
+    server.c: In function `simxlookupentitytypefrompatternp_1':
+    server.c:174: number of arguments doesn't match prototype
+    ../lib/simmgr.h:175: prototype declaration
+    server.c: In function `simxlookupentityattributep_1':
+    server.c:180: number of arguments doesn't match prototype
+    ../lib/simmgr.h:178: prototype declaration
+    server.c: At top level:
+    server.c:184: conflicting types for `simxregisterapplicationp_1'
+    ../lib/simmgr.h:169: previous declaration of `simxregisterapplicationp_1'
+    make[2]: *** [server.o] Error 1
+    make[2]: Leaving directory `/home/curt/src/acm-4.8/dis/server'
+
+I replaced rpcgen in the makefile with rpcgen-old.  Apparently this version of
+rpcgen comes with Debian Gnu Linux 1.1 and has a more similar behavior to
+Solaris and IRIX.
+
+Then:
+
+make[1]: Entering directory `/home/curt/src/acm-4.8/src'
+gcc  -g -O -I/usr/X11R6/include -DNETAUDIO -DHAVE_RAND  -DSTDC_HEADERS=1 -DHAVE_STDLIB_H=1 -DHAVE_MALLOC_H=1 -DHAVE_UNISTD_H=1 -DSVR4=1 -DRETSIGTYPE=void -DHAVE_DIS=1  -I. -I. -I./../V/lib -I./../dis   -c main.c -o main.o
+main.c:20: sys/filio.h: No such file or directory
+
+So I removed the definition of SVR4=1 to get past this ...
+
+Also, I had to define REAL_DELTA_T so update.c would compile correctly
+
+Also, I had to define HAVE_COPYSIGN so effects.c would compile correctly
+

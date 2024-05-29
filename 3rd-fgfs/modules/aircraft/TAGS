@@ -1,0 +1,187 @@
+
+air.c,170
+#define	GM	4,20
+#define P0	5,74
+#define TA	6,119
+#define T0	7,179
+#define	G	8,230
+#define RU	9,293
+#define MA	10,347
+#define	RA	11,413
+void airProperties 18,592
+
+damage.c,103
+frandom 23,808
+selectSystem 34,930
+damageSystem 72,1525
+absorbDamage 124,2347
+initDamage 188,3484
+
+flight.c,60
+FG_VOID *flight_init(30,983
+FG_VOID *flight_event(45,1404
+
+gear.c,100
+#define DEBUG134,1120
+groundContactTime 39,1168
+#define EPSILON	54,1652
+groundDynamics 174,4247
+
+init.c,105
+acm_fopen 53,1470
+acm_find_file 81,2012
+readScene(111,2551
+undersampleObject 214,4769
+init 236,5091
+
+interpolate.c,21
+interpolate 34,1081
+
+inventory.c,929
+} value_type;value_type51,1217
+} field_id;field_id160,2829
+struct keyword_info keyword_info162,2842
+#define A(A169,2939
+} lex_val;lex_val279,7981
+struct lex_record lex_record283,8020
+#define push_value(push_value293,8185
+#define pop_value(pop_value296,8271
+#define input(input298,8337
+#define unput(unput304,8530
+#define InitializeLexRecord(InitializeLexRecord306,8597
+#define STATE_INITIAL	312,8712
+#define STATE_WORD	313,8736
+#define STATE_NUMBER	314,8757
+#define STATE_STRING	315,8780
+#define STATE_COMMENT	316,8803
+acm_fopen 323,8909
+struct lex_record *OpenSourceFile 348,9394
+int compileAircraftInventory 367,9784
+void ParseError 421,10941
+field_id NextTokenx 427,11089
+field_id NextToken 555,13362
+void Resync 569,13617
+int ParseAircraft 590,13953
+int ParsePoint 726,16927
+int ParseTable(776,17982
+int ParseValue 848,19408
+int ParseStation 859,19649
+int ParseDISEntityType 909,20542
+
+modelacm.c,308
+double calcRho 74,2071
+void twoOrder 97,2617
+void calcCoefficients 159,3921
+double heading 210,5463
+void euler 225,5660
+void craftToGround 252,6163
+void calcGForces 256,6260
+void calcAlphaBeta 268,6485
+void buildEulerMatrix 288,6905
+double elevatorSetting 312,7767
+int flightCalculations 342,8338
+
+planes.c,265
+int acm_rand 44,1179
+void acm_srand(48,1228
+double efrandom 55,1320
+lookupCraft 61,1410
+lookupCraftByEntityType 80,1670
+printValidAircraft(109,2252
+newCraft 129,2600
+genericThrust 143,2794
+genericResupply 162,3195
+newPlane 180,3402
+int newDrone(275,5187
+
+testacm.c,45
+main(14,191
+#define UPDATE_INTERVAL	36,711
+
+transpose.c,23
+void	transpose 21,778
+
+damage.h,609
+#define DAMAGE_H23,792
+#define isFunctioning(isFunctioning26,811
+#define	SYS_RADAR	33,962
+#define SYS_TEWS	34,1012
+#define SYS_FLAPS	35,1060
+#define SYS_SPEEDBRAKE	36,1109
+#define SYS_HYD1	37,1139
+#define SYS_HYD2	38,1163
+#define SYS_GEN1	39,1187
+#define SYS_GEN2	40,1211
+#define SYS_ENGINE1	41,1235
+#define SYS_ENGINE2	42,1291
+#define SYS_HUD	43,1347
+#define SYS_FUEL	44,1394
+#define SYS_NOSEGEAR	45,1455
+#define SYS_LEFTMAIN	46,1483
+#define SYS_RIGHTMAIN	47,1511
+#define SYS_NODAMAGE	48,1540
+#define FLAG_LOWFUEL	50,1569
+#define FLAG_SPEEDBRAKE	51,1628
+#define FLAG_WHEELBRAKE	52,1698
+
+interpolate.h,143
+#define INTERPOLATE_H23,805
+typedef float float_t;float_t41,1412
+	} IEntry;IEntry47,1610
+	} ITable;ITable53,1816
+#define I_NaN	61,2037
+
+modelacm.h,1688
+#define MODELACM_H23,816
+} craftType;craftType144,5945
+typedef struct _craft _craft149,6028
+} craft;craft233,10019
+#define CT_FREE	244,10251
+#define CT_PLANE	245,10298
+#define CT_MISSILE	246,10332
+#define CT_CANNON	247,10381
+#define CT_SURFACE	248,10431
+#define CT_CHASER	249,10489
+#define CT_DRONE	251,10607
+#define CT_EXPLOSION	252,10647
+#define CT_DIS_PLANE	254,10705
+#define CT_DIS_MUNITION 255,10772
+#define CT_DIS_CANNON	256,10830
+#define RM_OFF	259,10906
+#define RM_STANDBY	260,10943
+#define RM_GUN_DIRECTOR	261,10978
+#define RM_HUD	262,11028
+#define RM_NORMAL	263,11067
+#define RM_ILS	264,11108
+#define FL_RECORD 266,11164
+#define FL_AFTERBURNER 267,11230
+#define FL_BRAKES 268,11286
+#define FL_NWS 269,11342
+#define FL_HAS_GYRO 270,11405
+#define FL_GHANDLE_DN 271,11472
+#define FL_GEAR0_UP 272,11547
+#define FL_GEAR1_UP 273,11621
+#define FL_GEAR2_UP 274,11696
+#define FL_GND_CONTACT 275,11770
+#define FL_FIXED_OBJECT 276,11843
+#define FL_CHASE_VIEW 277,11904
+#define FL_BLACK_BOX 278,11959
+#define FL_BALLISTIC 279,12034
+#define a	282,12097
+#define M_PI 285,12206
+#define M_PI_2 288,12397
+#define PI2 291,12556
+#define a	295,12647
+#define mag(mag296,12706
+#define NM	298,12765
+#define SM	299,12786
+#define FPStoMPH(FPStoMPH300,12805
+#define FPStoKTS(FPStoKTS301,12849
+#define KTStoFPS(KTStoFPS302,12895
+#define FEETtoMETERS(FEETtoMETERS303,12941
+#define METERStoFEET(METERStoFEET304,12980
+#define fsign(fsign305,13020
+#define calcThrust(calcThrust306,13058
+#define fuelUsed(fuelUsed310,13235
+struct dis_entity_type dis_entity_type322,13534
+typedef struct dis_entity_type dis_entity_type;dis_entity_type331,13731

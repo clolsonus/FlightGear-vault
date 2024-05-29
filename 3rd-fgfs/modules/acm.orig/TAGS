@@ -1,0 +1,798 @@
+
+acm.c,77
+#define bcopy(bcopy34,1052
+done 46,1242
+main 50,1275
+handshake 188,4197
+
+aim9m.c,128
+int select_aim9m 55,1576
+int update_aim9m 65,1712
+int fire_aim9m 88,2130
+int display_aim9m 105,2441
+void initaim9(190,4001
+
+air.c,170
+#define	GM	4,20
+#define P0	5,74
+#define TA	6,119
+#define T0	7,179
+#define	G	8,230
+#define RU	9,293
+#define MA	10,347
+#define	RA	11,413
+void airProperties 18,592
+
+alarm.c,59
+alarmCheck 30,990
+addAlarm 66,1596
+cancelAlarm 117,2514
+
+audio.c,383
+initializeAudio(41,1041
+shutdownAudio(114,2523
+playSound 131,2778
+playContinuousSound 149,3089
+stopSound(168,3433
+done_callback 185,3738
+initializeAudio(205,4084
+shutdownAudio(252,4967
+playSound 269,5221
+playContinuousSound 306,6139
+stopSound(343,7107
+initializeAudio(362,7447
+shutdownAudio(374,7573
+playSound 381,7624
+playContinuousSound 388,7670
+stopSound(395,7726
+
+box.c,199
+newBlackBoxCraft(37,1173
+startBlackBoxRecording(86,1904
+endBlackBoxRecording(102,2195
+startBlackBoxPlayback(109,2269
+blackBoxInput(129,2621
+blackBoxOutput(196,4036
+blackBoxKillPlayer 242,5076
+
+chaser.c,170
+#define MAX_MAPPED_STRING_LEN	24,849
+#define MAX_POPUP_STRING_LEN	25,882
+newChaser 33,1049
+doKeyEventChaser 67,1834
+killChaser 211,3918
+resizeChaserWindow 257,4584
+
+damage.c,214
+acm_rand 24,823
+acm_srand(30,870
+acm_rand 38,951
+acm_srand 44,1000
+acm_rand 52,1059
+acm_srand 58,1092
+frandom 70,1305
+selectSystem 81,1427
+damageSystem 119,2022
+absorbDamage 171,2844
+initDamage 233,3956
+
+deadreckon.c,504
+#define M_PI 28,939
+#define EPSILON 32,984
+#define X_AXIS 34,1011
+#define Y_AXIS 35,1028
+#define Z_AXIS 36,1045
+#define PSI 38,1063
+#define THETA 39,1080
+#define PHI 40,1097
+#define UP 42,1115
+#define DOWN 43,1135
+void eulerToQuaternion(53,1296
+void angularVelocityToQuaternion(84,2263
+void quaternionToEuler(114,2868
+static void quaternionMultiply(175,4466
+void deadReckonRVW(204,5609
+#define R2D(R2D237,6565
+int checkLocationThreshold(253,7039
+int checkOrientationThreshold(276,7700
+
+dis_if.c,1219
+#define DEFAULT_LOCATION_THRESHOLD 33,1028
+#define DEFAULT_ORIENTATION_THRESHOLD 34,1072
+#define SEND_TIMEOUT_SECONDS	36,1134
+#define RECV_TIMEOUT_SECONDS	37,1167
+#define MARKINGS_LEN 57,1612
+} EntityEM;EntityEM67,1984
+} Entity;Entity92,2792
+#define MAX_ENTITIES 94,2803
+ACMtoDISWorld(106,3043
+DIStoACMWorld(114,3211
+ACMtoDISVelocity(122,3379
+DIStoACMVelocity(130,3545
+findEntity(147,3927
+dis_init(185,5021
+dis_close(231,5889
+dis_setDRThresholds(247,6157
+timeDISToDouble(269,6707
+timeDoubleToDIS(302,7655
+dis_setTime(327,8071
+dis_setTimeAbsolute(352,8693
+getCurrentTime(364,8871
+getEntityStateData(381,9196
+entityEnter(426,10878
+entityExit(472,11945
+entityStatePDU(503,12448
+firePDU(561,13485
+detonationPDU(640,15000
+emissionPDU(703,16343
+dis_receive(758,17351
+sendEntityState(860,19436
+setPosData(924,21810
+dis_entityEnter(970,23517
+dis_entityExit(1047,25488
+dis_entityState(1090,26409
+#define R2D(R2D1144,27999
+dis_getEntityState(1193,29375
+dis_fire(1254,31097
+dis_fire_cannon(1269,31369
+dis_detonation(1315,32760
+constructEmissionPDU(1397,34774
+dis_setRadarMode(1499,37084
+dis_radarTargetChanged(1517,37483
+dis_getBeamCount 1535,37904
+dis_getRadarParameters(1548,38152
+
+distest.c,614
+#define D2R(D2R31,969
+#define R2D(R2D32,1005
+#define REALTIME35,1043
+#define ABSOLUTETIME36,1060
+#define DT 38,1082
+#define RSKIP 39,1098
+#define MAX_ENTITY 41,1116
+#define DEVICE 45,1156
+static double sysTime(49,1186
+void usleep(65,1390
+} Entity;Entity95,1800
+static void entityEnterCb(100,1846
+static void entityExitCb(115,2203
+static void fireCb(122,2331
+static void detonationCb(129,2490
+#define PSI	140,2843
+#define THETA	141,2857
+#define PHI	142,2873
+void eul2mat(144,2888
+#define EPSILON 170,3746
+void mat2eul(172,3772
+void matmul(194,4220
+void cleanup(208,4539
+int main(215,4590
+
+drone.c,185
+myCoordSys(34,1026
+unholdFireAlarm 49,1275
+pickTarget(64,1466
+droneCalculations 95,1886
+#define DRONE_MAX_Se	133,2746
+#define DRONE_MAX_Sa 134,2789
+#define DRONE_MAX_Sr	135,2833
+
+effects.c,407
+double copysign 30,901
+#define SPIKES	43,1060
+#define FLAME_SPIKES	44,1079
+#define SMOKE_INNER	45,1102
+#define SMOKE_RADIUS	46,1126
+#define SMOKE_MIN_RADIUS 47,1151
+#define SMOKE_VARIATION 48,1180
+#define FLAME_RADIUS	49,1238
+#define FLAME_MIN_RADIUS 50,1263
+#define FLAME_VARIATION	51,1292
+double efrandom 57,1402
+void newExplosion 68,1638
+void buildExplosion 94,2176
+placeExplosion 177,4344
+
+events.c,217
+#define MAX_MAPPED_STRING_LEN	24,841
+#define MAX_POPUP_STRING_LEN	25,874
+doEvents(39,1213
+#define mask 55,1426
+doButtonEvent(130,2887
+doJoystickEvent(150,3153
+doButtonReleaseEvent(205,3800
+doKeyEvent(220,3984
+
+flaps.c,131
+int	flapsDown 21,776
+int	flapsUp 30,938
+void	flapControl 39,1070
+int	speedBrakeExtend 154,3748
+int	speedBrakeRetract 163,3954
+
+gear.c,100
+#define DEBUG133,1113
+groundContactTime 38,1161
+#define EPSILON	53,1645
+groundDynamics 173,4240
+
+hsi.c,214
+#define CDI_DOT_SPACE	24,829
+#define GS_DOT_SPACE	25,856
+#define FREQ_X	26,882
+#define FREQ_Y	27,902
+#define DME_X	28,922
+#define DME_Y	29,942
+#define SCALE_1	31,963
+doHSI 41,1168
+doHSICompassCard 56,1291
+
+hud.c,71
+#define FLIGHTDEBUG30,986
+void doHUD 32,1007
+void	doLadder 111,2808
+
+imath.c,62
+void VMatrixToShortMatrix 21,795
+void ShortTransform 34,999
+
+init.c,105
+acm_fopen 52,1463
+acm_find_file 80,2005
+readScene(110,2544
+undersampleObject 213,4762
+init 235,5084
+
+interpolate.c,21
+interpolate 34,1081
+
+inventory.c,857
+#define DEBUG19,758
+	} value_type;value_type52,1229
+	} field_id;field_id165,2540
+struct keyword_info keyword_info167,2554
+#define A(A174,2640
+	} lex_val;lex_val282,7646
+struct lex_record lex_record286,7686
+#define push_value(push_value296,7831
+#define pop_value(pop_value299,7910
+#define input(input301,7976
+#define unput(unput307,8169
+#define InitializeLexRecord(InitializeLexRecord309,8236
+#define STATE_INITIAL	315,8351
+#define STATE_WORD	316,8375
+#define STATE_NUMBER	317,8396
+#define STATE_STRING	318,8419
+#define STATE_COMMENT	319,8442
+OpenSourceFile 324,8514
+compileAircraftInventory 346,8863
+ParseError 407,9975
+NextTokenx 417,10126
+NextToken 555,12356
+Resync 574,12603
+ParseAircraft 600,12932
+ParsePoint 758,15991
+ParseTable(815,17020
+ParseValue 893,18385
+ParseStation 909,18625
+ParseDISEntityType 965,19469
+
+joystick.c,112
+SetJoystickPort 67,2241
+CalibrateJoystick(73,2307
+GetJoystickPosition(82,2405
+ProcessJoystickInput(114,3151
+
+m61a1.c,686
+#define BORE_CROSS_SIZE	27,872
+#define MUZZLE_VELOCITY 28,898
+#define TRACER_MOD	29,940
+#define OFFSET_ANGLE	30,962
+#define RATE_OF_FIRE	31,1038
+#define FUZZ	32,1100
+#define HIST	62,1820
+} hist_t;hist_t71,2054
+select_m61a1(84,2358
+display_m61a1(114,2832
+press_m61a1(172,3977
+release_m61a1(183,4139
+update_m61a1(192,4257
+placeCannon(293,6409
+initm61a1(348,7478
+cannonCalculations(375,7900
+plotReticle(455,8975
+#define RETICLE_SIZE	463,9055
+#define RANGE_SIZE	464,9079
+#define TICK_SIZE	465,9101
+lcos(513,10252
+typedef struct _entry _entry624,13282
+} entry;entry630,13393
+lookForCannonImpacts(636,13429
+#define FT_TO_M(FT_TO_M774,17017
+isCannonHit(793,17444
+
+main.c,235
+#define BSD_COMP 40,1109
+disEntityEnterCb(80,1866
+#define M_TO_FT(M_TO_FT168,3414
+disDetonationCb(171,3456
+disInit(214,4396
+parseinfo(235,4761
+main(260,5047
+deadpeer(430,8512
+myalarm(440,8643
+killed(447,8733
+input(458,8887
+
+missile.c,320
+typedef struct _entry _entry25,834
+	}	entry;entry31,930
+inCloud 43,1141
+int	fireMissile 60,1304
+int	killMissile 178,3902
+int	lookForImpacts 222,4718
+int isMissileHit 359,8019
+#define IRMaxRange	366,8103
+int isIRVisible 368,8135
+int getIRTarget 412,8959
+#define AIM9SLOPE	455,9653
+void trackTarget 457,9680
+
+missilec.c,33
+int  missileCalculations 28,911
+
+mouse.c,18
+getStick(32,1059
+
+navaid.c,276
+magHeading 37,1097
+InitNavaidSystem(45,1216
+radioReceptionCheck 113,2943
+radioFrequencyChanged 129,3134
+initRadio 139,3316
+InitNavaid 148,3442
+glideSlopeOffset 172,3801
+radial 188,4026
+PrintableVHFFreq 210,4404
+PrintableTACANChannel 230,4679
+DMECheckAlarm 246,4940
+
+panel.c,277
+#define panelRows	71,1394
+#define panelColumns	72,1414
+#define panelChars	73,1437
+#define lightMargin	74,1459
+#define panelWMargin	75,1492
+#define panelHMargin	76,1524
+initPanel(84,1667
+redrawPanel(97,1881
+resizePanel(112,2172
+doPanel(130,2503
+doGearLights(187,3978
+
+place.c,41
+placeCraft 26,894
+placeObject 170,4047
+
+planes.c,193
+lookupCraft 42,1182
+lookupCraftByEntityType 61,1442
+printValidAircraft(90,2024
+newCraft 110,2372
+genericThrust 124,2566
+genericResupply 143,2967
+newPlane 161,3174
+int newDrone(250,4883
+
+players.c,745
+#define bzero(bzero42,1195
+#define BORDER	54,1501
+#define	ARG_FONT	56,1519
+#define ARG_RADAR_FONT	57,1544
+#define	ARG_BORDER_COLOR	58,1580
+#define ARG_BORDER	59,1619
+#define	ARG_GEOMETRY	60,1653
+#define DEFAULT_BACKGROUND	63,1824
+#define DEFAULT_BORDER	64,1890
+#define DEFAULT_RADAR_FONT	65,1922
+#define SW_BORDER	67,1995
+#define SW_BACKGROUND	68,2015
+#define SW_HUDFONT	69,2039
+#define SW_GEOM	70,2060
+#define SW_RADARFONT	71,2079
+#define SW_TEAM	72,2102
+#define SW_CHASE	73,2121
+#define SW_OBSERVE	74,2140
+#define SW_DEFAULT_VISUAL 75,2161
+#define SW_PLANE	76,2189
+#define SW_LIST_PLAYER	77,2209
+#define SW_MONOCHROME	78,2235
+recoverAcmArgv 99,2643
+get_pseudo_visual 131,3002
+newPlayer(181,3991
+killPlayer 751,18413
+
+pm.c,279
+#define ALLOCATE_SPACE21,796
+calcRho 72,1993
+twoOrder 102,2520
+calcCoefficients 172,3749
+heading 227,5252
+euler 243,5426
+craftToGround 279,5897
+calcGForces 290,6003
+calcAlphaBeta 308,6217
+buildEulerMatrix 335,6626
+elevatorSetting 365,7446
+flightCalculations 400,7969
+
+radar.c,363
+#define scanSlope 23,812
+#define SetSegment(SetSegment27,886
+heading(35,1050
+ItoA(64,1614
+doRadar(78,1774
+isRadarVisible(311,6914
+newRadarTarget(338,7301
+plotNormalTarget(368,7789
+plotPrimaryTarget(391,8232
+doTEWS(480,10337
+doDroneRadar(550,12284
+computeRadar 621,13563
+computeRadarEnergy 684,15041
+clearRadarInfo(773,16889
+addRadarInfo 780,16954
+
+render.c,97
+#define lim	31,1012
+addGround(51,1330
+doViews(98,2379
+insertCraft(492,11001
+doRPM(544,12342
+
+resupply.c,27
+void resupplyCheck 29,963
+
+scale.c,83
+static char *skipBlanks 23,836
+void doScale 30,916
+void doCompassScale 138,3116
+
+transpose.c,23
+void	transpose 21,778
+
+update.c,153
+#define FT_TO_M(FT_TO_M53,1277
+#define M_TO_FT(M_TO_FT54,1309
+disBroadcast 58,1348
+#define R2D(R2D102,2738
+disGetState 119,3289
+redraw(172,4540
+
+weapon.c,219
+int countOrdinance 27,881
+int readyStation 46,1191
+int selectWeapon(60,1377
+selectNamedWeapon 79,1663
+int fireWeapon 94,1866
+int ceaseFireWeapon 103,2001
+int doWeaponDisplay 112,2145
+int doWeaponUpdate 128,2393
+
+windows.c,32
+void resizePlayerWindow 22,817
+
+world.c,73
+#define WGS84_A	3,17
+#define WGS84_B	4,43
+UpdateWorldCoordinates 7,78
+
+alarm.h,130
+#define _alarm_h20,775
+typedef long	alarm_id_t;alarm_id_t22,793
+typedef struct _alarm_descriptor_t _alarm_descriptor_t24,819
+
+bitmap.h,869
+#define eng_width 1,0
+#define eng_height 2,21
+#define eng_x_hot 3,43
+#define eng_y_hot 4,64
+#define flaps0_width 5,85
+#define flaps0_height 6,109
+#define flaps0_x_hot 7,134
+#define flaps0_y_hot 8,157
+#define flaps1_width 9,181
+#define flaps1_height 10,205
+#define flaps1_x_hot 11,230
+#define flaps1_y_hot 12,254
+#define flaps2_width 13,278
+#define flaps2_height 14,302
+#define flaps2_x_hot 15,327
+#define flaps2_y_hot 16,351
+#define flaps3_width 17,375
+#define flaps3_height 18,399
+#define flaps3_x_hot 19,424
+#define flaps3_y_hot 20,448
+#define gearDown_width 21,472
+#define gearDown_height 22,498
+#define gearTran_width 23,525
+#define gearTran_height 24,551
+#define gearUp_width 25,578
+#define gearUp_height 26,602
+#define handleDn_width 27,627
+#define handleDn_height 28,653
+#define handleUp_width 29,680
+#define handleUp_height 30,706
+
+box.h,256
+	}	_BBShortState;_BBShortState22,828
+	}	_BBNewObject;_BBNewObject27,930
+	}	BBRecord;BBRecord37,1178
+#define BB_TYPE_SHORT_STATE	40,1193
+#define BB_TYPE_ADD_OBJECT	41,1227
+#define BB_TYPE_DELETE_OBJECT	42,1260
+#define BB_TYPE_END_OF_FRAME	43,1296
+
+damage.h,584
+#define isFunctioning(isFunctioning18,757
+#define	SYS_RADAR	25,908
+#define SYS_TEWS	26,958
+#define SYS_FLAPS	27,1006
+#define SYS_SPEEDBRAKE	28,1055
+#define SYS_HYD1	29,1085
+#define SYS_HYD2	30,1109
+#define SYS_GEN1	31,1133
+#define SYS_GEN2	32,1157
+#define SYS_ENGINE1	33,1181
+#define SYS_ENGINE2	34,1237
+#define SYS_HUD	35,1293
+#define SYS_FUEL	36,1340
+#define SYS_NOSEGEAR	37,1401
+#define SYS_LEFTMAIN	38,1429
+#define SYS_RIGHTMAIN	39,1457
+#define SYS_NODAMAGE	40,1486
+#define FLAG_LOWFUEL	42,1515
+#define FLAG_SPEEDBRAKE	43,1574
+#define FLAG_WHEELBRAKE	44,1644
+
+deadreckon.h,60
+#define DEADRECKON_H21,821
+} Quaternion;Quaternion27,898
+
+dis.h,507
+#define DIS_H21,807
+#define DIS_ENTITY_OTHER	24,852
+#define DIS_ENTITY_F16	25,879
+#define DIS_ENTITY_MIG29	26,905
+#define DIS_ENTITY_AIM9M	27,932
+#define DIS_DETONATION_OTHER	30,994
+#define DIS_DETONATION_M61A1	31,1025
+#define DIS_DETONATION_AIM9M	32,1056
+#define DIS_FIRE_OTHER	35,1105
+#define DIS_FIRE_M61A1	36,1131
+#define DIS_FIRE_AIM9M	37,1157
+#define DIS_ID_NONE	40,1185
+typedef void (*dis_EntityEnterCb)dis_EntityEnterCb51,1414
+typedef void (*dis_DetonationCb)dis_DetonationCb64,1866
+
+horizon.h,0
+
+hsi.h,0
+
+imath.h,152
+typedef short	short_fixed_t;short_fixed_t18,757
+	}	short_point_t;short_point_t22,828
+	}	short_matrix_t;short_matrix_t26,888
+#define UNITY	28,908
+
+interpolate.h,114
+typedef float float_t;float_t34,1341
+	} IEntry;IEntry40,1539
+	} ITable;ITable46,1745
+#define I_NaN	54,1966
+
+manifest.h,1047
+#define NEEDS_COPYSIGN25,824
+#define sigvec 33,924
+#define sigvec 36,991
+#define sv_handler 37,1023
+#define sv_mask 38,1056
+#define sv_flags 39,1086
+#define SV_INTERRUPT 40,1117
+#define MAXSURFACE	61,1395
+#define MAXPLAYERS	69,1493
+#define MAXOBSERVERS 78,1585
+#define MAXCHASERS 86,1676
+#define MAXPROJECTILES	94,1791
+#define MAXEXPLOSIONS	98,1861
+#define MAXCRAFTTYPES	102,1928
+#define STATIONS	106,1978
+#define WEAPONTYPES	110,2025
+#define UPDATE_INTERVAL	118,2166
+#define REDRAW_EVERY	127,2334
+#define RESUPPLY_INTERVAL	137,2582
+#define DIS_EXERCISE	146,2776
+#define DIS_SITE	147,2800
+#define DIS_APPLICATION	148,2821
+#define DIS_LOCATION_THRESHOLD	155,2958
+#define DIS_ORIENTATION_THRESHOLD	156,2994
+#define ACM	164,3150
+#define MAX_GROUND_DISTANCE	187,3641
+#define ACM_LIBRARY	195,3772
+#define acm_sig_t 203,3886
+#define acm_sig_t	206,3942
+#define acm_sig_t	208,3999
+#define SPECIAL_KEYS223,4261
+#define MAX_GAME_IDLE_SECONDS	244,4980
+#define DEFAULT_DRONE_FACTOR	251,5133
+#define MIN_DRONE_FACTOR 257,5250
+
+navaid.h,385
+	}	location_t;location_t22,833
+typedef unsigned short	freq_t;freq_t24,849
+typedef struct _navaid_t _navaid_t26,881
+	}		navaid_t;navaid_t40,1525
+	}	radio_t;radio_t49,1861
+#define VOR_CHANNEL_COUNT	51,1874
+#define NAVAID_LOC	57,1952
+#define NAVAID_VOR	58,1978
+#define NAVAID_DME	59,2004
+#define NAVAID_GS	60,2030
+#define NAVAID_MARKER	61,2055
+#define NAVAID_NDB	62,2084
+
+patchlevel.h,77
+#define REVISION	1,0
+#define PATCHLEVEL	2,19
+#define REVISION_STRING 4,41
+
+pm.h,4696
+typedef	char	*AuServer;AuServer33,1009
+typedef char	AuBucketID;AuBucketID34,1033
+typedef char	AuFlowID;AuFlowID35,1058
+typedef char	AuDeviceID;AuDeviceID36,1081
+struct dis_entity_type dis_entity_type49,1278
+typedef struct dis_entity_type dis_entity_type;dis_entity_type58,1475
+typedef struct _worldcoordinates _worldcoordinates62,1547
+	}	WorldCoordinates;WorldCoordinates66,1737
+#define SoundCrash	72,1822
+#define SoundGearUp	73,1844
+#define SoundGearDown	74,1867
+#define SoundMissileLaunch	75,1892
+#define SoundCannonFiring	76,1921
+#define SoundExplosion	77,1949
+#define SoundTouchdown	78,1975
+#define SoundStallWarning	79,2001
+#define SoundLockWarning	80,2029
+#define NUM_SOUNDS	81,2056
+typedef struct _viewer _viewer83,2079
+	}		viewer;viewer132,4080
+typedef struct _wctl _wctl134,4093
+	}		weaponStation;weaponStation139,4274
+	}	craftType;craftType245,8874
+typedef struct _wdsc _wdsc247,8889
+#define WK_M61A1	257,9266
+#define WK_AIM9M	258,9321
+typedef struct _radarInfo _radarInfo264,9409
+	} radarInfo;radarInfo270,9657
+typedef struct _craft _craft276,9744
+	}	craft;craft358,13508
+typedef struct _observer _observer364,13592
+}      observer;observer369,13815
+#define	rounds	376,13953
+#define	tracerMod	377,13984
+#define tracerVal	378,14015
+#define owner	379,14043
+#define duration	380,14068
+#define flameDuration	381,14095
+#define	escale	382,14123
+#define armTimer	383,14146
+#define CT_FREE	389,14208
+#define CT_PLANE	390,14255
+#define CT_MISSILE	391,14289
+#define CT_CANNON	392,14338
+#define CT_SURFACE	393,14388
+#define CT_CHASER	394,14446
+#define CT_DRONE	396,14564
+#define CT_EXPLOSION	397,14604
+#define CT_DIS_PLANE	399,14662
+#define CT_DIS_MUNITION 400,14729
+#define CT_DIS_CANNON	401,14787
+#define FL_RECORD	404,14863
+#define FL_AFTERBURNER	405,14920
+#define FL_BRAKES	406,14972
+#define	FL_NWS	407,15019
+#define FL_HAS_GYRO	408,15071
+#define FL_GHANDLE_DN	409,15131
+#define FL_GEAR0_UP	410,15201
+#define FL_GEAR1_UP	411,15268
+#define FL_GEAR2_UP	412,15336
+#define FL_GND_CONTACT	413,15404
+#define FL_FIXED_OBJECT 414,15474
+#define FL_CHASE_VIEW	415,15533
+#define FL_BLACK_BOX	416,15584
+#define FL_BALLISTIC	417,15655
+#define RM_OFF	419,15713
+#define RM_STANDBY	420,15750
+#define RM_GUN_DIRECTOR	421,15785
+#define RM_HUD	422,15835
+#define RM_NORMAL	423,15874
+#define RM_ILS	424,15915
+#define _var_type 427,15994
+#define _var_type429,16025
+#define a	472,18098
+#define pi	473,18157
+#define mag(mag474,18191
+#define NM	476,18250
+#define SM	477,18271
+#define FPStoMPH(FPStoMPH478,18290
+#define FPStoKTS(FPStoKTS479,18334
+#define KTStoFPS(KTStoFPS480,18380
+#define FEETtoMETERS(FEETtoMETERS481,18426
+#define METERStoFEET(METERStoFEET482,18465
+#define fsign(fsign483,18505
+#define calcThrust(calcThrust484,18543
+#define fuelUsed(fuelUsed488,18720
+#define VIEW_WINDOW_HEIGHT	492,18866
+#define VIEW_WINDOW_WIDTH	493,18897
+#define CHASE_WINDOW_HEIGHT	494,18928
+#define CHASE_WINDOW_WIDTH	495,18960
+#define RADAR_WINDOW_WIDTH	496,18991
+#define RADAR_WINDOW_HEIGHT	497,19022
+#define VISOR_MARGIN	498,19054
+#define RADAR_X	499,19079
+#define RADAR_Y	500,19112
+#define TEWS_X	501,19166
+#define TEWS_Y	502,19202
+#define TEWS_SIZE	503,19260
+#define FS_WINDOW_WIDTH	504,19282
+#define FS_WINDOW_HEIGHT 505,19328
+#define	FLAP_X	506,19407
+#define FLAP_Y	507,19442
+#define DESIGNATOR_SIZE	508,19481
+#define PANEL_Y	510,19586
+#define ENG_X	516,19675
+#define ENG_Y	517,19713
+#define ALT_ORG_X	519,19767
+#define ALT_ORG_Y	520,19790
+#define ALT_LENGTH	521,19813
+#define ALT_ORIENT	522,19838
+#define ALT_SCALE	523,19870
+#define ALT_INDEX_SIZE	524,19920
+#define ALT_MIN_INTERVAL	525,19947
+#define ALT_MIN_SIZE	526,19976
+#define ALT_MAJ_INTERVAL	527,20000
+#define ALT_MAJ_SIZE	528,20029
+#define ALT_DIVISOR	529,20054
+#define ALT_FORMAT	530,20082
+#define VEL_ORG_X	532,20111
+#define VEL_ORG_Y	533,20134
+#define VEL_LENGTH	534,20157
+#define VEL_ORIENT	535,20188
+#define VEL_SCALE	536,20210
+#define VEL_INDEX_SIZE	537,20259
+#define VEL_MIN_INTERVAL	538,20286
+#define VEL_MIN_SIZE	539,20314
+#define VEL_MAJ_INTERVAL	540,20338
+#define VEL_MAJ_SIZE	541,20366
+#define VEL_DIVISOR	542,20391
+#define VEL_FORMAT	543,20417
+#define HDG_ORG_X	545,20446
+#define HDG_ORG_Y	546,20504
+#define HDG_LENGTH	547,20527
+#define HDG_ORIENT	548,20556
+#define HDG_SCALE	549,20578
+#define HDG_INDEX_SIZE	550,20628
+#define HDG_MIN_INTERVAL	551,20655
+#define HDG_MIN_SIZE	552,20684
+#define HDG_MAJ_INTERVAL	553,20708
+#define HDG_MAJ_SIZE	554,20738
+#define HDG_DIVISOR	555,20763
+#define HDG_FORMAT	556,20791
+#define NC_NOT_PLANE 558,20820
+#define NC_CANNOT_CHASE 559,20855
+
+scale.h,101
+	}	scaleControl;scaleControl33,1401
+#define orientRight	35,1419
+#define orientHorizontal	36,1442

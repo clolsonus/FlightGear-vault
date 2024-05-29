@@ -1,0 +1,560 @@
+# Aircraft Inventory for ACM 3.0
+# See ACM-Bibliography for further information about the sources of this
+# information.
+
+# Mig-29 Fulcrum
+# MiG-29M information was derived from two sources: [Spick87] and [AirI Aug92].
+
+aircraft "MiG-29" {
+
+	Object		"mig29.obj"
+	WingArea	400.0	# (wingS) Wing surface area (ft^2)
+	WingHalfSpan	18.87	# (wings) Wing half-span (ft)
+	Chord		9.61	# (c) Mean geometric chord of wing (ft)
+	AspectRatio	3.56	# (aspectRatio) aspect ratio
+	EmptyWeight	22500.0	#(emptyWeight) Empty weight (lb)
+
+	# DISEntityType	 1:2:222:1:2:5:0
+	# DISAltEntityType 1:2:225:1:3:3:0
+
+	# (I(x,y,z)) Moments of inertia
+	Ixx		10000.0
+	Iyy		75000.0
+	Izz		80000.0
+
+	# (cFlap) Lift due to flaps (yields Clift of 1.0 at max extension)
+	CFlap		0.64279
+	CLNegStall	17.0	# (deg)
+	CLPosStall	30.0	# (deg)
+	BetaStall	15.0	# (deg)
+
+	CFlapDrag	0.0467	# (cFlapDrag) Drag due to Flaps
+	CGearDrag	0.03	# (cGearDrag) Drag due to Gear
+	CSpeedBrake	0.03	# (cSpeedBrake) Drag due to Speed Brake
+				# at 90 degrees
+
+	# (CDb) Drag Characteristic equation [Wave+body]
+	# independent variable is mach number
+	CDb	{		# (CDb) Drag Characteristic equation [Wave+body]
+				# independent variable is mach number
+		0.0,	0.020,
+		0.2,	0.020,
+		0.95,	0.015,
+		1.05,	0.045,
+		2.00,	0.030,
+		10.0,	0.030
+		}
+
+	CLift	{		# (CLift) Lift-slope curve (vs alpha)
+		-3.0,	0.0,
+		-1.05,	0.0,
+		-0.576,	-2.199,
+		-0.556,	-2.23,
+		-0.524, -2.199,
+		0.524,	2.199,
+		0.556,	2.23,
+		0.576,	2.199,
+		1.05,	0.0,
+		2.0,	0.0
+		}
+
+	CnBeta	{		# (CnBeta) Yaw due to sideslip equation
+		0,	-0.08125,
+		0.523540, -0.078125,
+		0.785340, -0.0609375,
+		1.047198, 0.125,
+		1.58,	0.0
+		}
+
+	ClBeta	{		# (ClBeta) Roll due to sideslip equation 
+		0,	-0.0125,
+		0.43633, -0.015,
+		0.78540, 0.125,
+		1.58,	0.0,
+		3.142,	0.125,
+		}
+
+	CDBOrigin	0	# (CDBOrigin, CDBFactor) Drag due to sideslip
+	CDBFactor	0.5	
+	CDBPhase	0	# (CDBPhase) sideslip drag phase (deg)
+	CYBeta		-0.85	# (CYbeta) Side-force from side-slip [dCY/dBeta]
+	EffElevator	0.60	# (effElevator) Elevator effectiveness
+	EffRudder	0.35	# (effRudder) Rudder effectiveness
+	MaxRudder	20	# (maxRudder) max Rudder (deg)
+	SeTrimTakeoff	0	# (SeTrimTakeoff) Elevator trim at takeoff (deg)
+	MaxAileron	20	# (maxAileron) max Aileron (deg)
+	MaxFlap		20	# (maxFlap) max flap setting (deg)
+	# (flapRate) flap extension rate (about 2 secs to fully extend flaps)
+	FlapRate	10	# (deg/sec)
+	# (gearRate) gear extension rate (about 3 secs to fully extend gear)
+	GearRate	30	# (deg/sec)
+	MaxSpeedBrake	80	# (maxSpeedBrake) max Speed Brake setting (deg)
+	# (speedBrakeRate) rate of speed brake extension (2 secs to full ext)
+	SpeedBrakeRate	40	# (deg/sec)
+	# (speedBrakeIncr) speed Brake increment per keystroke
+	SpeedBrakeIncr	80	# (deg)
+	Clda		0.048	# (Clda) roll moment from aileron offset
+	Cldr		0.004	# (Cldr) roll moment from rudder offset
+	Clp		-0.27	# (Clp) roll damping
+	Cmq		-8.0	# (Cmq) pitch damping factor
+	Cnr		-2.0	# (Cnr) yaw damping factor
+	CmAlpha		-0.30	# (cmSlope) CmAlpha curve slope 
+	CmFactor	-0.20	# (cmFactor) CmAlpha factor when stalled 
+	MaxFuel		9750	# (maxFuel) maximum internal fuel (lb)
+	# engine lag factor (how fast does it respond to throttle changes)
+	EngineLag	-3.0
+	# Engine data based on updated RD-33K engines cited in [AirI Aug89].
+	# (maxThrust) max static thrust, military power (lb) 
+	MaxThrust	27000
+	# (maxABThrust) max static thrust, afterburner on  (lb) 
+	MaxABThrust	44000
+	Thrust	{		# (Thrust) Mach Number vs. thrust	
+		0,	1,
+		1.7,	1.5,
+		2.0,	0.84,
+		5,	0.5
+		}
+	ABThrust {		# (ABThrust) afterburner thrust table
+		0,	1,
+		0.5,	1,
+		1,	1.21,
+		1.7,	1.7,
+		5,	1.64
+		}
+	# (spFuelConsump) specific fuel consump(lb fuel/lb T x hr)
+	SpFuelConsump	0.68
+	# (spABFuelConsump) AB specific fuel consump(lb fuel/lb T x hr)
+	SpABFuelConsump	2.55
+	# (groundingPoint) hypothetical single pt of contact w/ground 
+	GroundingPoint	{ 0,  0,  4.222 }
+	# (viewPoint) pilot's viewing location wrt CG
+	ViewPoint	{ 14.75, 0,  -5.375 }
+
+	# Landing Gear control parameters
+
+	MuStatic	0.08	# (muStatic) static coeff of friction no-brakes 
+	MuKinetic	0.05	# (muKinetic) moving coeff of friction no-brakes
+	MuBStatic	0.7	# (muBStatic) static brakes-on
+	MuBKinetic	0.6	# (muBKinetic) moving brakes-on
+
+	MaxNWDef	72	# (maxNWDef) maximum nosewheel deflection (deg)
+	NWIncr		0.0397	# (NWIncr) deflection for each unit (1.27/32)
+	MaxNWS		85	# (maxNWS) maximum NWS velocity (fps)
+
+	# (rm) location of main gear attachments
+	Rm		{ -2.206000, 0.000000, 1.702 }
+	# (rn) location of nose gear attachments
+	Rn		{ 9.395000,  0.000000, 1.807 }
+	Dm		10000	# main oleo damping factor
+	Dn		1000	# nose oleo damping factor
+	Km		5408	# main oleo spring factor
+	Kn		882	# nose oleo spring factor
+	Gm		1.5	# main strut length with tire (ft)
+	Gn		1.5	# nose strut length with tire (ft)
+	CmMax		1.0	# (cmMax) main max oleo extension distance (ft)
+	CnMax		0.75	# (cnMax) nose max oleo extension distance (ft)
+	# (tailExtent) as we rotate, this part may drag 
+	TailExtent	{ -18.165,  0.0,  1.191 }
+	StructurePoints	15	# (structurePts) maximum structural damage 
+
+	# Radar data based on N-019 Pulse Doppler radar cited in [AirI Aug89].
+
+	RadarOutput	15000	# (radarOutput) radar output (watts)
+	RadarTRange	38	# (radarTRange) tracking radar range (nm)
+	RadarDRange	55	# (radarDRange) detection radar range (nm)
+	TEWSThreshold	0	# Radar Warning Receiver threshold (watts)
+
+	# Weapons
+
+	WeaponCount	9
+
+	HardPoint0	{ 7.0, -4.0, 0.0 }
+	HardPoint1	{ 0.357, 15.6, 0.0 }
+	HardPoint2	{ 0.357, -15.6, 0.0 }
+	HardPoint3	{ 1.5, 9.0, 2.0 }
+	HardPoint4	{ 1.5, -9.0, 2.0 }
+	HardPoint5	{ 1.5, 8.0, 1.5 }
+	HardPoint6	{ 1.5, -8.0, 1.5 }
+	HardPoint7	{ 1.5, 10.0, 1.5 }
+	HardPoint8	{ 1.5, -10.0, 1.5 }
+
+	WeaponStation	0 "m61a1"	500	0	0
+	WeaponStation	1 "aim9m"	0	0	0
+	WeaponStation	2 "aim9m"	0	0	0
+	WeaponStation	3 "aim9m"	0	0	0
+	WeaponStation	4 "aim9m"	0	0	0
+	WeaponStation	5 "aim9m"	0	0	0
+	WeaponStation	6 "aim9m"	0	0	0
+	WeaponStation	7 "aim9m"	0	0	0
+	WeaponStation	8 "aim9m"	0	0	0
+
+	}
+
+# F-16 C Falcon
+
+aircraft "F-16" {
+
+	Object		"f16.obj"
+	WingArea	300.0	# (wingS) Wing surface area (ft^2)
+	WingHalfSpan	16	# (wings) Wing half-span (ft)
+	Chord		9.61	# (c) Mean geometric chord of wing (ft)
+	AspectRatio	3.0	# (aspectRatio) aspect ratio
+	EmptyWeight	14576	#(emptyWeight) Empty weight (lb)
+
+	# DISEntityType	 1:2:225:1:3:3:0
+	# DISAltEntityType 1:2:222:1:2:5:0
+
+	# (I(x,y,z)) Moments of inertia
+	Ixx		7240
+	Iyy		49786
+	Izz		54390
+
+	# (cFlap) Lift due to flaps (yields Clift of 1.0 at max extension)
+	CFlap		0.64279
+	CLNegStall	17.0	# (deg)
+	CLPosStall	30.0	# (deg)
+	BetaStall	15.0	# (deg)
+
+	CFlapDrag	0.0467	# (cFlapDrag) Drag due to Flaps
+	CGearDrag	0.03	# (cGearDrag) Drag due to Gear
+	CSpeedBrake	0.03	# (cSpeedBrake) Drag due to Speed Brake
+				# at 90 degrees
+
+	# (CDb) Drag Characteristic equation [Wave+body]
+	# independent variable is mach number
+	CDb	{		# (CDb) Drag Characteristic equation [Wave+body]
+				# independent variable is mach number
+		0.0,	0.020,
+		0.2,	0.020,
+		0.95,	0.015,
+		1.05,	0.045,
+		2.00,	0.030,
+		10.0,	0.030
+		}
+
+	CLift	{		# (CLift) Lift-slope curve (vs alpha)
+		-3.0,	0.0,
+		-1.05,	0.0,
+		-0.576,	-2.199,
+		-0.556,	-2.23,
+		-0.524, -2.199,
+		0.524,	2.199,
+		0.556,	2.23,
+		0.576,	2.199,
+		1.05,	0.0,
+		2.0,	0.0
+		}
+
+	CnBeta	{		# (CnBeta) Yaw due to sideslip equation
+		0,	-0.08125,
+		0.523540, -0.078125,
+		0.785340, -0.0609375,
+		1.047198, 0.125,
+		1.58,	0.0
+		}
+
+	ClBeta	{		# (ClBeta) Roll due to sideslip equation 
+		0,	-0.0125,
+		0.43633, -0.015,
+		0.78540, 0.125,
+		1.58,	0.0,
+		3.142,	0.125,
+		}
+
+	CDBOrigin	0	# (CDBOrigin, CDBFactor) Drag due to sideslip
+	CDBFactor	0.5	
+	CDBPhase	0	# (CDBPhase) sideslip drag phase (deg)
+	CYBeta		-0.85	# (CYbeta) Side-force from side-slip [dCY/dBeta]
+	EffElevator	0.60	# (effElevator) Elevator effectiveness
+	EffRudder	0.35	# (effRudder) Rudder effectiveness
+	MaxRudder	20	# (maxRudder) max Rudder (deg)
+	SeTrimTakeoff	0	# (SeTrimTakeoff) Elevator trim at takeoff (deg)
+	MaxAileron	20	# (maxAileron) max Aileron (deg)
+	MaxFlap		20	# (maxFlap) max flap setting (deg)
+	# (flapRate) flap extension rate (about 2 secs to fully extend flaps)
+	FlapRate	10	# (deg/sec)
+	# (gearRate) gear extension rate (about 3 secs to fully extend gear)
+	GearRate	30	# (deg/sec)
+	MaxSpeedBrake	80	# (maxSpeedBrake) max Speed Brake setting (deg)
+	# (speedBrakeRate) rate of speed brake extension (2 secs to full ext)
+	SpeedBrakeRate	40	# (deg/sec)
+	# (speedBrakeIncr) speed Brake increment per keystroke
+	SpeedBrakeIncr	80	# (deg)
+	Clda		0.048	# (Clda) roll moment from aileron offset
+	Cldr		0.004	# (Cldr) roll moment from rudder offset
+	Clp		-0.27	# (Clp) roll damping
+	Cmq		-8.0	# (Cmq) pitch damping factor
+	Cnr		-2.0	# (Cnr) yaw damping factor
+	CmAlpha		-0.30	# (cmSlope) CmAlpha curve slope 
+	CmFactor	-0.20	# (cmFactor) CmAlpha factor when stalled 
+	MaxFuel		9750	# (maxFuel) maximum internal fuel (lb)
+	# engine lag factor (how fast does it respond to throttle changes)
+	EngineLag	-3.0
+	# Engine data based on updated RD-33K engines cited in [AirI Aug89].
+	# (maxThrust) max static thrust, military power (lb) 
+	MaxThrust	14080
+	# (maxABThrust) max static thrust, afterburner on  (lb) 
+	MaxABThrust	23540
+	Thrust	{		# (Thrust) Mach Number vs. thrust	
+		0,	1,
+		1.7,	1.5,
+		2.0,	0.84,
+		5,	0.5
+		}
+	ABThrust {		# (ABThrust) afterburner thrust table
+		0,	1,
+		0.5,	1,
+		1,	1.21,
+		1.7,	1.7,
+		5,	1.64
+		}
+	# (spFuelConsump) specific fuel consump(lb fuel/lb T x hr)
+	SpFuelConsump	0.68
+	# (spABFuelConsump) AB specific fuel consump(lb fuel/lb T x hr)
+	SpABFuelConsump	2.55
+	# (groundingPoint) hypothetical single pt of contact w/ground 
+	GroundingPoint	{ 0,  0,  6.5 }
+	# (viewPoint) pilot's viewing location wrt CG
+	ViewPoint	{ 15.58, 0, -2.71 }
+
+	# Landing Gear control parameters
+
+	MuStatic	0.08	# (muStatic) static coeff of friction no-brakes 
+	MuKinetic	0.05	# (muKinetic) moving coeff of friction no-brakes
+	MuBStatic	0.7	# (muBStatic) static brakes-on
+	MuBKinetic	0.6	# (muBKinetic) moving brakes-on
+
+	MaxNWDef	72	# (maxNWDef)maximum nosewheel deflection (deg)
+	NWIncr		0.0397	# (NWIncr) deflection for each unit (1.27/32)
+	MaxNWS		85	# (maxNWS) maximum NWS velocity (kts)
+
+	# (rm) location of main gear attachments
+	Rm		{ -1, 0, 4 }
+	# (rn) location of nose gear attachments
+	Rn		{ 14, 0, 4 }
+	Dm		10000	# main oleo damping factor
+	Dn		700	# nose oleo damping factor
+	Km		45408.5	# main oleo spring factor
+	Kn		3243.47	# nose oleo spring factor
+	Gm		1.5	# main strut length with tire (ft)
+	Gn		1.5	# nose strut length with tire (ft)
+	CmMax		1.5	# (cmMax) main max oleo extension distance (ft)
+	CnMax		1.5	# (cnMax) nose max oleo extension distance (ft)
+	# (tailExtent) as we rotate, this part may drag 
+	TailExtent	{ -18.165,  0.0,  1.191 }
+	StructurePoints	15	# (structurePts) maximum structural damage 
+
+	# Radar data based on N-019 Pulse Doppler radar cited in [AirI Aug89].
+
+	RadarOutput	15000	# (radarOutput) radar output (watts)
+	RadarTRange	60	# (radarTRange) tracking radar range (nm)
+	RadarDRange	80	# (radarDRange) detection radar range (nm)
+	TEWSThreshold	0	# Radar Warning Receiver threshold (watts)
+
+	# Weapons
+
+	WeaponCount	9
+
+	HardPoint0	{ 7.0, -4.0, 0.0 }
+	HardPoint1	{ 0.357, 15.6, 0.0 }
+	HardPoint2	{ 0.357, -15.6, 0.0 }
+	HardPoint3	{ 1.5, 9.0, 2.0 }
+	HardPoint4	{ 1.5, -9.0, 2.0 }
+	HardPoint5	{ 1.5, 8.0, 1.5 }
+	HardPoint6	{ 1.5, -8.0, 1.5 }
+	HardPoint7	{ 1.5, 10.0, 1.5 }
+	HardPoint8	{ 1.5, -10.0, 1.5 }
+
+	WeaponStation	0 "m61a1"	500	0	0
+	WeaponStation	1 "aim9m"	0	0	0
+	WeaponStation	2 "aim9m"	0	0	0
+	WeaponStation	3 "aim9m"	0	0	0
+	WeaponStation	4 "aim9m"	0	0	0
+	WeaponStation	5 "aim9m"	0	0	0
+	WeaponStation	6 "aim9m"	0	0	0
+	WeaponStation	7 "aim9m"	0	0	0
+	WeaponStation	8 "aim9m"	0	0	0
+
+	}
+
+# Cessna 172
+
+aircraft "C-172" {
+
+	Object		"c172.obj"
+	WingArea	174.0	# (wingS) Wing surface area (ft^2)
+	WingHalfSpan	16	# (wings) Wing half-span (ft)
+	Chord		4.9	# (c) Mean geometric chord of wing (ft)
+	AspectRatio	5.9	# (aspectRatio) aspect ratio
+	EmptyWeight	1450	#(emptyWeight) Empty weight (lb)
+
+	# DISEntityType	 1:2:225:40:1:1:0 # T-41 trainer
+	# DISAltEntityType 1:2:225:40:1:1:0 # T-41 trainer
+
+	# (I(x,y,z)) Moments of inertia
+	Ixx		1000
+	Iyy		7500
+	Izz		8000
+
+	# (cFlap) Lift due to flaps (yields Clift of 1.0 at max extension)
+	CFlap		0.64279
+	CLNegStall	14.0	# (deg)
+	CLPosStall	17.0	# (deg)
+	BetaStall	15.0	# (deg)
+
+	CFlapDrag	0.0467	# (cFlapDrag) Drag due to Flaps
+	CGearDrag	0.03	# (cGearDrag) Drag due to Gear
+	CSpeedBrake	0.03	# (cSpeedBrake) Drag due to Speed Brake
+				# at 90 degrees
+
+	# (CDb) Drag Characteristic equation [Wave+body]
+	# independent variable is mach number
+	CDb	{		# (CDb) Drag Characteristic equation [Wave+body]
+				# independent variable is mach number
+		0.0,	0.020,
+		0.2,	0.020,
+		0.95,	0.015,
+		1.05,	0.045,
+		2.00,	0.030,
+		10.0,	0.030
+		}
+
+	#  This is a hack: it assumes CLMax = 1.7 at 17 degrees
+
+	CLift	{		# (CLift) Lift-slope curve (vs alpha)
+		-3.0,	0.0,
+		-1.05,	0.0,
+		-0.3316, -1.65,
+		-0.2967, -1.7,
+		-0.2618, -1.65,
+		0.2618,	1.65,
+		0.2967,	1.7,
+		0.3316,	1.65,
+		1.05,	0.0,
+		2.0,	0.0
+		}
+
+	CnBeta	{		# (CnBeta) Yaw due to sideslip equation
+		0,	-0.08125,
+		0.523540, -0.078125,
+		0.785340, -0.0609375,
+		1.047198, 0.125,
+		1.58,	0.0
+		}
+
+	ClBeta	{		# (ClBeta) Roll due to sideslip equation 
+		0,	-0.0125,
+		0.43633, -0.015,
+		0.78540, 0.125,
+		1.58,	0.0,
+		3.142,	0.125,
+		}
+
+	CDBOrigin	0	# (CDBOrigin, CDBFactor) Drag due to sideslip
+	CDBFactor	0.5	
+	CDBPhase	0	# (CDBPhase) sideslip drag phase (deg)
+	CYBeta		-0.85	# (CYbeta) Side-force from side-slip [dCY/dBeta]
+	EffElevator	0.45	# (effElevator) Elevator effectiveness
+	EffRudder	0.35	# (effRudder) Rudder effectiveness
+	MaxRudder	20	# (maxRudder) max Rudder (deg)
+	SeTrimTakeoff	0	# (SeTrimTakeoff) Elevator trim at takeoff (deg)
+	MaxAileron	20	# (maxAileron) max Aileron (deg)
+	MaxFlap		40	# (maxFlap) max flap setting (deg)
+	# (flapRate) flap extension rate (about 2 secs to fully extend flaps)
+	FlapRate	6	# (deg/sec)
+	# (gearRate) gear extension rate (about 3 secs to fully extend gear)
+	GearRate	30	# (deg/sec)
+	MaxSpeedBrake	80	# (maxSpeedBrake) max Speed Brake setting (deg)
+	# (speedBrakeRate) rate of speed brake extension (2 secs to full ext)
+	SpeedBrakeRate	40	# (deg/sec)
+	# (speedBrakeIncr) speed Brake increment per keystroke
+	SpeedBrakeIncr	0	# (deg)
+	Clda		0.048	# (Clda) roll moment from aileron offset
+	Cldr		0.004	# (Cldr) roll moment from rudder offset
+	Clp		-0.27	# (Clp) roll damping
+	Cmq		-8.0	# (Cmq) pitch damping factor
+	Cnr		-1.0	# (Cnr) yaw damping factor
+	CmAlpha		-0.30	# (cmSlope) CmAlpha curve slope 
+	CmFactor	-0.20	# (cmFactor) CmAlpha factor when stalled 
+	MaxFuel		240	# (maxFuel) maximum internal fuel (lb)
+	# engine lag factor (how fast does it respond to throttle changes)
+	EngineLag	-2.0
+	# (maxThrust) max static thrust, military power (lb) 
+	MaxThrust	400
+	# (maxABThrust) max static thrust, afterburner on  (lb) 
+	MaxABThrust	400
+	Thrust	{		# (Thrust) Mach Number vs. thrust	
+		0,	1,
+		1.7,	1.5,
+		2.0,	0.84,
+		5,	0.5
+		}
+	ABThrust {		# (ABThrust) afterburner thrust table
+		0,	1,
+		0.5,	1,
+		1,	1.21,
+		1.7,	1.7,
+		5,	1.64
+		}
+	# (spFuelConsump) specific fuel consump(lb fuel/lb T x hr)
+	SpFuelConsump	0.1677
+	# (spABFuelConsump) AB specific fuel consump(lb fuel/lb T x hr)
+	SpABFuelConsump	0.1677
+	# (groundingPoint) hypothetical single pt of contact w/ground 
+	GroundingPoint	{ 0,  0,  3.35 }
+	# (viewPoint) pilot's viewing location wrt CG
+	ViewPoint	{ 0.2791, -0.7326, -1.7792 }
+
+	# Landing Gear control parameters
+
+	MuStatic	0.08	# (muStatic) static coeff of friction no-brakes 
+	MuKinetic	0.05	# (muKinetic) moving coeff of friction no-brakes
+	MuBStatic	0.7	# (muBStatic) static brakes-on
+	MuBKinetic	0.6	# (muBKinetic) moving brakes-on
+
+	MaxNWDef	30	# (maxNWDef) maximum nosewheel deflection (deg)
+	NWIncr		0.0397	# (NWIncr) deflection for each unit
+	MaxNWS		85	# (maxNWS) maximum NWS velocity (kts)
+
+	# (rm) location of main gear attachments
+	Rm		{ -0.3489, 4.0118, 2.0299 }
+	# (rn) location of nose gear attachments
+	Rn		{ 4.1165, 0.0, 2.029 }
+	Dm		1000	# main oleo damping factor
+	Dn		100	# nose oleo damping factor
+	Km		506.964 # main oleo spring factor
+	Kn		42.9685	# nose oleo spring factor
+	Gm		1.0	# main strut length with tire (ft)
+	Gn		1.0	# nose strut length with tire (ft)
+	CmMax		0.5	# (cmMax) main max oleo extension distance (ft)
+	CnMax		0.5	# (cnMax) nose max oleo extension distance (ft)
+	# (tailExtent) as we rotate, this part may drag 
+	TailExtent	{ -18.165,  0.0,  1.191 }
+	StructurePoints	10	# (structurePts) maximum structural damage 
+
+	# Radar data based on N-019 Pulse Doppler radar cited in [AirI Aug89].
+
+	RadarOutput	0	# (radarOutput) radar output (watts)
+	RadarTRange	0	# (radarTRange) tracking radar range (nm)
+	RadarDRange	0	# (radarDRange) detection radar range (nm)
+	TEWSThreshold	0	# Radar Warning Receiver threshold (watts)
+
+	# Weapons
+
+	WeaponCount	2
+
+	HardPoint0	{ 7.0, -4.0, 0.0 }
+	HardPoint1	{ 0.357, 15.6, 0.0 }
+	HardPoint2	{ 0.357, -15.6, 0.0 }
+	HardPoint3	{ 1.5, 9.0, 2.0 }
+	HardPoint4	{ 1.5, -9.0, 2.0 }
+	HardPoint5	{ 1.5, 8.0, 1.5 }
+	HardPoint6	{ 1.5, -8.0, 1.5 }
+	HardPoint7	{ 1.5, 10.0, 1.5 }
+	HardPoint8	{ 1.5, -10.0, 1.5 }
+
+	WeaponStation	0 "m61a1"	50	0	0
+	WeaponStation	1 "aim9m"	0	0	0
+
+	}
+

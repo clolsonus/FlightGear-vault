@@ -1,0 +1,9 @@
+
+hud.c,142
+#define FLIGHTDEBUG31,993
+#define VIEW_WINDOW_HEIGHT	32,1013
+#define VIEW_WINDOW_WIDTH	33,1044
+void doHUD 36,1077
+void	doLadder 113,2872
+
+horizon.h,0

@@ -1,0 +1,41 @@
+About chase feature:
+
+   Original acm has a chaser feature(display chaser's view by pressing "n").
+New chaser feature is to chase an airplane(oneself or others) on another
+window and display the airplane from behind, ahead, right or left, whichever
+you like.
+   You can make a chaser's window by invoking "acm -chase <number>", where
+<number> is the number of the player you want to chase.   The list of the
+player and associated numbers are listed by "acm -list".   The window
+is automatically deleted if the chased airplane crashes or aborts.
+
+   By default, you can chase only yourself.   Only when acms is run with
+"-c" option (enable to chase others' aircraft), you can chase others'
+airplanes.
+
+   In a chaser's window, "p", "P", "Up arrow", "Down arrow", "Right arrow",
+"Left arrow", "j","J","k", and "K" are available(some others might be
+available, but I've never tried <g>).
+
+   "p", "P" :  Delete the chaser's window.
+   arrows(shift + keypad 2,4,6,8)
+	    :  Watch the airplane from various spots.
+   "j","J"  :  Get closer to the airplane.
+   "k","K"  :  Get away from the airplane.
+
+
+Another similar feature, observer feature is now in progress.
+
+The differences from the original chaser feature are :
+
+1. It displays a view from the posterior, anterior, left, or right.
+2. Virtual chase airplane is flying at the same altitude as the chased
+   airplane.
+
+   Because of #2, this posterior view is different from the original view,
+unless the airplane is flying level.
+
+
+      Happy flying!
+
+Tetsuji Rai (tetsuji@rai.juice.or.jp or 74610.1537@compuserve.com)
